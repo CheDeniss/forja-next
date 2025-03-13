@@ -1,0 +1,56 @@
+
+
+.carouselContainer {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 800px; /* Адаптуй під розмір секції */
+  margin: 0 auto;
+}
+
+.embla {
+  overflow: hidden;
+  flex: 1;
+}
+
+.emblaContainer {
+  display: flex;
+  list-style: none;
+}
+
+.emblaSlide {
+  flex: 0 0 25%; /* 4 елементи в одному рядку */
+  padding: 5px;
+  box-sizing: border-box;
+}
+
+.carouselButton {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  font-size: 18px;
+  border-radius: 5px;
+
+  &:hover {
+    background-color: #555;
+  }
+
+  &.disabled {
+    opacity: 0.5;
+    pointer-events: none;
+  }
+}
+
+.carouselCounter {
+  position: absolute;
+  bottom: -30px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 14px;
+}

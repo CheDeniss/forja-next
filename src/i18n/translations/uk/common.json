@@ -1,0 +1,58 @@
+{
+  "navmenu": {
+    "home": "ГОЛОВНА",
+    "news": "НОВИНИ",
+    "catalog": "КАТАЛОГ",
+    "library": "БІБЛІОТЕКА",
+    "faq": "ЧАВО",
+    "cart": "КОШИК",
+    "login": "ВХІД",
+    "profile": "ПРОФІЛЬ"
+  },
+
+  "search": {
+    "placeholder": "Пошук"
+  },
+
+  "errors": {
+    "emailRequired": "Потрібно вказати електронну пошту",
+    "invalidEmail": "Невірний формат електронної пошти",
+    "passwordRequired": "Потрібно вказати пароль",
+    "confirmPasswordRequired": "Потрібно вказати підтвердження пароля",
+    "confirmPasswordMismatch": "Паролі не співпадають",
+    "passwordLength": "Пароль повинен містити не менше 8 символів",
+    "passwordUppercase": "Пароль повинен містити хоча б одну велику літеру",
+    "passwordLowercase": "Пароль повинен містити хоча б одну малу літеру",
+    "passwordNumber": "Пароль повинен містити хоча б одну цифру",
+    "passwordSpecial": "Пароль повинен містити хоча б один спеціальний символ",
+    "incorrectEmailPassword": "Невірна електронна пошта або пароль. Будь ласка, спробуйте ще.",
+    "somethingWentWrong": "Щось пішло не так. Будь ласка, спробуйте пізніше."
+  },
+
+  "tooltip": {
+    "passwordTooltip": "Пароль повинен містити не менше 8 символів, включати великі та малі літери, цифри та спеціальні символи."
+  },
+
+  "login_page": {
+    "title": "Вхід",
+    "email": "Електронна пошта",
+    "password": "Пароль",
+    "emailPlaceholder": "Введіть вашу електронну пошту",
+    "passwordPlaceholder": "Введіть ваш пароль",
+    "forgotPassword": "Забули пароль?",
+    "noAccount": "Немає аккаунту? Створити",
+    "login": "Увійти"
+  },
+
+  "register_page": {
+      "title": "Реєстрація",
+      "email": "Електронна пошта",
+      "password": "Пароль",
+      "confirmPassword": "Підтвердження пароля",
+      "emailPlaceholder": "Введіть вашу електронну пошту",
+      "passwordPlaceholder": "Введіть ваш пароль",
+      "confirmPasswordPlaceholder": "Підтвердіть ваш пароль",
+      "haveAccount": "Вже є аккаунт?",
+      "register": "Старт"
+  }
+}

@@ -1,0 +1,61 @@
+.gcContainer {
+    display: flex;
+    flex-direction: column;
+    background-color: #222;
+    padding: 20px;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+
+    .gcContainerName {
+        font-size: 1.2rem;
+        font-weight: bold;
+        text-transform: uppercase;
+        color: #fff;
+        margin-bottom: 15px;
+    }
+
+    .mainBlock {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .gcList {
+        display: flex;
+        justify-content: space-around;
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .gcItemLi {
+        display: flex;
+        flex: 1;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        background: var(--gray-900);
+    }
+
+    .gcItem {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+    }
+
+    .gcItemCount {
+        font-size: 2rem;
+        font-weight: bold;
+        color: #fff;
+    }
+
+    .gcItemName {
+        font-size: 0.9rem;
+        color: #bbb;
+        text-transform: uppercase;
+        margin-top: 5px;
+    }
+}

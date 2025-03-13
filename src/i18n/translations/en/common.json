@@ -1,0 +1,58 @@
+{
+  "navmenu": {
+    "home": "HOME",
+    "news": "NEWS",
+    "catalog": "CATALOG",
+    "library": "LIBRARY",
+    "faq": "FAQ",
+    "cart": "CART",
+    "login": "LOGIN",
+    "profile": "PROFILE"
+  },
+
+  "search": {
+    "placeholder": "Search"
+  },
+
+  "errors": {
+    "emailRequired": "Email is required",
+    "invalidEmail": "Invalid email format",
+    "passwordRequired": "Password is required",
+    "confirmPasswordRequired": "Confirm password is required",
+    "confirmPasswordMismatch": "Passwords do not match",
+    "passwordLength": "Password must be at least 8 characters",
+    "passwordUppercase": "Password must contain at least one uppercase letter",
+    "passwordLowercase": "Password must contain at least one lowercase letter",
+    "passwordNumber": "Password must contain at least one number",
+    "passwordSpecial": "Password must contain at least one special character",
+    "incorrectEmailPassword": "Incorrect email or password. Please try again.",
+    "somethingWentWrong": "Something went wrong. Please try again later."
+  },
+
+  "tooltip": {
+    "passwordTooltip": "Password must be at least 8 characters, include uppercase, lowercase, number, and special character."
+  },
+
+  "login_page": {
+      "title": "Login",
+      "email": "Email",
+      "password": "Password",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "forgotPassword": "Forgot your password?",
+      "noAccount": "No account yet? Create one",
+      "login": "Login"
+  },
+
+  "register_page": {
+      "title": "Register",
+      "email": "Email",
+      "password": "Password",
+      "confirmPassword": "Confirm password",
+      "emailPlaceholder": "Enter your email",
+      "passwordPlaceholder": "Enter your password",
+      "confirmPasswordPlaceholder": "Confirm your password",
+      "haveAccount": "Already have an account?",
+      "register": "Register"
+  }
+}
