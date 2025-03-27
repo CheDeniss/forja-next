@@ -1,6 +1,6 @@
 import React from 'react';
 import itemStyle from './GameAchivementItem.module.scss';
-
+import withBorder from "../../../../../../hoc/withBorder";
 
 const GameAchievementItem = ({text}) => {
     return (
@@ -11,3 +11,5 @@ const GameAchievementItem = ({text}) => {
 };
 
 export default GameAchievementItem;
+
+// export default withBorder(GameAchievementItem);

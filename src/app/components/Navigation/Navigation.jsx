@@ -37,27 +37,27 @@ const Navbar = ({ onTestClick }) => {
             <nav className={`${stylesNav.navbar} ${isScrolled ? stylesNav.navbarFixed : ""}`}>
                 <div className={stylesNav.navLeftMenu}>
                     <ul className={stylesNav.navLinks}>
-                        <li><Link href={`/${locale}/`}>{t("navmenu.home")}</Link></li>
-                        <li><Link href={`/${locale}/login`}>{t("navmenu.news")}</Link></li>
-                        <li><Link href={`/${locale}/login`}>{t("navmenu.catalog")}</Link></li>
-                        <li><Link href={`/${locale}/login`}>{t("navmenu.library")}</Link></li>
-                        <li><Link href={`/${locale}/login`}>{t("navmenu.faq")}</Link></li>
+                        <li><Link href={`/${locale}/`}>{t("home", { ns: 'navmenu' })}</Link></li>
+                        <li><Link href={`/${locale}/login`}>{t("news", { ns: 'navmenu' })}</Link></li>
+                        <li><Link href={`/${locale}/login`}>{t("catalog", { ns: 'navmenu' })}</Link></li>
+                        <li><Link href={`/${locale}/login`}>{t("library", { ns: 'navmenu' })}</Link></li>
+                        <li><Link href={`/${locale}/login`}>{t("faq", { ns: 'navmenu' })}</Link></li>
                         {/*<button onClick={onTestClick}>Test</button>*/}
                         {/*<a href="forja-game://">🎮 Запустити гру</a>*/}
                     </ul>
                 </div>
                 <div className={stylesNav.navSearchBar}>
-                    <input type="text" placeholder={t("search.placeholder")}/>
+                    <input type="text" placeholder={t("search.placeholder")} />
                 </div>
                 <div className={stylesNav.navRightMenu}>
                     <ul className={stylesNav.navLinks}>
                         <li><LanguageSwitcher/></li>
-                        <li><Link href={`/${locale}/login`}>{t("navmenu.cart")}</Link ></li>
+                        <li><Link href={`/${locale}/login`}>{t("cart", { ns: 'navmenu' })}</Link ></li>
                         <li>
                             {user ? (
-                                <Link href={`/${locale}/profile`}>{t("navmenu.profile")}</Link> // Якщо є user → Профіль
+                                <Link href={`/${locale}/profile`}>{t('profile', { ns: 'navmenu' })}</Link> // Якщо є user → Профіль
                             ) : (
-                                <Link href={`/${locale}/login`}>{t("navmenu.login")}</Link> // Якщо user немає → Логін
+                                <Link href={`/${locale}/login`}>{t("login", { ns: 'navmenu' })}</Link> // Якщо user немає → Логін
                             )}
                         </li>
                     </ul>

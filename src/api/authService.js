@@ -15,3 +15,13 @@ export const logoutUser = async () => {
 export const refreshToken = async () => {
     return apiClient("auth/refresh", "POST", null, {}, true);
 }
+
+export const resendEmailConfirmation = async () => {
+    return apiClient("auth/send-email-confirmation", "POST", null, {}, true);
+}
+
+export const verifyEmail = async (token) => {
+    return apiClient(`auth/users/confirm-email?token=${token}`, "PUT", null,{}, false);
+}
+
+

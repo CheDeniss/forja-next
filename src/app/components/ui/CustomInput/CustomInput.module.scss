@@ -1,19 +1,24 @@
 
-.customInputMainContainer{
+
+$color_1: var(--main_page_text);
+$color_2: var(--warning-color);
+$font-family_1: 'Oswald', sans-serif;
+$background-color_1: var(--gray-700);
+$background-color_2: transparent;
+$background-color_3: var(--gray-900);
+$border-color_1: var(--warning-color);
+
+.customInputMainContainer {
     padding: 10px;
     width: 100%;
     box-sizing: border-box;
 }
-
 .inputWrapper {
     position: relative;
     display: inline-block;
     width: 100%;
-    /*max-width: 500vw;*/
-    height: 54px;
+    height: 45px;
 }
-
-/* Проміжний контейнер - створює зазор */
 .inputBorderPadding {
     position: absolute;
     top: -3px;
@@ -22,8 +27,6 @@
     height: calc(100% + 6px);
     border-radius: 2px;
 }
-
-/* Зовнішня рамка (імітація куточків) */
 .inputBorder {
     position: absolute;
     top: -4px;
@@ -31,44 +34,46 @@
     width: calc(100% + 4px);
     height: calc(100% + 4px);
     border: 2px solid var(--gray-100);
-    border-radius: 3px;                    /* Радіуси рамок */
+    border-radius: 3px;
 }
-
 .inputBorder.error {
-    border-color: var(--warning-color);
+    border-color: $border-color_1;
 }
-
 .inputContainer {
     display: flex;
-    background-color: var(--gray-700);
+    background-color: $background-color_1;
     position: relative;
     width: 100%;
     height: 100%;
+    &:hover {
+        .tooltip {
+            visibility: visible;
+            opacity: 0.9;
+        }
+    }
 }
-/* Основний стиль для input */
 .customInput {
     display: flex;
     width: 90%;
     padding: 20px 15px;
     font-size: 1.25rem;
-    background-color: transparent;
-    color: var(--main_page_text);
+    background-color: $background-color_2;
+    color: $color_1;
     border: none;
     outline: none;
-    border-radius: 2px;                     /* Радіуси інпута */
+    border-radius: 2px;
     position: relative;
-    z-index: 2; /* Щоб input був зверху */
+    z-index: 2;
     box-sizing: border-box;
 }
-
 .tooltip {
     visibility: hidden;
     width: auto;
-    font-family: 'Oswald', sans-serif;
+    font-family: $font-family_1;
     font-weight: 300;
     font-size: clamp(0.5rem, 1vw, 1.5rem);
-    background-color: var(--gray-900);
-    color: var(--main_page_text);
+    background-color: $background-color_3;
+    color: $color_1;
     text-align: center;
     padding: 5px;
     border: 1px solid var(--main_page_text);
@@ -80,49 +85,33 @@
     transition: opacity 0.3s;
     z-index: 15;
 }
-
-.inputContainer:hover .tooltip {
-    visibility: visible;
-    opacity: 0.7;
-}
-
-/* Чотири смуги для перекриття рамки */
 .cornerCover {
     position: absolute;
-    background-color: var(--gray-900); /* Повинен збігатися з кольором input */
+    background-color: $background-color_3;
     z-index: 3;
 }
-
-/* Горизонтальна смуга (верхня) */
 .horizontal {
     transform: translateX(-50%);
     left: 50%;
-    width: calc(100% - 4.5vw); /* Розмір ГОРИЗОНТАЛЬНИХ ел-тів рамочок */
+    width: calc(100% - 4.5vw);
     height: 6px;
     top: -6px;
 }
-
-/* Горизонтальна смуга (нижня) */
 .bottom {
     bottom: -6px;
     top: 100%;
 }
-
-/* Вертикальна смуга (ліва) */
 .vertical {
-    height: calc(100% - 1vh); /* Розмір ВЕРТИКАЛЬНИХ ел-тів рамочок */
+    height: calc(100% - 1vh);
     width: 6px;
     left: -6px;
     top: 50%;
     transform: translateY(-50%);
 }
-
-/* Вертикальна смуга (права) */
 .right {
     right: -6px;
     left: 100%;
 }
-
 .eyeIcon {
     top: 50%;
     cursor: pointer;
@@ -133,30 +122,25 @@
     align-self: center;
     margin-right: 0.8vw;
 }
-
 .errorMessage {
     display: flex;
     align-items: center;
-    font-weight: 700;
-    color: var(--warning-color);
+    font-weight: 500;
+    color: $color_2;
     font-size: 1rem;
-    margin-top: 8px;
+    margin-top: 4px;
     margin-left: -5px;
     transition: opacity 0.2s ease-in-out;
+    b {
+        text-overflow: ellipsis;
+        wrap-option: nowrap;
+    }
 }
-
-.errorMessage b{
-    text-overflow: ellipsis;
-    wrap-option: nowrap;
-}
-
-.errorMessageFake{
+.errorMessageFake {
     height: calc(1rem + 12px);
 }
-
 .infoIconError {
-    margin-left: 1.25rem;
-    width: 1.25rem;
-    height: 1.25rem;
+    margin-left: 1.2rem;
+    width: 1.2rem;
+    height: 1.2rem;
 }
-

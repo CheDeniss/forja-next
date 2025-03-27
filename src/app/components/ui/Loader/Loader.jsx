@@ -1,5 +1,5 @@
 import React from 'react';
-import loaderStyles from '../../styles/ui/Loader.module.scss';
+import loaderStyles from './Loader.module.scss';
 
 const Loader = ({isLoading}) => {
     if (!isLoading) {

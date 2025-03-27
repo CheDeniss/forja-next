@@ -1,0 +1,22 @@
+{
+  "back_To_Top": "До гори",
+  "links": {
+    "privacy": "Конфіденційність",
+    "legal": "Правова інформація",
+    "cookie_settings": "Налаштування cookie",
+    "cookie_policy": "Політика щодо cookie",
+    "terms": "Умови користування"
+  },
+  "roles": {
+    "development": "Розробка",
+    "content": "Контент",
+    "security": "Безпека"
+  },
+  "team": {
+    "kirilchenko_grigory": "Кирильченко Григорій",
+    "cherneta_denys": "Чернета Денис",
+    "daniil_korsunsky": "Данило Корсунський",
+    "rudenko_artem": "Руденко Артем",
+    "damn_evgenia": "Демн Євгенія"
+  }
+}

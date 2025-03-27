@@ -4,7 +4,6 @@ import gcStyles from './GameCollector.module.scss';
 const GameCollector = () => {
     return (
         <div className={gcStyles.gcContainer}>
-            <span className={gcStyles.gcContainerName}>game collector</span>
             <div className={gcStyles.mainBlock}>
                 <ul className={gcStyles.gcList}>
                     <li className={gcStyles.gcItemLi}>

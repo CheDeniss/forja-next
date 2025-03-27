@@ -1,10 +1,10 @@
 'use client';
 
 import React, {useState} from "react";
-import styles from "../../styles/ui/CustomInput.module.css";
-import Eye from "../../../../public/assets/icons/svg/eye.svg"
-import EyeOff from "../../../../public/assets/icons/svg/eye_close.svg"
-import infoIconError from "../../../../public/assets/icons/svg/info.svg"
+import styles from "./CustomInput.module.scss";
+import Eye from "../../../../../public/assets/icons/svg/eye.svg"
+import EyeOff from "../../../../../public/assets/icons/svg/eye_close.svg"
+import infoIconError from "../../../../../public/assets/icons/svg/info.svg"
 import Image from "next/image";
 
 const CustomInput = ({ type, name="", placeholder="", tooltipText = "", value="", onChange, error="" }) => {

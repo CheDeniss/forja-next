@@ -1,0 +1,11 @@
+
+.friendItemContainer {
+aspect-ratio: 6 / 1;
+background-color: #1d578a;
+height: 100px;
+max-width: 100%; /* Додає обмеження, щоб елемент не розтягувався більше */
+max-height: 100%;
+display: flex;
+align-items: center;
+justify-content: center;
+}

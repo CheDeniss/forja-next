@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback } from "react";
+import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
 import { loginUser, logoutUser, registerUser, refreshToken } from "../../src/api/authService";
 import { authMe } from "../../src/api/userService";
 import logger from "../../src/utils/logger";
@@ -10,32 +10,33 @@ const AuthContext = createContext();
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
     const [isAuthLoading, setIsAuthLoading] = useState(false);
+    const hasTriedRefresh = useRef(false); // Прапорець, щоб не зациклити оновлення після невдалого рефрешу
 
-    // Функція для оновлення стану завантаження щоб уникати зайвих ререндерів
     const setLoadingState = (state) => {
         setIsAuthLoading((prev) => (prev === state ? prev : state));
     };
 
-    // Отримання поточного користувача
     const fetchUser = useCallback(async () => {
-        if (isAuthLoading) return null; // Запобігаємо одночасному виконанню декількох запитів
+        if (isAuthLoading) return null;
 
         try {
             const response = await authMe();
             if (response) {
                 setUser(response);
-                // return response;
+                hasTriedRefresh.current = false;
             } else {
                 logger.warn("AUTH_CONTEXT -> fetchUser :: `authMe` не повернув користувача");
                 return null;
             }
         } catch (error) {
-            if (error.response?.status === 401) {
-                if (!isAuthLoading) {
+            if (error.message === "401") {
+                if (!hasTriedRefresh.current) {
+                    hasTriedRefresh.current = true;
                     logger.warn("AUTH_CONTEXT -> fetchUser :: Токен недійсний, спроба оновлення...");
                     return await handleRefreshToken();
                 } else {
-                    logger.warn("AUTH_CONTEXT -> fetchUser :: Уже виконується оновлення токена");
+                    logger.warn("AUTH_CONTEXT -> fetchUser :: Рефреш вже був — виконуємо вихід.");
+                    await logout();
                     return null;
                 }
             } else {
@@ -45,13 +46,10 @@ export const AuthProvider = ({ children }) => {
         }
     }, [isAuthLoading]);
 
-
     useEffect(() => {
         fetchUser();
     }, [fetchUser]);
 
-
-    // Оновлення токена
     const handleRefreshToken = useCallback(async () => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> handleRefreshToken :: Контекст зараз зайнятий");
@@ -65,15 +63,13 @@ export const AuthProvider = ({ children }) => {
             await fetchUser();
         } catch (error) {
             logger.error("AUTH_CONTEXT -> handleRefreshToken :: Оновлення токена не вдалося", error);
-            await logout(); // Якщо не вдалося оновити токен → виконуємо вихід
+            await logout();
             return null;
         } finally {
             setLoadingState(false);
         }
     }, [fetchUser]);
 
-
-    // Реєстрація нового користувача
     const register = async (userData) => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> register :: Контекст зараз зайнятий");
@@ -94,8 +90,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-
-    // Логін користувача
     const login = async (formData) => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> login :: Контекст зараз зайнятий");
@@ -106,7 +100,7 @@ export const AuthProvider = ({ children }) => {
         try {
             await loginUser(formData);
             logger.info("AUTH_CONTEXT -> login :: Вхід виконано успішно");
-            await fetchUser(); // Повертаємо користувача одразу після входу
+            await fetchUser();
             return true;
         } catch (err) {
             logger.error("AUTH_CONTEXT -> login :: Помилка входу", err.message);
@@ -116,8 +110,6 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
-
-    // Вихід (logout)
     const logout = async () => {
         if (!user) {
             logger.warn("AUTH_CONTEXT -> logout :: Користувач не авторизований");
@@ -131,20 +123,19 @@ export const AuthProvider = ({ children }) => {
         setLoadingState(true);
         try {
             await logoutUser();
-            setUser(null);
             logger.info("AUTH_CONTEXT -> logout :: Вихід виконано успішно");
             return true;
         } catch (error) {
             logger.error("AUTH_CONTEXT -> logout :: Не вдалося вийти", error);
             return false;
         } finally {
+            setUser(null);
             setLoadingState(false);
         }
     };
 
-
     return (
-        <AuthContext.Provider value={{ user, isAuthLoading, login, register, logout, handleRefreshToken }}>
+        <AuthContext.Provider value={{ user, isAuthLoading, login, register, logout, fetchUser, handleRefreshToken }}>
             {children}
         </AuthContext.Provider>
     );

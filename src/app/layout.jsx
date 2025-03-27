@@ -1,8 +1,8 @@
 
 import "./styles/globals.css";
-import Navbar from "./components/Navigation/Navigation";
 import FooterWrapper from "./components/Footer/FooterWrapper";
 import { AuthProvider } from "../context/authContext";
+import NavbarWrapper from "./components/Navigation/NavbarWrapper";
 
 
 export default function RootLayout({ children }) {
@@ -10,7 +10,7 @@ export default function RootLayout({ children }) {
       <html lang="en">
           <body className="app-container">
             <AuthProvider>
-              <Navbar />
+              <NavbarWrapper />
                   <main className="main">
                     {children}
                   </main>

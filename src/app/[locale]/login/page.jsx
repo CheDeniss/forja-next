@@ -1,9 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, {useEffect, useState} from 'react';
 import loginStyles from './Login.module.css';
-import CustomInput from "../../components/ui/CustomInput";
-import CustomButton from "../../components/ui/CustomButton";
+import CustomInput from "../../components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
 import { useAuth } from "../../../context/authContext";
 import {validateEmail, validatePassword} from "../../../../src/utils/validationUtils";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import {useParams, useRouter} from "next/navigation";
 import logger from "../../../utils/logger";
-import Loader from "../../../app/components/ui/Loader.jsx";
+import Loader from "../../components/ui/Loader/Loader.jsx";
 
 import googleIcon from "../../../../public/assets/icons/svg/Google.svg";
 import appleIcon from "../../../../public/assets/icons/svg/Apple.svg";
@@ -21,7 +21,7 @@ import xIcon from "../../../../public/assets/icons/svg/twiter_ico.svg";
 import loginWith from "../../../../public/assets/images/login/Log_in_with.svg";
 
 const Login = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation(['auth', 'errors']);
     const { login, isAuthLoading } = useAuth();
     const { locale } = useParams();
 
@@ -31,8 +31,8 @@ const Login = () => {
     const [wasIncorrectLogin, setWasIncorrectLogin] = useState(false);
 
     const [formData, setFormData] = useState({
-        email: "",
-        password: "",
+        email: document.querySelector('input[name="email"]')?.value || "",
+        password: document.querySelector('input[name="password"]')?.value || ""
     });
 
     const [errors, setErrors] = useState({
@@ -116,15 +116,15 @@ const Login = () => {
             if(err.message === "400")
             {
                 setErrorForInput({
-                    email: t("errors.incorrectEmailPassword"),
-                    password: t("errors.incorrectEmailPassword"),
+                    email: t("incorrectEmailPassword"),
+                    password: t("incorrectEmailPassword"),
                 });
                 setWasIncorrectLogin(true);
             }
             else {
                 setErrorForInput({
-                    email: t("errors.somethingWentWrong"),
-                    password: t("errors.somethingWentWrong"),
+                    email: t("somethingWentWrong"),
+                    password: t("somethingWentWrong"),
                 })
             }
         }
@@ -136,7 +136,7 @@ const Login = () => {
             <div className={loginStyles.loginFormContainerMain}>
                 <div className={loginStyles.loginFormContainer}>
                     <div className={loginStyles.loginLogo}>
-                        {t("login_page.title")}
+                        {t("login.title")}
                     </div>
                     <div className={loginStyles.loginFormContainerMainBlock}>
                         <div className={loginStyles.logVariantsBar}>
@@ -159,29 +159,29 @@ const Login = () => {
                             <div className={loginStyles.loginFormBody}>
                                 <label className={loginStyles.loginFormBodyLabel}>
                                     <span className={loginStyles.loginFormBodyLabelName}>
-                                        {t("login_page.email")}
+                                        {t("login.email")}
                                     </span>
                                     <CustomInput
                                         type="email"
                                         name="email"
-                                        placeholder={t("login_page.emailPlaceholder")}
+                                        placeholder={t("login.email_Placeholder")}
                                         value={formData.email}
                                         onChange={handleChange}
-                                        error={t(errorForInput.email)}
+                                        error={t(errorForInput.email, { ns: 'errors' })}
                                     />
                                 </label>
                                 <label className={loginStyles.loginFormBodyLabel}>
                                     <span className={loginStyles.loginFormBodyLabelName}>
-                                        {t("login_page.password")}
+                                        {t("login.password")}
                                     </span>
                                     <CustomInput
                                         type="password"
                                         name="password"
-                                        placeholder={t("login_page.passwordPlaceholder")}
-                                        tooltipText={t("tooltip.passwordTooltip")}
+                                        placeholder={t("login.password_Placeholder")}
+                                        tooltipText={t("tooltip.password_Tooltip")}
                                         value={formData.password}
                                         onChange={handleChange}
-                                        error={t(errorForInput.password)}
+                                        error={t(errorForInput.password, { ns: 'errors' })}
                                     />
                                 </label>
                             </div>
@@ -192,7 +192,7 @@ const Login = () => {
                                             href={`/${locale}/forgot`}
                                             className={loginStyles.loginFormFooterLinksLink}
                                         >
-                                            {t("login_page.forgotPassword")}
+                                            {t("login.forgot_Password")}
                                         </Link>
                                     </span>
                                     <span>
@@ -200,12 +200,12 @@ const Login = () => {
                                             href={`/${locale}/register`}
                                             className={loginStyles.loginFormFooterLinksLink}
                                         >
-                                            {t("login_page.noAccount")}
+                                            {t("login.no_Account")}
                                         </Link>
                                     </span>
                                 </div>
-                                <CustomButton
-                                    text={t("login_page.login")}
+                                <CustomButtonForm
+                                    text={t("login.login")}
                                     onClick={handleSubmit}
                                     isDisabled={buttonStatus}
                                 />

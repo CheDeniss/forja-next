@@ -1,0 +1,22 @@
+{
+  "back_To_Top": "Back to top",
+  "links": {
+    "privacy": "Privacy",
+    "legal": "Legal",
+    "cookie_settings": "Cookie Settings",
+    "cookie_policy": "Cookie Policy",
+    "terms": "Terms"
+  },
+  "roles": {
+    "development": "Development",
+    "content": "Content",
+    "security": "Security"
+  },
+  "team": {
+    "kirilchenko_grigory": "Kyrylchenko Gryhorii",
+    "cherneta_denys": "Cherneta Denys",
+    "daniil_korsunsky": "Daniil Korsunsky",
+    "rudenko_artem": "Rudenko Artem",
+    "damn_evgenia": "Damn Evgenia"
+  }
+}
