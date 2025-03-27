@@ -19,6 +19,7 @@
 }
 
 .headerFlame {
+    margin-right: clamp(0.7vw, 1vw, 1.5vw);
 }
 
 .logoSliconsContainer {
@@ -27,5 +28,5 @@
 }
 
 .slIcon {
-    margin: 0 clamp(1vw, 1.5vw, 1.5vw);
+    margin: 0 clamp(0.7vw, 1vw, 1.5vw);
 }

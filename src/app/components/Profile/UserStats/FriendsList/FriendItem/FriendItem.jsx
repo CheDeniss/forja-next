@@ -1,10 +1,9 @@
 import React from 'react';
+import frItemStyles from './FriendItem.module.scss';
 
 const FriendItem = () => {
     return (
-        <div>
-
-        </div>
+        <div className={frItemStyles.friendItemContainer}></div>
     );
 };
 

@@ -1,0 +1,16 @@
+{ "errors":
+{
+  "emailRequired": "Email is required",
+  "invalidEmail": "Invalid email format",
+  "passwordRequired": "Password is required",
+  "confirmPasswordRequired": "Confirm password is required",
+  "confirmPasswordMismatch": "Passwords do not match",
+  "passwordLength": "Password must be at least 8 characters",
+  "passwordUppercase": "Password must contain at least one uppercase letter",
+  "passwordLowercase": "Password must contain at least one lowercase letter",
+  "passwordNumber": "Password must contain at least one number",
+  "passwordSpecial": "Password must contain at least one special character",
+  "incorrectEmailPassword": "Incorrect email or password. Please try again.",
+  "somethingWentWrong": "Something went wrong. Please try again later."
+}
+}

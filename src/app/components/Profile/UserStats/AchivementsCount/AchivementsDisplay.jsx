@@ -1,14 +1,16 @@
 'use client';
 
-import React, { useCallback, useEffect, useState } from "react";
 import acStyle from "./AchivementsDisplay.module.scss";
-import GameAchievementItem from "../../../Profile/UserStats/AchivementsCount/GameAchievementItem/GameAchievementItem";
+import GameAchievementItem from "./GameAchievementItem/GameAchievementItem";
 
 const AchievementsDisplay = () => {
 
     return (
-        <div className={acStyle.carouselContainer}>
-            AchievementsDisplay
+        <div className={acStyle.achievementContainer}>
+            <GameAchievementItem/>
+            <GameAchievementItem/>
+            <GameAchievementItem/>
+            <GameAchievementItem/>
         </div>
     );
 };

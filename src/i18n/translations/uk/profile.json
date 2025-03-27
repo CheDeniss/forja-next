@@ -1,0 +1,18 @@
+{
+  "user_info": {
+    "edit_page_button": "Редагувати",
+    "logout_button": "Вийти"
+  },
+  "user_statistics_titles": {
+    "main_title": "Статистика користувача",
+    "game_collector_title": "Колекціонер ігор",
+    "achievements_count_title": "Кількість досягнень",
+    "friendsList_title": "Список друзів"
+  },
+  "game_collector": {
+    "games_owned": "Придбані ігри",
+    "dlc_owned": "Придбані DLC",
+    "whishlisted": "Список бажань",
+    "follows": "Слідкує"
+  }
+}

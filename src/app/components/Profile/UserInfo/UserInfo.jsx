@@ -1,10 +1,21 @@
+'use client';
+
 import userInfoStyles from "./UserInfo.module.css";
 import Image from "next/image";
 import ava from "../../../../../public/assets/images/profile/Recovered_jpg_file(1526).jpg";
+import {useParams, useRouter} from "next/navigation";
+import {useTranslation} from "react-i18next";
+import CustomButtonOther from "../../../components/ui/CustomButtonOther/CustomButtonOther";
 
-const UserInfo = () => {
-    const [userData, setUserData] = useState(null);
+const UserInfo = ({logout, user}) => {
+    const {locale} = useParams();
+    const { t } = useTranslation();
+    const router = useRouter();
 
+    const handleLogout = async () => {
+        await logout();
+        router.push(`/${locale}`);
+    }
 
     return (
         <div className={userInfoStyles.userInfoContainer}>
@@ -13,50 +24,31 @@ const UserInfo = () => {
             </div>
 
             <div className={userInfoStyles.userDetails}>
-                <span className={userInfoStyles.userDetailsUsername}>USERNAME</span>
-                <span className={userInfoStyles.userDetailsLocation}>Kyivska Oblast, Ukraine</span>
-                <textarea className={userInfoStyles.userDetailsBio} defaultValue="Where does it come from?
-Contrary to popular belief, Lorem Where does it come from?
-Contrary to popular belief, Lorem Ipsum is There are
-many variations of passages of Lorem Ipsum available,
-but the majority have suffered alteration in some form, by
-injected humour, or randomised words which don't look even slightly
-believable. If you are going to use a passage of Lorem Ipsum, you need to be
-sure there isn't anything embarrassing hidden in the middle of text.
-All the Lorem Ipsum generators on the Internet tend to repeat predefined
- chunks as necessary, making this the first true generator on the Internet.
- It uses a dictionary of over 200 Latin words, combined with a handful of
- model sentence structures, to generate Lorem Ipsum which looks reasonable.
- The generated Lorem Ipsum is therefore always free from repetition,
- injected humour, or non-characteristic words etc.not simply random text.
- It has roots in a piece of classical Latin literature from 45 BC, making it
- over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-  College in Virginia, looked up one of the more obscure Latin words, consectetur,
-   from a Lorem Ipsum passage, and going through the cites of the word in classical
-   literature, discovered the Ipsum is There are many variations of passages of Lorem
-   Ipsum available, but the majority have suffered alteration in some form,
-   by injected humour, or randomised words which don't look even slightly
-   believable. If you are going to use a passage of Lorem Ipsum, you need to
-    be sure there isn't anything embarrassing hidden in the middle of text. All
-     the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as
-      necessary, making this the first true generator on the Internet. It uses a
-       хdictionary of over 200 Latin words, combined with a handful of model
-        sentence structures, to generate Lorem Ipsum which looks reasonable.
-        The generated Lorem Ipsum is therefore always free from repetition,
-        injected humour, or non-characteristic words etc.not simply random text.
-        It has roots in a piece of classical Latin literature from 45 BC, making
-        it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney
-        College in Virginia, looked up one of the more obscure Latin words, consectetur,
-         from a Lorem Ipsum passage, and going through the cites of the word in classical
-          literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and
-          1.10.33 of (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise
-           on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum,
-            , comes from a line in section
-                    1.10.32." disabled={true}>
+                <span className={userInfoStyles.userDetailsUsername}>
+                    {user.username}
+                    {user.firstname || user.lastname ?
+                        ` · ${user.firstname ?? ""} ${user.lastname ?? ""}` : ""}
+                </span>
+
+                <span className={userInfoStyles.userDetailsOtherData}>
+                    {user.country || user.city ?
+                        `${user.country ?? ""} · ${user.city ?? ""}` : ""}
+                </span>
+
+                {/*<span className={userInfoStyles.userDetailsOtherData}>*/}
+                {/*    {user.phoneNumber || user.birthDate || user.gender ?*/}
+                {/*        `${user.phoneNumber ?? ""} · ${user.birthDate ?? ""} · ${user.gender ?? ""}` : ""}*/}
+                {/*</span>*/}
+
+                <textarea className={userInfoStyles.userDetailsBio} value={user.selfDescription} disabled={true}>
                 </textarea>
                 <div className={userInfoStyles.userDetailsButtons}>
-                    <button className={userInfoStyles.followButton}>Edit page</button>
-                    <button className={userInfoStyles.followButton}>logout</button>
+                    <CustomButtonOther >
+                        Edit page
+                    </CustomButtonOther>
+                    <CustomButtonOther onClick={handleLogout}>
+                        Logout
+                    </CustomButtonOther>
                 </div>
             </div>
         </div>

@@ -1,4 +1,4 @@
-@import '/src/app/styles/Fonts.css';
+@import '../styles/Fonts.css';
 
 :root {
   /* Основні кольори */
@@ -15,56 +15,71 @@
   --auxiliary-green: #356568; /* Для вторинних акцентів */
 
   /* Відтінки сірого */
+  --gray-100: #E2E2E2;
+  --gray-200: #D0D0D0;
+  --gray-300: #BEBEBE;
+  --gray-400: #ACACAC;
+  --gray-500: #999999;
+  --gray-600: #777777;
+  --gray-700: #666666;
+  --gray-800: #4D4D4D;
+  --gray-900: #363636;
   --gray-950: #1E1E1E;
-  --gray-900: #2B2B2B; /* Форми фон */
-  --gray-800: #3D3D3D;
-  --gray-700: #525252;
-  --gray-600: #696969;
-  --gray-500: #878787;
-  --gray-400: #A3A3A3;
-  --gray-300: #C2C2C2;
-  --gray-200: #DEDEDE;
-  --gray-100: #F5F5F5;
 
   /* Відтінки фіолетового */
-  --purple-900: #4C2B8F;
-  --purple-800: #5B3AA2;
-  --purple-700: #6A48B6;
-  --purple-600: #7A56CA;
+  --purple-100: #E8DEFD;
+  --purple-200: #D1BDFB;
+  --purple-300: #BB9BFA;
+  --purple-400: #A47AF8;
   --purple-500: #8D59F6;
-  --purple-400: #A070FF;
-  --purple-300: #B38CFF;
-  --purple-200: #C7A8FF;
+  --purple-600: #7147C5;
+  --purple-700: #553594;
+  --purple-800: #382462;
+  --purple-900: #1C1231;
 
   /* Відтінки помаранчевого */
-  --orange-900: #C76638;
-  --orange-800: #D77743;
-  --orange-700: #E88850;
-  --orange-600: #F9995D;
+  --orange-100: #FFE9DC;
+  --orange-200: #FFD3B9;
+  --orange-300: #FFBC96;
+  --orange-400: #FFA673;
   --orange-500: #FF9050;
-  --orange-400: #FFA070;
-  --orange-300: #FFB090;
-  --orange-200: #FFC0B0;
+  --orange-600: #CC7340;
+  --orange-700: #995630;
+  --orange-800: #663A20;
+  --orange-900: #331D10;
 
   /* Відтінки червоного */
-  --red-900: #B23B40;
-  --red-800: #C7474C;
-  --red-700: #DC5459;
-  --red-600: #F16165;
+  --red-100: #FFE0E1;
+  --red-200: #FFC1C3;
+  --red-300: #FFA3A4;
+  --red-400: #FF8486;
   --red-500: #FF6568;
-  --red-400: #FF7A7C;
-  --red-300: #FF9091;
-  --red-200: #FFA6A7;
+  --red-600: #CC5153;
+  --red-700: #993D3E;
+  --red-800: #66282A;
+  --red-900: #331415;
 
   /* Відтінки зеленого */
-  --green-900: #004C4C;
-  --green-800: #005A5A;
-  --green-700: #006868;
-  --green-600: #007676;
+  --green-100: #CCE0E1;
+  --green-200: #99C1C3;
+  --green-300: #66A3A4;
+  --green-400: #338486;
   --green-500: #006568;
-  --green-400: #008080;
-  --green-300: #009999;
-  --green-200: #00B3B3;
+  --green-600: #005153;
+  --green-700: #003D3E;
+  --green-800: #00282A;
+  --green-900: #001415;
+
+  /* help color*/
+  --ax-100: #D7E0E1;
+  --ax-200: #AEC1C3;
+  --ax-300: #86A3A4;
+  --ax-400: #5D8486;
+  --ax-500: #356568;
+  --ax-600: #2A5153;
+  --ax-700: #203D3E;
+  --ax-800: #15282A;
+  --ax-900: #0B1415;
 
     /* Відступи */
 
@@ -90,6 +105,14 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--main_page_text) !important;
+  -webkit-box-shadow: 0 0 0 30px var(--gray-700) inset !important;
 }
 
 .app-container {

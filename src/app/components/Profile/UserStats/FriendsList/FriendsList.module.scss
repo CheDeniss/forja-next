@@ -1,7 +1,14 @@
-.frindsListContainer {
+
+.friendsListContainer {
   display: flex;
   flex-direction: column;
-  box-sizing: border-box;
-  width: 100%;
-  background-color: #00B3B3;
+  gap: 20px;
+
+  .friendsListContainerName {
+    font-size: 2rem;
+    font-weight: 400;
+    text-transform: uppercase;
+    color: var(--main_page_text);
+    margin-bottom: 15px;
+  }
 }

@@ -1,14 +1,16 @@
 'use client';
 
 import React, {useState} from 'react';
-import regStyles from './Register.module.css';
-import CustomInput from "../../components/ui/CustomInput";
-import CustomButton from "../../components/ui/CustomButton";
-import {registerUser} from "../../../api/authService";
+import regStyles from './Register.module.scss';
+import CustomInput from "../../components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
 import {validateConfirmPassword, validateEmail, validatePassword} from "../../../../src/utils/validationUtils";
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
 import {useParams} from "next/navigation";
+import { useAuth } from "../../../context/authContext";
+import Link from "next/link";
+import Loader from "../../components/ui/Loader/Loader.jsx";
 
 import googleIcon from "../../../../public/assets/icons/svg/Google.svg";
 import appleIcon from "../../../../public/assets/icons/svg/Apple.svg";
@@ -16,10 +18,11 @@ import instIcon from "../../../../public/assets/icons/svg/Instagram.svg";
 import fbIcon from "../../../../public/assets/icons/svg/Facebook.svg";
 import xIcon from "../../../../public/assets/icons/svg/twiter_ico.svg";
 import registerWith from "../../../../public/assets/images/register/Register_with.svg";
-import Link from "next/link";
+
 
 const register = () => {
-    const { t } = useTranslation();
+    const { t } = useTranslation('auth');
+    const { register, isAuthLoading } = useAuth();
     const { locale } = useParams();
 
     const [tryToCorrect, setTryToCorrect] = useState(false);
@@ -49,12 +52,7 @@ const register = () => {
             const updatedFormData = { ...prevState, [name]: value };
 
             if (tryToCorrect) {
-                setErrorForInput((prevState) => ({
-                    ...prevState,
-                    email: "",
-                    password: "",
-                    confirmPassword: ""
-                }));
+                clearErrors();
                 setTryToCorrect(false);
             }
 
@@ -80,6 +78,14 @@ const register = () => {
         });
     };
 
+    const clearErrors = () => {
+        setErrorForInput({
+            email: "",
+            password: "",
+            confirmPassword: ""
+        });
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -93,27 +99,27 @@ const register = () => {
 
             return;
         }
-
-        setErrorForInput({
-            email: "",
-            password: "",
-            confirmPassword: ""
-        })
-
+        clearErrors();
         try {
-            await registerUser(formData);
+            await register(formData);
             console.log("Успішна реєстрація:", response.message);
-        } catch (error) {
-            console.error("Помилка:", error);
+        } catch (err) {
+            setErrorForInput({
+                email: t("errors.somethingWentWrong"),
+                password: t("errors.somethingWentWrong"),
+                confirmPassword: t("errors.somethingWentWrong")
+            })
+
         }
     };
 
     return (
         <div className={regStyles.registerPageContainer}>
+            <Loader isLoading={isAuthLoading} />
             <div className={regStyles.registerFormContainerMain}>
                 <div className={regStyles.registerFormContainer}>
                     <div className={regStyles.registerLogo}>
-                        {t("register_page.title")}
+                        {t("register.title")}
                     </div>
                     <div className={regStyles.registerFormContainerMainBlock}>
                         <div className={regStyles.registerVariantsBar}>
@@ -136,43 +142,43 @@ const register = () => {
                             <div className={regStyles.registerFormBody}>
                                 <label className={regStyles.registerFormBodyLabel}>
                                     <span className={regStyles.registerFormBodyLabelName}>
-                                        {t("register_page.email")}
+                                        {t("register.email")}
                                     </span>
                                     <CustomInput
                                         type="email"
                                         name="email"
-                                        placeholder={t("register_page.emailPlaceholder")}
+                                        placeholder={t("register.email_Placeholder")}
                                         value={formData.email}
                                         onChange={handleChange}
-                                        error={t(errorForInput.email)}
+                                        error={t(errorForInput.email, { ns: 'errors' })}
                                     />
                                 </label>
                                 <label className={regStyles.registerFormBodyLabel}>
                                     <span className={regStyles.registerFormBodyLabelName}>
-                                        {t("register_page.password")}
+                                        {t("register.password")}
                                     </span>
                                     <CustomInput
                                         type="password"
                                         name="password"
-                                        placeholder={t("register_page.passwordPlaceholder")}
-                                        tooltipText={t("tooltip.passwordTooltip")}
+                                        placeholder={t("register.password_Placeholder")}
+                                        tooltipText={t("tooltip.password_Tooltip")}
                                         value={formData.password}
                                         onChange={handleChange}
-                                        error={t(errorForInput.password)}
+                                        error={t(errorForInput.password, { ns: 'errors' })}
                                     />
                                 </label>
                                 <label className={regStyles.registerFormBodyLabel}>
                                     <span className={regStyles.registerFormBodyLabelName}>
-                                        {t("register_page.confirmPassword")}
+                                        {t("register.confirm_Password")}
                                     </span>
                                     <CustomInput
                                         type="password"
                                         name="confirmPassword"
-                                        placeholder={t("register_page.confirmPasswordPlaceholder")}
-                                        tooltipText={t("tooltip.passwordTooltip")}
+                                        placeholder={t("register.confirm_Password_Placeholder")}
+                                        tooltipText={t("tooltip.password_Tooltip")}
                                         value={formData.confirmPassword}
                                         onChange={handleChange}
-                                        error={t(errorForInput.confirmPassword)}
+                                        error={t(errorForInput.confirmPassword, { ns: 'errors' })}
                                     />
                                 </label>
                             </div>
@@ -183,12 +189,12 @@ const register = () => {
                                             href={`/${locale}/register`}
                                             className={regStyles.registerFormFooterLinksLink}
                                         >
-                                            {t("register_page.haveAccount")}
+                                            {t("register.have_Account")}
                                         </Link>
                                     </span>
                                 </div>
-                                <CustomButton
-                                    text={t("register_page.register")}
+                                <CustomButtonForm
+                                    text={t("register.register")}
                                     onClick={handleSubmit}
                                     isDisabled={buttonStatus}
                                 />
@@ -199,6 +205,7 @@ const register = () => {
             </div>
         </div>
     );
+
 };
 
 export default register;

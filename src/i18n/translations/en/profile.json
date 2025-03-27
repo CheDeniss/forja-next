@@ -1,0 +1,18 @@
+{
+  "user_info": {
+    "edit_page_button": "Edit page",
+    "logout_button": "Logout"
+  },
+  "user_statistics_titles": {
+    "main_title": "User Statistics",
+    "game_collector_title": "Game Collector",
+    "achievements_count_title": "Achievements Count",
+    "friendsList_title": "Friends List"
+  },
+    "game_collector": {
+        "games_owned": "Games Owned",
+        "dlc_owned": "DLC Owned",
+        "whishlisted": "Whishlisted",
+        "follows": "Follows"
+    }
+}

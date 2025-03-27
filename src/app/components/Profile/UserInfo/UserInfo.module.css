@@ -10,15 +10,15 @@
 .avatarContainer {
     position: relative;
     display: flex;
-    width: 600px;
-    height: 500px;
+    width: 500px;
+    height: 400px;
     overflow: hidden;
 }
 
 .avatarka {
     width: 86%;
     height: auto;
-    max-height: 500px;
+    max-height: 400px;
     object-fit: cover;
 }
 
@@ -40,7 +40,8 @@
     flex: 1;
     padding: 20px;
     justify-content: space-between;
-    background-color: var(--gray-900);
+    /*background-color: var(--gray-700);*/
+    background-image: url("../../../../../public/assets/images/field_image_istock-516189065.jpg");
 }
 
 .userDetailsUsername {
@@ -50,7 +51,7 @@
     text-transform: uppercase;
 }
 
-.userDetailsLocation {
+.userDetailsOtherData {
     font-size: 1rem;
     margin: 20px 0;
     color: var(--main_page_text);
@@ -65,7 +66,7 @@
     font-size: 1rem;
     font-family: 'Oswald', sans-serif;
     color: var(--main_page_text);
-    background-color: var(--gray-900);
+    background-color: transparent;
 }
 
 .userDetailsButtons{

@@ -8,7 +8,8 @@ const FooterWrapper = () => {
     const pathName = usePathname();
     console.log(pathName);
     if (pathName.includes('/login') ||
-        pathName.includes('/register')) {
+        pathName.includes('/register') ||
+        pathName.includes('/verify-email')){
         return null;
     }
         return <Footer/>;

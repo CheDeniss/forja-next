@@ -1,12 +1,12 @@
 'use client';
 
 import React, {useEffect, useState} from 'react';
-import styles from '../../styles/ui/CustomButton.module.css';
+import styles from './CustomButtonForms.module.css';
 
-const CustomButton = ({ text, isRadius = "true", isDisabled = "success", onClick, type="button"}) => {
-    const [isProblem, setIsProblem] = useState("");
+const CustomButtonForm = ({ text, isRadius = "true", isDisabled = "success", onClick, type="button"}) => {
+    const [isProblem, setIsProblem] = useState(""); // Якщо у формі є помилка, то кнопка стає червоною
     const [isClicked, setIsClicked] = useState(false);
-    const [captureStatus, setCaptureStatus] = useState("");
+    const [captureStatus, setCaptureStatus] = useState(""); //
 
     useEffect(() => {
         setIsProblem(isDisabled);
@@ -15,7 +15,7 @@ const CustomButton = ({ text, isRadius = "true", isDisabled = "success", onClick
     const handleClick = (event) => {
         setIsClicked(true);
         setCaptureStatus(isProblem)
-        setTimeout(() => setIsClicked(false), 200);
+        setTimeout(() => setIsClicked(false), 200); // Час анімації шріфта
 
         if (onClick) {
             onClick(event);
@@ -40,4 +40,4 @@ const CustomButton = ({ text, isRadius = "true", isDisabled = "success", onClick
     );
 };
 
-export default CustomButton;
+export default CustomButtonForm;
