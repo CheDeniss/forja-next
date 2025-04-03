@@ -2,22 +2,22 @@
 
 import React, {useState} from 'react';
 import regStyles from './Register.module.scss';
-import CustomInput from "../../components/ui/CustomInput/CustomInput.jsx";
-import CustomButtonForm from "../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
-import {validateConfirmPassword, validateEmail, validatePassword} from "../../../../src/utils/validationUtils";
+import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
+import {validateConfirmPassword, validateEmail, validatePassword} from "../../../../utils/validationUtils.js";
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
 import {useParams} from "next/navigation";
-import { useAuth } from "../../../context/authContext";
+import { useAuth } from "../../../../context/authContext.js";
 import Link from "next/link";
-import Loader from "../../components/ui/Loader/Loader.jsx";
+import Loader from "../../../components/ui/Loader/Loader.jsx";
 
-import googleIcon from "../../../../public/assets/icons/svg/Google.svg";
-import appleIcon from "../../../../public/assets/icons/svg/Apple.svg";
-import instIcon from "../../../../public/assets/icons/svg/Instagram.svg";
-import fbIcon from "../../../../public/assets/icons/svg/Facebook.svg";
-import xIcon from "../../../../public/assets/icons/svg/twiter_ico.svg";
-import registerWith from "../../../../public/assets/images/register/Register_with.svg";
+import googleIcon from "../../../../../public/assets/icons/svg/Google.svg";
+import appleIcon from "../../../../../public/assets/icons/svg/Apple.svg";
+import instIcon from "../../../../../public/assets/icons/svg/Instagram.svg";
+import fbIcon from "../../../../../public/assets/icons/svg/Facebook.svg";
+import xIcon from "../../../../../public/assets/icons/svg/twiter_ico.svg";
+import registerWith from "../../../../../public/assets/images/register/Register_with.svg";
 
 
 const register = () => {

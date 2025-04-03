@@ -1,23 +1,19 @@
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
-import LanguageDetector from "i18next-browser-languagedetector";
 
-import common_en from "../i18n/translations/en/common.json";
-import navmenu_en from "../i18n/translations/en/navmenu.json";
-import errors_en from "../i18n/translations/en/errors.json";
-import auth_en from "../i18n/translations/en/auth.json";
+import common_en from './translations/en/common.json';
+import navmenu_en from './translations/en/navmenu.json';
+import errors_en from './translations/en/errors.json';
+import auth_en from './translations/en/auth.json';
+import footer_en from './translations/en/footer.json';
+import profile_en from './translations/en/profile.json';
 
-import common_uk from "../i18n/translations/uk/common.json";
-import navmenu_uk from "../i18n/translations/uk/navmenu.json";
-import errors_uk from "../i18n/translations/uk/errors.json";
-import auth_uk from "../i18n/translations/uk/auth.json";
-
-import footer_en from '../i18n/translations/en/footer.json';
-import footer_uk from '../i18n/translations/uk/footer.json';
-
-import profile_en from '../i18n/translations/en/profile.json';
-import profile_uk from '../i18n/translations/uk/profile.json';
-
+import common_uk from './translations/uk/common.json';
+import navmenu_uk from './translations/uk/navmenu.json';
+import errors_uk from './translations/uk/errors.json';
+import auth_uk from './translations/uk/auth.json';
+import footer_uk from './translations/uk/footer.json';
+import profile_uk from './translations/uk/profile.json';
 
 const resources = {
     en: {
@@ -38,18 +34,26 @@ const resources = {
     },
 };
 
-i18n
-    .use(initReactI18next)
-    .use(LanguageDetector)
-    .init({
-        resources,
-        lng: 'en',
-        fallbackLng: 'en',
-        defaultNS: 'common', // common буде за замовчуванням
-        ns: ['common', 'navmenu', 'errors', 'auth', 'footer', 'profile'],
-        interpolation: {
-            escapeValue: false,
-        },
-    });
+export const createI18n = (lng = 'en') => {
+    const instance = i18n.createInstance();
+    console.log('[createI18n] init with:', lng);
 
-export default i18n;
+    instance
+        .use(initReactI18next)
+        .init({
+            resources,
+            lng,
+            fallbackLng: 'en',
+            supportedLngs: ['uk', 'en'],
+            defaultNS: 'common',
+            ns: ['common', 'navmenu', 'errors', 'auth', 'footer', 'profile'],
+            interpolation: {
+                escapeValue: false,
+            },
+            react: {
+                useSuspense: false,
+            },
+        });
+
+    return instance;
+};

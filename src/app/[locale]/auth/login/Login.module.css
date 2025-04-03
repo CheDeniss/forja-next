@@ -1,36 +1,38 @@
 
-.registerPageContainer {
+.loginPageContainer {
     display: flex;
     justify-content: center;
     height: 100%;
     width: 100%;
     background: var(--gray-900);
-    background-image: url("../../../../public/assets/images/register/Reg_image_bkg.svg");
+    background-image: url("../../../../../public/assets/images/login/Log_image_bkg.svg");
     background-size: 100% 100%;
     background-position: center;
     background-repeat: no-repeat;
 }
 
-.registerFormContainerMain {
+.loginFormContainerMain {
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 55%;
-    height: 80%;
-    padding-left: 4vw;
-    padding-right: 4vw;
+    width: 50%;
+    height: 67%;
+    padding-top: 3vh;
     margin-top: 3vh;
-    box-sizing: border-box;
     /*border: 5px solid #12f3a4;*/
+    box-sizing: border-box;
 }
 
 @media screen and (min-height: 1080px){
-    .registerFormContainerMain {
-        margin-top: 5.5vh;
+    .loginFormContainerMain{
+        padding-top: 8vh;
+        width: 45%;
+        height: 58%;
     }
+
 }
 
-.registerFormContainer {
+.loginFormContainer {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -41,29 +43,29 @@
     /*border: 1px solid  #f39c12;*/
 }
 
-.registerLogo {
+.loginLogo{
     display: flex;
     text-align: right;
     font-family: 'Oswald', sans-serif;
     color: var(--main_page_text);
     margin-right: 20px;
-    font-size: 2.5vw;
+    font-size: 48px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
     text-transform: uppercase;
 }
 
-.registerFormContainerMainBlock{
+.loginFormContainerMainBlock{
     display: flex;
     flex: 1;
     flex-direction: row;
     width: 100%;
     height: 80%;
-    //border: 1px solid  #6894b2;
+    /*border: 1px solid  #6894b2;*/
 }
 
-.registerVariantsBar{
+.logVariantsBar{
     display: flex;
     box-sizing: border-box;
     flex-direction: row;
@@ -75,14 +77,14 @@
     /*border: 1px solid #89cc1c;*/
 }
 
-.regVariantsBarText{
+.logVariantsBarText{
     display: flex;
     width: auto;
     height: 100%;
     /*border: 1px solid #e70909;*/
 }
 
-.regVariantsBarTextImg{
+.logVariantsBarTextImg{
     display: flex;
     width: auto;
     height: 100%;
@@ -91,7 +93,7 @@
     /*border: 1px solid #2a1d04;*/
 }
 
-.regVariantsBarIcons{
+.logVariantsBarIcons{
     display: flex;
     height: 100%;
     flex-direction: column;
@@ -99,56 +101,56 @@
     align-items: center;
 }
 
-.regVariantsBarContentIcon{
+.logVariantsBarContentIcon{
     width: clamp(2rem, 5vh, 50px);
     height: clamp(2rem, 5vh, 50px);
 }
 
-.registerForm {
+.loginForm{
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     width: 100%;
-    height: auto;
+    height: 100%;
     align-items: center;
-    //border: 1px solid #29f312;
-
-    .registerFormBody {
-        display: flex;
-        flex-direction: column;
-        box-sizing: border-box;
-        padding: 0 20px;
-        width: 100%;
-        flex: 1; /* Автоматична адаптація розміру */
-        justify-content: space-around;
-        //border: 2px solid #e70909;
-    }
-
-    .registerFormFooter {
-        display: flex;
-        box-sizing: border-box;
-        padding: 0 20px;
-        width: 100%;
-        min-height: 60px; /* Фіксований розмір або auto */
-        justify-content: space-between;
-        //border: 1px solid #0b599c;
-        flex-shrink: 0; /* Запобігає стисненню футера */
-        overflow: hidden;
-
-        .registerFormFooterLinks{
-            display: flex;
-            box-sizing: border-box;
-            width: auto;
-            height: 100%;
-            flex-direction: column;
-            justify-content: space-around;
-            margin-left: 5px;
-            /*border: 1px solid #0b599c;*/
-        }
-    }
+    /*border: 1px solid #29f312;*/
 }
 
-.registerFormFooterLinksLink {
+.loginFormBody {
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    padding: 0 20px;
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    /*border: 2px solid #e70909;*/
+}
+
+.loginFormFooter{
+    display: flex;
+    box-sizing: border-box;
+    flex-direction: row;
+    padding: 0 20px;
+    width: 100%;
+    height: 20%;
+    justify-content: space-between;
+    align-items: center;
+    /*border: 1px solid #0b599c;*/
+}
+
+.loginFormFooterLinks{
+    display: flex;
+    box-sizing: border-box;
+    width: auto;
+    height: 100%;
+    flex-direction: column;
+    justify-content: space-around;
+    margin-left: 5px;
+    /*border: 1px solid #0b599c;*/
+
+}
+
+.loginFormFooterLinksLink{
     color: var(--gray-400, #ACACAC);
     font-family: "Fixel Display", sans-serif;
     font-size: clamp(0.5rem, 1.1vw, 1.5rem);
@@ -163,14 +165,14 @@
     text-underline-position: from-font;
 }
 
-.registerFormBodyLabel{
+.loginFormBodyLabel{
     box-sizing: border-box;
 }
 
-.registerFormBodyLabelName{
+.loginFormBodyLabelName{
     font-size: 1.2rem;
-    text-transform: uppercase;
     color: var(--main_page_text);
     font-weight: 300;
+    text-transform: uppercase;
     margin-left: 5px;
 }

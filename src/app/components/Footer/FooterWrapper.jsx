@@ -9,7 +9,10 @@ const FooterWrapper = () => {
     console.log(pathName);
     if (pathName.includes('/login') ||
         pathName.includes('/register') ||
-        pathName.includes('/verify-email')){
+        pathName.includes('/verify-email') ||
+        pathName.includes('/reset-password') ||
+        pathName.includes('/forgot-password')
+    ){
         return null;
     }
         return <Footer/>;

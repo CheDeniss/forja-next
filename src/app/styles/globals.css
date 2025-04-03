@@ -125,6 +125,8 @@ input:-webkit-autofill:active {
 /* Контент між хедером і футером */
 .main {
   flex-grow: 1;
+  background-color: var(--main_page_bckg);
+  color: var(--main_page_text);
 }
 
 .loader{

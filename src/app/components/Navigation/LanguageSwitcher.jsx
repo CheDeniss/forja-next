@@ -1,36 +1,47 @@
 'use client';
 
-import "../../../i18n/i18n";
-import React, { useState } from "react";
-import { useTranslation } from "react-i18next";
-import styles from "./LanguageSwitcher.module.css";
-import {usePathname, useRouter} from "next/navigation";
+import React, { useState, useEffect } from 'react';
+import styles from './LanguageSwitcher.module.css';
+import { useParams, usePathname, useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
+import Loader from "../ui/Loader/Loader.jsx";
 
 const LanguageSwitcher = () => {
-    const { i18n } = useTranslation();
     const [isOpen, setIsOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
     const router = useRouter();
-    const pathname = usePathname(); // Отримуємо поточний шлях
+    const pathname = usePathname();
+    const { locale } = useParams();
 
     const languages = [
-        { code: "en", label: "ENGLISH" },
-        { code: "uk", label: "UKRAINIAN" },
+        { code: 'en', label: 'ENGLISH' },
+        { code: 'uk', label: 'UKRAINIAN' },
     ];
 
     const changeLanguage = (lng) => {
-        i18n.changeLanguage(lng);
-        setIsOpen(false); // Закриваємо випадаюче меню після вибору
-        // 2. Формуємо новий URL із вибраною мовою
-        const newPath = `/${lng}${pathname.substring(3)}`;
+        if (lng === locale) return;
+        setIsOpen(false);
+        setLoading(true);
+        Cookies.set('NEXT_LOCALE', lng, { expires: 365 });
 
-        // 3. Оновлюємо URL через Next.js роутер
+        // змінюємо локаль у URL
+        const segments = pathname.split('/');
+        segments[1] = lng;
+        const newPath = segments.join('/');
         router.push(newPath);
     };
 
+    useEffect(() => {
+        if (loading) {
+            const timeout = setTimeout(() => setLoading(false), 600); // трохи затримки для UX
+            return () => clearTimeout(timeout);
+        }
+    }, [loading]);
+
     return (
         <div className={styles.languageSwitcher}>
-            <button className={styles.langBtn} onClick={() => setIsOpen(!isOpen)}>
-                <span>{i18n.language.toUpperCase()}</span> ▼
+            <button className={styles.langBtn} onClick={() => setIsOpen(!isOpen)} disabled={loading}>
+                <span>{locale?.toUpperCase()}</span> ▼
             </button>
 
             {isOpen && (
@@ -42,6 +53,8 @@ const LanguageSwitcher = () => {
                     ))}
                 </ul>
             )}
+
+            <Loader isLoading={loading}/>
         </div>
     );
 };

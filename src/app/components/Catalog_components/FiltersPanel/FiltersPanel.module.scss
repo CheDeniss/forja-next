@@ -1,0 +1,42 @@
+.panel {
+  display: flex;
+  flex-direction: column;
+}
+
+.accordion {
+  background-color: var(--gray-900)  !important;
+  color: #987575;
+  border-bottom: 1px solid var(--gray-400);
+  box-shadow: none;
+  margin: 0 !important;
+  border-radius: 0 !important;
+
+  &::before {
+    display: none;
+  }
+}
+
+.accordionSummary {
+  padding: 6px 0;
+  min-height: 0;
+
+  .MuiAccordionSummary-content {
+    margin: 0;
+  }
+
+  .MuiAccordionSummary-expandIconWrapper {
+    color: #aaa;
+  }
+
+  .label {
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f0f0f0;
+  }
+}
+
+.accordionDetails {
+  padding: 6px 0 10px;
+  font-size: 0.85rem;
+  color: #ccc;
+}

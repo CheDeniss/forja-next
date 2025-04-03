@@ -1,0 +1,17 @@
+.catalogContainer {
+  display: flex;
+  gap: 2rem;
+  padding: 2rem;
+}
+
+.sidebar {
+  width: 280px;
+  flex-shrink: 0;
+}
+
+.mainContent {
+  flex: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}

@@ -1,0 +1,95 @@
+.gameItem {
+  background-color: #1e1e1e;
+  color: #fff;
+  padding: 1rem;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.leftSection {
+  display: flex;
+  gap: 1rem;
+}
+
+.image {
+  width: 96px;
+  height: 96px;
+  object-fit: cover;
+  border-radius: 6px;
+  background-color: #2a2a2a;
+}
+
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.title {
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.rating {
+  color: #79d279;
+  font-size: 0.9rem;
+}
+
+.genres, .tags, .release {
+  font-size: 0.85rem;
+  color: #bbb;
+}
+
+.rightSection {
+  text-align: right;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.4rem;
+}
+
+.saleEnd {
+  font-size: 0.8rem;
+  color: #ccc;
+}
+
+.pricing {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.discount {
+  color: #f44336;
+  font-weight: bold;
+}
+
+.basePrice {
+  text-decoration: line-through;
+  color: #888;
+}
+
+.finalPrice {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #fff;
+}
+
+.playNow, .playFree {
+  background-color: #fff;
+  color: #000;
+  padding: 0.5rem 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.playFree {
+  background-color: #4caf50;
+  color: #fff;
+}

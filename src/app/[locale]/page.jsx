@@ -2,24 +2,12 @@
 
 import "../../i18n/i18n";
 import Navigation from "../components/Navigation/Navigation";
-import {useParams, useRouter} from "next/navigation";
-import {useTranslation} from "react-i18next";
-import {useEffect} from "react";
 import Footer from "../components/Footer/Footer";
+import { useTranslation } from "react-i18next";
 import homeStyles from "./Home.module.css";
 
 export default function HomePage() {
-    const params = useParams();  // Отримуємо мову з URL
-    const router = useRouter();
-    const { i18n } = useTranslation();
-
-    // Якщо мова i18next відрізняється від URL, змінюємо її
-    useEffect(() => {
-        if (i18n.language !== params.locale) {
-            i18n.changeLanguage(params.locale);
-        }
-    }, [params.locale, i18n]);
-
+    const { t } = useTranslation(['common', 'navmenu']); // вибір namespace за потреби
 
     return(
         <div className={homeStyles.container}>

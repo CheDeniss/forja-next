@@ -1,7 +1,14 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState, useCallback, useRef } from "react";
-import { loginUser, logoutUser, registerUser, refreshToken } from "../../src/api/authService";
+import { createContext, useContext, useEffect, useState, useCallback, useMemo, useRef } from "react";
+import {
+    loginUser,
+    logoutUser,
+    registerUser,
+    refreshToken,
+    resetPassword,
+    triggerForgotPassword
+} from "../../src/api/authService";
 import { authMe } from "../../src/api/userService";
 import logger from "../../src/utils/logger";
 
@@ -16,6 +23,7 @@ export const AuthProvider = ({ children }) => {
         setIsAuthLoading((prev) => (prev === state ? prev : state));
     };
 
+    //  fetchUser
     const fetchUser = useCallback(async () => {
         if (isAuthLoading) return null;
 
@@ -46,10 +54,12 @@ export const AuthProvider = ({ children }) => {
         }
     }, [isAuthLoading]);
 
+    // Викликаємо fetchUser при завантаженні
     useEffect(() => {
         fetchUser();
     }, [fetchUser]);
 
+    //  handleRefreshToken
     const handleRefreshToken = useCallback(async () => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> handleRefreshToken :: Контекст зараз зайнятий");
@@ -68,9 +78,10 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setLoadingState(false);
         }
-    }, [fetchUser]);
+    }, [fetchUser, isAuthLoading]);
 
-    const register = async (userData) => {
+    //  register
+    const register = useCallback(async (userData) => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> register :: Контекст зараз зайнятий");
             return false;
@@ -88,9 +99,10 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setLoadingState(false);
         }
-    };
+    }, [isAuthLoading]);
 
-    const login = async (formData) => {
+    // login
+    const login = useCallback(async (formData) => {
         if (isAuthLoading) {
             logger.warn("AUTH_CONTEXT -> login :: Контекст зараз зайнятий");
             return false;
@@ -108,9 +120,10 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setLoadingState(false);
         }
-    };
+    }, [fetchUser, isAuthLoading]);
 
-    const logout = async () => {
+    //  logout
+    const logout = useCallback(async () => {
         if (!user) {
             logger.warn("AUTH_CONTEXT -> logout :: Користувач не авторизований");
             return false;
@@ -132,13 +145,70 @@ export const AuthProvider = ({ children }) => {
             setUser(null);
             setLoadingState(false);
         }
-    };
+    }, [user, isAuthLoading]);
 
-    return (
-        <AuthContext.Provider value={{ user, isAuthLoading, login, register, logout, fetchUser, handleRefreshToken }}>
-            {children}
-        </AuthContext.Provider>
+    const handleForgotPassword = useCallback(async (userData) => {
+        if (isAuthLoading) {
+            logger.warn("AUTH_CONTEXT -> handleForgotPassword :: Контекст зараз зайнятий");
+            return false;
+        }
+
+        setLoadingState(true);
+        try {
+            await triggerForgotPassword(userData); // ← викликає API-функцію
+            logger.info("AUTH_CONTEXT -> handleForgotPassword :: Відновлення пароля успішно");
+            return true;
+        } catch (err) {
+            logger.error("AUTH_CONTEXT -> handleForgotPassword :: Помилка відновлення пароля", err.message);
+            throw err;
+        } finally {
+            setLoadingState(false);
+        }
+    }, [isAuthLoading]);
+
+    const handleResetPassword = useCallback(async (userData) => {
+        if (isAuthLoading) {
+            logger.warn("AUTH_CONTEXT -> handleResetPassword :: Контекст зараз зайнятий");
+            return false;
+        }
+
+        setLoadingState(true);
+        try {
+            await resetPassword(userData);
+            logger.info("AUTH_CONTEXT -> handleResetPassword :: Скидання пароля успішно");
+            return true;
+        } catch (err) {
+            logger.error("AUTH_CONTEXT -> handleResetPassword :: Помилка скидання пароля", err.message);
+            throw err;
+        } finally {
+            setLoadingState(false);
+        }
+    }, [isAuthLoading]);
+
+    const value = useMemo(
+        () => ({
+            user,
+            isAuthLoading,
+            login,
+            register,
+            logout,
+            fetchUser,
+            handleRefreshToken,
+            handleForgotPassword,
+            handleResetPassword
+        }),
+        [user,
+            isAuthLoading,
+            login,
+            register, 
+            logout,
+            fetchUser,
+            handleRefreshToken,
+            handleForgotPassword,
+            handleResetPassword]
     );
+
+    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };
 
 export const useAuth = () => useContext(AuthContext);

@@ -2,23 +2,23 @@
 
 import React, {useEffect, useState} from 'react';
 import loginStyles from './Login.module.css';
-import CustomInput from "../../components/ui/CustomInput/CustomInput.jsx";
-import CustomButtonForm from "../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
-import { useAuth } from "../../../context/authContext";
-import {validateEmail, validatePassword} from "../../../../src/utils/validationUtils";
+import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
+import { useAuth } from "../../../../context/authContext.js";
+import {validateEmail, validatePassword} from "../../../../utils/validationUtils.js";
 import Image from "next/image";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import {useParams, useRouter} from "next/navigation";
-import logger from "../../../utils/logger";
-import Loader from "../../components/ui/Loader/Loader.jsx";
+import logger from "../../../../utils/logger.js";
+import Loader from "../../../components/ui/Loader/Loader.jsx";
 
-import googleIcon from "../../../../public/assets/icons/svg/Google.svg";
-import appleIcon from "../../../../public/assets/icons/svg/Apple.svg";
-import instIcon from "../../../../public/assets/icons/svg/Instagram.svg";
-import fbIcon from "../../../../public/assets/icons/svg/Facebook.svg";
-import xIcon from "../../../../public/assets/icons/svg/twiter_ico.svg";
-import loginWith from "../../../../public/assets/images/login/Log_in_with.svg";
+import googleIcon from "../../../../../public/assets/icons/svg/Google.svg";
+import appleIcon from "../../../../../public/assets/icons/svg/Apple.svg";
+import instIcon from "../../../../../public/assets/icons/svg/Instagram.svg";
+import fbIcon from "../../../../../public/assets/icons/svg/Facebook.svg";
+import xIcon from "../../../../../public/assets/icons/svg/twiter_ico.svg";
+import loginWith from "../../../../../public/assets/images/login/Log_in_with.svg";
 
 const Login = () => {
     const { t } = useTranslation(['auth', 'errors']);
@@ -36,8 +36,8 @@ const Login = () => {
     });
 
     const [errors, setErrors] = useState({
-        email: t("errors.emailRequired"),
-        password: t("errors.passwordRequired"),
+        email: "errors.emailRequired",
+        password: "errors.passwordRequired"
     });
 
     const [errorForInput, setErrorForInput] = useState({
@@ -116,15 +116,15 @@ const Login = () => {
             if(err.message === "400")
             {
                 setErrorForInput({
-                    email: t("incorrectEmailPassword"),
-                    password: t("incorrectEmailPassword"),
+                    email: t("errors.incorrectEmailPassword"),
+                    password: t("errors.incorrectEmailPassword"),
                 });
                 setWasIncorrectLogin(true);
             }
             else {
                 setErrorForInput({
-                    email: t("somethingWentWrong"),
-                    password: t("somethingWentWrong"),
+                    email: t("errors.somethingWentWrong"),
+                    password: t("errors.somethingWentWrong"),
                 })
             }
         }
@@ -189,7 +189,7 @@ const Login = () => {
                                 <div className={loginStyles.loginFormFooterLinks}>
                                     <span>
                                         <Link
-                                            href={`/${locale}/forgot`}
+                                            href={`/${locale}/auth/forgot-password`}
                                             className={loginStyles.loginFormFooterLinksLink}
                                         >
                                             {t("login.forgot_Password")}
@@ -197,7 +197,7 @@ const Login = () => {
                                     </span>
                                     <span>
                                         <Link
-                                            href={`/${locale}/register`}
+                                            href={`/${locale}/auth/register`}
                                             className={loginStyles.loginFormFooterLinksLink}
                                         >
                                             {t("login.no_Account")}
