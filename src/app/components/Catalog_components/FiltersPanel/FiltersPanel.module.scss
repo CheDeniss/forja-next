@@ -3,22 +3,49 @@
   flex-direction: column;
 }
 
+.filtersTitle {
+  font-size: 1.2rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--main_page_text);
+}
+
 .accordion {
-  background-color: var(--gray-900)  !important;
-  color: #987575;
+  background-color: var(--gray-900) !important;
   border-bottom: 1px solid var(--gray-400);
   box-shadow: none;
   margin: 0 !important;
-  border-radius: 0 !important;
+  border-radius: 2px !important;
 
   &::before {
     display: none;
   }
 }
 
+// Основна стилізація summary
 .accordionSummary {
-  padding: 6px 0;
+  position: relative;
   min-height: 0;
+  padding: 6px 0;
+  &::before {
+    //content: "";
+    //position: absolute;
+    //left: 0;
+    //top: 0;
+    //width: 5px;
+    //height: 100%;
+    //background-color: gray; // default, перебʼється далі
+
+    content: "";
+    position: absolute;
+    left: 8px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 1.2rem;
+    border-radius: 3px;
+    background-color: gray; // default
+  }
 
   .MuiAccordionSummary-content {
     margin: 0;
@@ -29,14 +56,37 @@
   }
 
   .label {
-    font-size: 0.9rem;
-    font-weight: 600;
-    color: #f0f0f0;
+    font-size: 1.2rem;
+    font-weight: 400;
+    padding-left: 4px;
+    color: var(--main_page_text);
+    font-family: "Fixel Display", sans-serif;
   }
+}
+
+// Кольори по категорії
+[data-category="genres"] .accordionSummary::before {
+  background-color: #ff8c42;
+}
+
+[data-category="mechanics"] .accordionSummary::before {
+  background-color: #b28dff;
+}
+
+[data-category="tags"] .accordionSummary::before {
+  background-color: #47d7ac;
+}
+
+[data-category="matureContents"] .accordionSummary::before {
+  background-color: #ff6666;
+}
+
+[data-category="other"] .accordionSummary::before {
+  background-color: var(--approval-color);
 }
 
 .accordionDetails {
   padding: 6px 0 10px;
+  font-family: "Fixel Display", sans-serif;
   font-size: 0.85rem;
-  color: #ccc;
 }

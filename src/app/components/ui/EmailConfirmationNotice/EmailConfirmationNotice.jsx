@@ -42,7 +42,7 @@ const EmailConfirmationNotice = () => {
         }
     }, [resendMessage]);
 
-    if (!user || user.isEmailConfirmed) return null;
+    if (!user || user.isEmailConfirmed || !user.isEmailSent) return null;
 
     const handleResend = async () => {
         const lastSent = getLastEmailResend();

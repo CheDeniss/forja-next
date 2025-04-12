@@ -28,7 +28,6 @@ export const triggerForgotPassword = async (userData) => {
     return apiClient("auth/forgot-password", "POST", userData, {}, true);
 }
 
-
 export const resetPassword = async (userData) => {
     return apiClient("auth/reset-password", "POST", userData, {}, true);
 }

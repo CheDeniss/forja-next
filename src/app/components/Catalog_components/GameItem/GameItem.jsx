@@ -2,76 +2,105 @@
 
 import React from "react";
 import styles from "./GameItem.module.scss";
+import CustomButtonSimple from "../../../components/ui/CustomButtonSimple/CustomButtonSimple.jsx";
+import InfoItemValueWithTooltip from "../../../components/ui/TooltipIfvalueOverflowed/InfoItemValueWithTooltip.jsx";
+import {getRatingLabel} from "../../../components/Catalog_components/GetRating/getRating.jsx";
+import {useParams, useRouter} from "next/navigation";
+import {useTranslation} from "react-i18next";
+import DiscountOldPriceBlock from "../../../components/Catalog_components/DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
 
 const GameItem = ({ data }) => {
     const {
-        title
-        // rating ,
-        // genres,
-        // tags,
-        // releaseDate,
-        // isFree,
-        // basePrice,
-        // discountPercent,
-        // finalPrice,
-        // saleEndDate,
-        // imageUrl,
+        id,
+        title,
+        logoUrl,
+        releaseDate,
+        price,
+        discounts=[20],
+        genres,
+        tags,
+        positiveRating,
+        negativeRating
     } = data;
 
-    // {
-    //     "id": "92abc22e-7f8c-4a20-b371-ec099b04d9b4",
-    //     "title": "Adventure Quest",
-    //     "shortDescription": "Explore the unknown!",
-    //     "description": "An epic journey awaits you in Adventure Quest.",
-    //     "developer": "Quest Studios",
-    //     "minimalAge": "TwelvePlus",
-    //     "platforms": "PC",
-    //     "price": 49.99,
-    //     "logoUrl": "https://example.com/adventure-quest.png",
-    //     "releaseDate": "2025-04-01T12:00:00Z",
-    //     "isActive": true,
-    //     "interfaceLanguages": "English, Ukrainian",
-    //     "audioLanguages": "English",
-    //     "subtitlesLanguages": "English, Ukrainian",
-    //     "systemRequirements": "OS: Windows 10, CPU: Intel i5, RAM: 8 GB, GPU: GTX 1050",
-    //     "storageUrl": "https://storage.example.com/adventure-quest"
-    // }
+    const router = useRouter();
+    const { locale } = useParams();
+    const { t } = useTranslation(['catalog']);
+
+    const lastDiscount = discounts?.length ? discounts[discounts.length - 1] : null;
+    const discountValue = lastDiscount?.discountValue || 0;
+
+    const finalPrice = discountValue
+        ? price - (price * discountValue) / 100
+        : price;
+
+    const formattedFinalPrice = finalPrice.toLocaleString('uk-UA', {
+        minimumFractionDigits: 2,
+        maximumFractionDigits: 2,
+    });
+
+    // console.log(data.title, data);
 
     return (
-        <div className={styles.gameItem}>
-            <div className={styles.leftSection}>
-                {/*<img*/}
-                {/*    src={imageUrl}*/}
-                {/*    alt={title}*/}
-                {/*    className={styles.image}*/}
-                {/*/>*/}
+        <div className={styles.gameItemContainer}>
+            <div className={styles.LogoSection}>
+            </div>
+            <div className={styles.GameInfoSection}>
+                <span className={styles.title}>{title}</span>
+                <div className={styles.InfoBlock}>
 
-                <div className={styles.info}>
-                    <h2 className={styles.title}>{title}</h2>
-                    {/*<div className={styles.rating}>Rating: {rating.label} ({rating.value})</div>*/}
-                    {/*<div className={styles.genres}>Genre: {genres.join(", ")}</div>*/}
-                    {/*<div className={styles.tags}>Tags: {tags.join(", ")}</div>*/}
-                    {/*<div className={styles.release}>Release date: {releaseDate}</div>*/}
+                    <div className={styles.InfoItemGT}>
+                        <span className={styles.InfoItemTitle}>Rating:</span>
+                        <span className={styles.InfoItemValue}>
+                            {getRatingLabel(positiveRating, negativeRating)}
+                        </span>
+                    </div>
+
+                    <div className={styles.InfoItemGT}>
+                        <span className={styles.InfoItemTitle}>Genre:</span>
+                        <InfoItemValueWithTooltip>
+                            {genres?.map(g => g.name).join(", ")}
+                        </InfoItemValueWithTooltip>
+                    </div>
+
+                    <div className={styles.InfoItemGT}>
+                        <span className={styles.InfoItemTitle}>Tags:</span>
+                        <InfoItemValueWithTooltip>
+                            {tags?.map(t => t.title).join(", ")}
+                        </InfoItemValueWithTooltip>
+                    </div>
+
+                    <div className={styles.InfoItem} style={{width: '100px'}}>
+                        <span className={styles.InfoItemTitle}>Release Date:</span>
+                        <span className={styles.InfoItemValue}>{new Date(releaseDate).toLocaleDateString()}</span>
+                    </div>
+
                 </div>
             </div>
 
-            {/*<div className={styles.rightSection}>*/}
-            {/*    {isFree ? (*/}
-            {/*        <button className={styles.playFree}>PLAY FOR FREE</button>*/}
-            {/*    ) : (*/}
-            {/*        <>*/}
-            {/*            {saleEndDate && (*/}
-            {/*                <div className={styles.saleEnd}>Sale ends {new Date(saleEndDate).toLocaleString()}</div>*/}
-            {/*            )}*/}
-            {/*            <div className={styles.pricing}>*/}
-            {/*                <span className={styles.discount}>-{discountPercent}%</span>*/}
-            {/*                <span className={styles.basePrice}>{basePrice.toFixed(2)}$</span>*/}
-            {/*                <span className={styles.finalPrice}>{finalPrice.toFixed(2)}$</span>*/}
-            {/*            </div>*/}
-            {/*            <button className={styles.playNow}>PLAY NOW</button>*/}
-            {/*        </>*/}
-            {/*    )}*/}
-            {/*</div>*/}
+            <div className={styles.GamePriceSection}>
+                {(discounts && discounts.length > 0) ? (
+                    <>
+                        <span className={styles.validPeriod}>Sale ends 2/21/2025 at 3:00 AM</span>
+                        <div className={styles.priceBox}>
+                            <DiscountOldPriceBlock discountValue={discounts[discounts.length-1].discountValue}
+                                                   oldPrice={price}/>
+                            <span className={styles.price}>{formattedFinalPrice} $</span>
+                        </div>
+                    </>
+                ) : (
+                    <span className={styles.price}>{formattedFinalPrice} $</span>
+                )}
+                <CustomButtonSimple height="45%"
+                                    onClick={() => {
+                                        if (id) router.push(`/${locale}/catalog/${id}`);
+                                    }}
+                >
+                    Play now
+                </CustomButtonSimple>
+
+            </div>
+
         </div>
     );
 };

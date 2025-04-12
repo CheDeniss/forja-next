@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "../components/Header/Header.jsx";
 import { verifyEmail } from "../../api/authService";
-import { useAuth } from "../../context/authContext.js";
 import styles from "./VerifyEmailPage.module.scss";
 import Loader from "../components/ui/Loader/Loader.jsx";
 import CustomButtonOther from "../components/ui/CustomButtonOther/CustomButtonOther.jsx";
@@ -14,7 +13,6 @@ export default function VerifyEmailPage() {
     const [status, setStatus] = useState("pending");
     const [message, setMessage] = useState("");
     const [countdown, setCountdown] = useState(5);
-    const { fetchUser } = useAuth();
 
     useEffect(() => {
         const token = searchParams.get("token");

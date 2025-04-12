@@ -1,0 +1,41 @@
+.tabSection {
+  padding: 1rem 0;
+
+  h5 {
+    margin-bottom: 1rem;
+    font-family: 'Oswald', sans-serif;
+  }
+}
+
+.addonsList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+
+  @media (min-width: 600px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  @media (min-width: 900px) {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.addonItem {
+  display: flex;
+  gap: 1rem;
+  padding: 1rem;
+  background-color: var(--main_page_bckg);
+  border: 1px solid #444;
+  border-radius: 6px;
+}
+
+.addonImage {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 4px;
+}

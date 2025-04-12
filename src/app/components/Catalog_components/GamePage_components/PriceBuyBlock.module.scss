@@ -1,0 +1,63 @@
+.priceBuyBlock {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.discountSection {
+  display: flex;
+  gap: 6px;
+  background: #2b2b2b;
+  padding: 4px 8px;
+  border-radius: 2px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #e0e0e0;
+
+  .oldPrice {
+    text-decoration: line-through;
+    color: #aaa;
+  }
+}
+
+.finalPriceSection {
+  display: flex;
+  background: #3a3a3a;
+  border-radius: 0 0 2rem 0;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.4);
+}
+
+.finalPrice {
+  display: flex;
+  align-items: center;
+  font-family: "Fixel Display", sans-serif;
+  background: var(--gray-900);
+  color: var(--main_page_text);
+  padding: 6px 10px 0 10px;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.buyButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  background: var(--gray-800);
+  color: var(--main_page_text);
+  font-family: "Fixel Display", sans-serif;
+  font-weight: 900;
+  font-size: 3vw;
+  padding: 10px 10px 0 10px;
+  border: none;
+  cursor: pointer;
+  box-shadow: -4px 0px 4px rgba(0, 0, 0, 0.25);
+  text-shadow: 0 4px 4px rgba(0, 0, 0, 0.25);
+  transition: background 0.3s;
+
+  &:hover {
+    background: #c0c0c0;
+  }
+}

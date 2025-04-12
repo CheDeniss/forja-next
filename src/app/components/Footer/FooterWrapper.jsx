@@ -11,7 +11,8 @@ const FooterWrapper = () => {
         pathName.includes('/register') ||
         pathName.includes('/verify-email') ||
         pathName.includes('/reset-password') ||
-        pathName.includes('/forgot-password')
+        pathName.includes('/forgot-password') ||
+        pathName.includes('/admin')
     ){
         return null;
     }

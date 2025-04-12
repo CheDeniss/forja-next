@@ -1,8 +1,6 @@
 'use client';
 
 import "../../i18n/i18n";
-import Navigation from "../components/Navigation/Navigation";
-import Footer from "../components/Footer/Footer";
 import { useTranslation } from "react-i18next";
 import homeStyles from "./Home.module.css";
 

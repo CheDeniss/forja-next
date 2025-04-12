@@ -16,6 +16,7 @@ const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
     const [user, setUser] = useState(null);
+    const [userRoles, setUserRoles] = useState([]);
     const [isAuthLoading, setIsAuthLoading] = useState(false);
     const hasTriedRefresh = useRef(false); // Прапорець, щоб не зациклити оновлення після невдалого рефрешу
 
@@ -30,7 +31,8 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await authMe();
             if (response) {
-                setUser(response);
+                setUser(response.userProfile);
+                setUserRoles(response.userRoles);
                 hasTriedRefresh.current = false;
             } else {
                 logger.warn("AUTH_CONTEXT -> fetchUser :: `authMe` не повернув користувача");
@@ -188,6 +190,7 @@ export const AuthProvider = ({ children }) => {
     const value = useMemo(
         () => ({
             user,
+            userRoles,
             isAuthLoading,
             login,
             register,
@@ -198,6 +201,7 @@ export const AuthProvider = ({ children }) => {
             handleResetPassword
         }),
         [user,
+            userRoles,
             isAuthLoading,
             login,
             register, 
