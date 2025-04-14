@@ -1,6 +1,6 @@
  
 .playButton {
-    background: var(--primary);
+    background: var(--active-element);
     padding: 8px 16px;
     border-radius: 5px;
     color: white;
@@ -11,5 +11,5 @@
 }
 
 .playButton:hover {
-    background: var(--primary-dark);
+    background: var(--hover-color);
 }

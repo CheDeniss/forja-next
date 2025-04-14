@@ -25,7 +25,7 @@
 }
 
 .playButton {
-    background: var(--primary);
+    background: var(--active-element);
     padding: 6px 12px;
     border-radius: 5px;
     color: white;
@@ -33,7 +33,7 @@
 }
 
 .uninstallButton {
-    background: var(--danger);
+    background: var(--warning-color);
     padding: 6px 12px;
     border-radius: 5px;
     color: white;

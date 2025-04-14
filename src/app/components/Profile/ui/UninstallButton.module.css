@@ -1,6 +1,6 @@
  
 .uninstallButton {
-    background: var(--danger);
+    background: var(--active-element);
     padding: 8px 16px;
     border-radius: 5px;
     color: white;
@@ -11,5 +11,5 @@
 }
 
 .uninstallButton:hover {
-    background: var(--danger-dark);
+    background: var(--hover-color);
 }
