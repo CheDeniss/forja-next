@@ -2,10 +2,10 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'next/navigation';
 import {
-  Box, Typography, Grid, TextField, Button, Divider, Tabs, Tab
+  Box, Typography, TextField, Button, Divider, Tabs, Tab
 } from '@mui/material';
 import Link from 'next/link';
-import { getFullUserById } from '../../../../../api/Admin_Services/UserAdminService.js';
+import { getFullUserById } from '../../../../../api/Admin_Services/userAdminService.js';
 import upStyles from './UserProfile.module.scss';
 
 export default function UserProfilePage() {

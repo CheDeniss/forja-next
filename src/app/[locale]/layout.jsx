@@ -7,7 +7,8 @@ import {ThemeProvider} from "@mui/material";
 import muiTheme from '../styles/muiTheme.js';
 
 export default async function LocaleLayout({ children, params }) {
-    const locale = await Promise.resolve(params?.locale || 'uk');
+    // const locale = await Promise.resolve(params?.locale || 'uk');
+    const locale = React.use(params.locale)
 
     return (
         <html lang={locale}>

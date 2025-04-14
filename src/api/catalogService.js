@@ -29,5 +29,17 @@ export async function getCatalogFull( filters, pageNumber = 1, pageSize = 10 ) {
     params.append('pageNumber', pageNumber.toString());
     params.append('pageSize', pageSize.toString());
 
-    return apiClient(`Games/games-catalog?${params.toString()}`, "GET", null, {}, false);
+    const response = await apiClient(
+        `Games/games-catalog?${params.toString()}`,
+        "GET",
+        null,
+        {},
+        false
+    );
+
+    if (!response || !Array.isArray(response.items)) {
+        throw new Error("Некоректна відповідь від API");
+    }
+
+    return response;
 }
