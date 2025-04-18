@@ -1,29 +1,32 @@
 import styles from "./GameLibrary.module.css";
-import PlayButton from "../ui/PlayButton";
-import UninstallButton from "../ui/UninstallButton";
+import {memo, useEffect, useState} from "react";
+import ProfileUserGameItem from "./ProfileUserGameItem/ProfileUserGameItem.jsx";
 
-const games = [
-    { id: 1, title: "GAME NAME1 ULTIMATE", achievements: "23/50", dlc: "5/10", lastPlayed: "30 Jan", playTime: "23 hrs" },
-    { id: 2, title: "GAME NAME2", achievements: "12/40", dlc: "3/5", lastPlayed: "25 Jan", playTime: "15 hrs" }
-];
+const GameLibrary = (userId) => {
+    const [games, setGames] = useState([])
 
-const GameLibrary = () => {
+    // useEffect(() => {
+    //     getUsersFriendsList( userId ).then((data) => {
+    //         setFriendsList(data || []); // Дефолтне значення на випадок, якщо дані пусті
+    //         setLoading(false);
+    //     }).catch((error) => {
+    //         console.error('Error fetching friends:', error);
+    //         setLoading(false);
+    //     }).finally(() => {
+    //         console.log('Friends list fetched successfully', friendsList);
+    //     });
+    // }, [userId]);
+
     return (
         <div className={styles.libraryContainer}>
-            {games.map((game) => (
-                <div key={game.id} className={styles.gameItem}>
-                    <div className={styles.gameInfo}>
-                        <h3>{game.title}</h3>
-                        <p>Last played on {game.lastPlayed} - {game.playTime} on record</p>
-                    </div>
-                    <div className={styles.gameActions}>
-                        <UninstallButton />
-                        <PlayButton />
-                    </div>
-                </div>
-            ))}
+            {/*{games.map((game) => (*/}
+            {/*    <ProfileUserGameItem key={game.id} game={game} />*/}
+            {/*))}*/}
         </div>
     );
 };
+
+// const MemoizedProfileUserGameItem = memo(ProfileUserGameItem);
+
 
 export default GameLibrary;

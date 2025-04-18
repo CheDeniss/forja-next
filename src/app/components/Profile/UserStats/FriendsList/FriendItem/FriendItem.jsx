@@ -4,21 +4,39 @@ import Image from "next/image";
 import pic from '../../../../../../../public/assets/images/profile/sova.jpg';
 import CustomButtonFollow from "../../../../../components/ui/CustomButtonFollow/CustomButtonFollow.jsx";
 
-const FriendItem = () => {
+const FriendItem = ({ friend }) => {
+    const {
+        id,
+        followedUsername,
+        followedAvatarUrl,
+        followedTag,
+        followerId,
+        followedId
+    } = friend;
+
     return (
         <div className={frItemStyles.friendItemContainer}>
             <div className={frItemStyles.friendDataContainer}>
-                <div className={frItemStyles.avatar}>
-                    <Image src={pic} alt={"gghf"} width={50} height={50} />
-                </div>
+                <Image
+                    className={frItemStyles.avatar}
+                    src={pic}
+                    alt="pic"
+                    width={60}
+                    height={60}
+                />
                 <div className={frItemStyles.textDataContainer}>
-                    <span className={frItemStyles.friendName}>Kamaz</span>
-                    <span className={frItemStyles.friendTag}>@kamaz_rarg6</span>
+                    <span className={frItemStyles.friendName}>{followedUsername}</span>
+                    <span className={frItemStyles.friendTag}>{followedTag}</span>
                 </div>
             </div>
-            <CustomButtonFollow name={"follow"}>Follow</CustomButtonFollow>
-        </div>
 
+            <CustomButtonFollow
+                followerId={followerId}
+                followedId={followedId}
+                recordId={id}
+                initiallyFollowing={true}
+            />
+        </div>
     );
 };
 

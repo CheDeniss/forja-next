@@ -7,7 +7,7 @@ $gap-height: 100% - $corner-height;
 .customButtonMainContainer {
   display: flex;
   padding: 10px;
-  width: auto;
+  width: 120px;
   max-width: 300px;
   box-sizing: border-box;
 }
@@ -28,6 +28,7 @@ $gap-height: 100% - $corner-height;
   height: calc(100% + 4px);
   border: 2px solid var(--gray-100);
   border-radius: 3px;
+  transition: border 0.3s ease;
   clip-path: polygon(
                   $corner-width $corner-height, /* Верхній лівий кут */
                   0% $corner-height,
@@ -56,6 +57,14 @@ $gap-height: 100% - $corner-height;
   );
 }
 
+.buttonWrapper:hover .buttonBorder {
+  border: 2px solid var(--hover-color);
+}
+
+.buttonBorderUnfollow{
+  border: 2px solid var(--orange-500);
+}
+
 /* Основний стиль для button */
 .customButton {
   display: flex;
@@ -80,8 +89,15 @@ $gap-height: 100% - $corner-height;
   transition: background-color 0.3s ease;
 }
 
+.customButtonUnfollow{
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+}
+
 .customButton:active {
 }
+
+
 
 /* Тултіп */
 .tooltip {

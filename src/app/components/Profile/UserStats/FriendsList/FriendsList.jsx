@@ -1,19 +1,21 @@
 import React, { useEffect, useState, memo } from 'react';
 import flStyle from './FriendsList.module.scss';
 import FriendItem from './FriendItem/FriendItem.jsx';
-import { getUsersFriends } from '../../../../../api/profileService.js';
+import { getUsersFriendsList } from '../../../../../api/profileService.js';
 
 const FriendsList = ({ userId }) => {
     const [friendsList, setFriendsList] = useState([]);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        getUsersFriends( userId ).then((data) => {
+        getUsersFriendsList( userId ).then((data) => {
             setFriendsList(data || []); // Дефолтне значення на випадок, якщо дані пусті
             setLoading(false);
         }).catch((error) => {
             console.error('Error fetching friends:', error);
             setLoading(false);
+        }).finally(() => {
+            console.log('Friends list fetched successfully', friendsList);
         });
     }, [userId]);
 

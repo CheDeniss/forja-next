@@ -2,13 +2,13 @@
 .libraryContainer {
     width: 100%;
     background: var(--gray-800);
-    padding: 20px;
     border-radius: 10px;
 }
 
 .gameItem {
     display: flex;
     justify-content: space-between;
+    background-color: var(--gray-900);
     align-items: center;
     padding: 10px 0;
     border-bottom: 1px solid var(--gray-600);
