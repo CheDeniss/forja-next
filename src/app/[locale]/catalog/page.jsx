@@ -132,9 +132,9 @@ const Catalog = () => {
     const renderSkeletons = (count = 6) =>
         Array.from({ length: count }, (_, index) => (
             <div key={index} style={{ marginBottom: '1rem' }}>
-                <Skeleton variant="rectangular" width="100%" height={180} />
-                <Skeleton width="60%" sx={{ mt: 1 }} />
-                <Skeleton width="40%" />
+                <Skeleton variant="rectangular"
+                          sx={{ height: '16vh',
+                                width: '100%'}} />
             </div>
         ));
 

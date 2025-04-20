@@ -7,21 +7,32 @@ export const apiClient = async (endpoint, method = "GET", body = null, headers =
     const options = {
         method,
         headers: {
-            "Content-Type": "application/json",
-            ...headers, // Можливість додати додаткові заголовки
+            ...(body instanceof FormData ? {} : { "Content-Type": "application/json" }),
+            ...headers,
         },
         ...(withCredentials && { credentials: "include" }),
     };
 
     if (body) {
-        options.body = JSON.stringify(body);
+        options.body = body instanceof FormData ? body : JSON.stringify(body);
     }
 
     try {
         Logger.info(`API_CLIENT -> Sending API request :: ${method} ${url}`, options);
         const response = await fetch(url, options);
 
-        const responseData = response.status !== 204 ? await response.json().catch(() => null) : null;
+        // const responseData = response.status !== 204 ? await response.json().catch(() => null) : null;
+
+        let responseData = null;
+
+        if (response.status !== 204) {
+            const contentType = response.headers.get("content-type") || "";
+            if (contentType.includes("application/json")) {
+                responseData = await response.json().catch(() => null);
+            } else {
+                responseData = await response.text(); // повертає строку
+            }
+        }
 
         if (!response.ok) {
             const error = new Error(`${response.status}`);

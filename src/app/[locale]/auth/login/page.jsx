@@ -4,7 +4,7 @@ import React, {useEffect, useState} from 'react';
 import loginStyles from './Login.module.css';
 import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
 import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
-import { useAuth } from "../../../../context/authContext.js";
+import { useAuth } from "../../../../context/AuthContext.js";
 import {validateEmail, validatePassword} from "../../../../utils/validationUtils.js";
 import Image from "next/image";
 import Link from "next/link";

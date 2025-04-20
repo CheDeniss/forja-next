@@ -1,4 +1,4 @@
-import BorderedComponent from "../../src/app/components/BorderedComponent/BorderedComponent";
+import BorderedComponent from "@/app/components/ui/BorderedComponent/BorderedComponent";
 
 const withBorder = (WrappedComponent) => {
     return (props) => (

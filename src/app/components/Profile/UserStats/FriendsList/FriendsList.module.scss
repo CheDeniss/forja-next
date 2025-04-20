@@ -3,6 +3,10 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  background-color: var(--gray-700);
+  overflow-y: auto;
+  scrollbar-color: var(--gray-100) var(--gray-900);
+  padding: 20px 0;
 
   .friendsListContainerName {
     font-size: 2rem;

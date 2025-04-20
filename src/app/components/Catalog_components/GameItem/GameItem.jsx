@@ -8,6 +8,7 @@ import {getRatingLabel} from "../../../components/Catalog_components/GetRating/g
 import {useParams, useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
 import DiscountOldPriceBlock from "../../../components/Catalog_components/DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
+import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
 
 const GameItem = ({ data }) => {
     const {
@@ -39,11 +40,15 @@ const GameItem = ({ data }) => {
         maximumFractionDigits: 2,
     });
 
-    // console.log(data.title, data);
+     console.log(data.title, data);
 
     return (
         <div className={styles.gameItemContainer}>
             <div className={styles.LogoSection}>
+                <MinioImage
+                    src={logoUrl}
+                    alt="Game Logo"
+                />
             </div>
             <div className={styles.GameInfoSection}>
                 <span className={styles.title}>{title}</span>
