@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import resetPassStyles from './ResetPass.module.css';
 import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
 import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
-import { useAuth } from "../../../../context/authContext.js";
+import { useAuth } from "../../../../context/AuthContext.js";
 import { validatePassword } from "../../../../utils/validationUtils.js";
 import Link from "next/link";
 import { useTranslation } from "react-i18next";

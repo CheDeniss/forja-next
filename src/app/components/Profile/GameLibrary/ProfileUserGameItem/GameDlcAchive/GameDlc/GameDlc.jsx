@@ -1,13 +1,26 @@
 import React from 'react';
 import styles from './GameDlc.module.scss';
-import { FaBoxOpen } from 'react-icons/fa';
+import Image from "next/image";
+import dlcImg from "@/../public/assets/images/profile/DlcOwned.svg";
 
-const GameDlc = ({ owned = 0, total = 0 }) => {
+const GameDlc = ({ addons = [], total = 0 }) => {
+    const owned = addons?.length || 0;
     return (
         <div className={styles.card}>
-            <h3 className={styles.title}>DLC Owned:</h3>
-            <div className={styles.icon}><FaBoxOpen size={72} /></div>
-            <div className={styles.progress}>{owned}/{total}</div>
+            <span className={styles.title}>
+                DLC Owned:
+            </span>
+
+            <div className={styles.imgWrapper}>
+                <Image src={dlcImg}
+                       alt={'DLC'}
+                       fill
+                       style={{ objectFit: 'contain' }}/>
+            </div>
+
+            <span className={styles.progress}>
+                {owned}
+            </span>
         </div>
     );
 };

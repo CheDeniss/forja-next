@@ -1,91 +1,72 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import Image from 'next/image';
 import Skeleton from '@mui/material/Skeleton';
-import { getPresignedImageUrl } from '@/api/fileService';
-
-const urlCache = new Map();
+import styles from './MinioImage.module.scss';
 
 const MinioImage = ({
-                        objectPath,
+                        src,
                         alt = '',
-                        width,
-                        height,
-                        fill = false,
+                        width = '100%',
+                        height = '100%',
                         fallbackSrc = '/assets/fallbacks/default.png',
                         className = '',
                         style = {},
-                        skeleton = true
+                        skeleton = true,
                     }) => {
-    const [url, setUrl] = useState(null);
-    const [error, setError] = useState(false);
-    const [loading, setLoading] = useState(true);
+    const [imgSrc, setImgSrc] = useState(src);
+    const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
 
     useEffect(() => {
-        if (!objectPath) return;
-
-        let isMounted = true;
-
-        if (urlCache.has(objectPath)) {
-            setUrl(urlCache.get(objectPath));
-            setLoading(false);
-        } else {
-            getPresignedImageUrl(objectPath)
-                .then(res => {
-                    if (isMounted) {
-                        urlCache.set(objectPath, res);
-                        setUrl(res);
-                        setLoading(false);
-                    }
-                })
-                .catch(() => {
-                    if (isMounted) {
-                        setError(true);
-                        setLoading(false);
-                    }
-                });
-        }
-
-        return () => {
-            isMounted = false;
+        setStatus('loading');
+        const img = new window.Image();
+        img.src = src;
+        img.onload = () => {
+            setImgSrc(src);
+            setStatus('loaded');
         };
-    }, [objectPath]);
+        img.onerror = () => {
+            const fallbackImg = new window.Image();
+            fallbackImg.src = fallbackSrc;
+            fallbackImg.onload = () => {
+                setImgSrc(fallbackSrc);
+                setStatus('loaded');
+            };
+            fallbackImg.onerror = () => {
+                setStatus('error');
+            };
+        };
+    }, [src, fallbackSrc]);
 
-    const imageSrc = error || !url ? fallbackSrc : url;
-
-    if (loading && skeleton) {
-        return fill ? (
-            <div style={{ position: 'relative', width: '100%', height: '100%' }}>
-                <Skeleton
-                    variant="rectangular"
-                    animation="wave"
-                    className={className}
-                    sx={{ ...style, width: '100%', height: '100%', borderRadius: '8px' }}
-                />
-            </div>
-        ) : (
+    if (status === 'loading' && skeleton) {
+        return (
             <Skeleton
                 variant="rectangular"
-                animation="wave"
-                className={className}
                 width={width}
                 height={height}
-                sx={{ ...style, borderRadius: '8px' }}
+                className={className}
+                sx={{ ...style }}
             />
         );
     }
 
+    if (status === 'error') {
+        return (
+            <div
+                className={`${styles.altFallback} ${className}`}
+                style={{ width, height, ...style }}
+            >
+                {alt}
+            </div>
+        );
+    }
+
     return (
-        <Image
-            src={imageSrc}
+        <img
+            src={imgSrc}
             alt={alt}
-            width={!fill ? width : undefined}
-            height={!fill ? height : undefined}
-            fill={fill}
-            className={className}
-            style={style}
-            onError={() => setError(true)}
+            className={`${styles.image} ${className}`}
+            style={{ width, height, ...style }}
         />
     );
 };

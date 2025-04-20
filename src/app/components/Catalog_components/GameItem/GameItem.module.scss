@@ -9,12 +9,12 @@
   overflow: hidden;
 
   .LogoSection {
-    display: flex;
-    //background-color: #1C1231;
-    height: 100%;
-    aspect-ratio: 3 / 2;
-    flex-shrink: 0;
+    position: relative;
+    height: 100%; // фіксована висота
+    width: calc(16vh * 3 / 2);
+    overflow: hidden;
   }
+
 
   .GameInfoSection {
     flex: 1 1 auto;

@@ -7,7 +7,7 @@ import LanguageSwitcher from "./LanguageSwitcher.jsx";
 import { useTranslation } from "react-i18next";
 import Link from "next/link";
 import { useParams } from "next/navigation";
-import { useAuth } from "../../../context/authContext";
+import { useAuth } from "../../../context/AuthContext.js";
 
 const Navbar = ({ onTestClick }) => {
     const { user } = useAuth();

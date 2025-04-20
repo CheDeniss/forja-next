@@ -1,4 +1,4 @@
-import {apiClient} from "../apiClient.js";
+import {apiClient} from "@/api/apiClient.js";
 
 export const uploadAvatar = async (formData) => {
     return apiClient("Files/avatar", "POST", formData, {}, true);
@@ -38,6 +38,6 @@ export const getPresignedImageUrl = async (path, exp = 1800) => {
         ExpirationInSeconds: exp.toString()
     });
 
-    return apiClient(`/Files/presigned-image-url?${queryParams}`, "GET", null, {}, true);
+    return apiClient(`Files/presigned-image-url?${queryParams}`, "GET", null, {}, true);
 };
 

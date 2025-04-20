@@ -6,11 +6,14 @@ import {
     uploadAvatar, uploadMatureContentImage, uploadMechanicImage,
     uploadNewsArticleImage, uploadProductImage,
     uploadProductLogo, uploadProfileHatVariantImage
-} from "../../../../api/Admin_Services/filesAdminService.js";
+} from "@/api/Admin_Services/filesAdminService.js";
+import {useModal} from "@/context/ModalContext.jsx";
+import {refreshToken} from "@/api/authService.js";
 
 const ImageUploadForm = () => {
     const [message, setMessage] = useState('');
     const [loading, setLoading] = useState(false);
+    const { showModal } = useModal();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -60,8 +63,10 @@ const ImageUploadForm = () => {
             }
 
             setMessage(`✅ Success! Path: ${result}`);
+            showModal({ modalType: 'success', modalProps: { message: 'Upload successful!' } });
         } catch (err) {
             setMessage(`❌ Error: ${err.message}`);
+            showModal({ modalType: 'error', modalProps: { message: err.message } });
         }
 
     };
@@ -101,6 +106,17 @@ const ImageUploadForm = () => {
             </form>
 
             {message && <p>{message}</p>}
+
+            {/* 🟢 Додаткові кнопки для перевірки модалок */}
+            <button onClick={() => showModal({ modalType: 'success', modalProps: { message: 'Test success message' } })}>
+                Show Success Modal
+            </button>
+
+            <button onClick={() => showModal({ modalType: 'error', modalProps: { message: 'Test error message' } })}>
+                Show Error Modal
+            </button>
+
+            <button onClick={() => refreshToken()}>Refresh</button>
         </div>
     );
 };

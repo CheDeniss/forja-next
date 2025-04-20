@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import stylesNotice from './EmailConfirmationNotice.module.scss';
-import { useAuth } from "../../../../context/authContext";
+import { useAuth } from "../../../../context/AuthContext.js";
 import { resendEmailConfirmation } from "../../../../api/authService.js";
 import { Skeleton } from "@mui/material";
 import logger from "../../../../utils/logger.js";

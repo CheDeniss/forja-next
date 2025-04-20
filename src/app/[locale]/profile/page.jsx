@@ -1,7 +1,7 @@
 'use client';
 
 import profileStyles from "./Profile.module.scss";
-import { useAuth } from "../../../context/authContext";
+import { useAuth } from "@/context/AuthContext.js";
 
 import UserInfo from "../../../app/components/Profile/UserInfo/UserInfo.jsx";
 import UserStats from "../../../app/components/Profile/UserStats/UserStats.jsx";

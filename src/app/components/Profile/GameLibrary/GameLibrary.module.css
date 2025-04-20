@@ -1,8 +1,9 @@
  
 .libraryContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
     width: 100%;
-    background: var(--gray-800);
-    border-radius: 10px;
 }
 
 .gameItem {

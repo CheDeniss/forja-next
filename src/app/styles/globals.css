@@ -2,7 +2,7 @@
 
 :root {
   /* Основні кольори */
-  --main_page_bckg: #1E1E1E;
+  --main_page_bckg: rgb(30, 30, 30);
   --main_page_text: #E2E2E2;
 
   --main_page_bckg_light: #E2E2E2;
@@ -117,6 +117,7 @@ input:-webkit-autofill:active {
 
 .app-container {
   display: flex;
+  scrollbar-gutter: stable;
   flex-direction: column;
   min-height: 100vh;
   font-family: 'Oswald', sans-serif;

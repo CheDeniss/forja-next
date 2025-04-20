@@ -8,7 +8,7 @@ import {validateConfirmPassword, validateEmail, validatePassword} from "../../..
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
 import {useParams} from "next/navigation";
-import { useAuth } from "../../../../context/authContext.js";
+import { useAuth } from "../../../../context/AuthContext.js";
 import Link from "next/link";
 import Loader from "../../../components/ui/Loader/Loader.jsx";
 
