@@ -1,4 +1,4 @@
-import './styles/globals.css';
+import './styles/globals.scss';
 import { ModalProvider } from '@/context/ModalContext';
 import {AuthProvider} from "@/context/AuthContext.js";
 

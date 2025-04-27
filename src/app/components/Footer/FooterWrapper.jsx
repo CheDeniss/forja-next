@@ -2,7 +2,7 @@
 
 import React from 'react';
 import {usePathname} from "next/navigation";
-import Footer from "./Footer";
+import Footer from "./Footer.jsx";
 
 const FooterWrapper = () => {
     const pathName = usePathname();

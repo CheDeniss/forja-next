@@ -8,18 +8,14 @@ export default async function LocaleLayout({ children, params }) {
     const locale = (await params).locale || 'en';
 
     return (
-        // <html lang={locale}>
-        //     <body className="app-container">
-                <ThemeProvider theme={muiTheme}>
-                    <I18nProvider locale={locale}>
-                        <NavbarWrapper />
-                            <main className="main">
-                                {children}
-                            </main>
-                        <FooterWrapper />
-                    </I18nProvider>
-                </ThemeProvider>
-        //     </body>
-        // </html>
+        <ThemeProvider theme={muiTheme}>
+            <I18nProvider locale={locale}>
+                <NavbarWrapper />
+                    <main className="main">
+                        {children}
+                    </main>
+                <FooterWrapper />
+            </I18nProvider>
+        </ThemeProvider>
     );
 }

@@ -37,3 +37,28 @@ export const getUserGameAchievementsNum = async (userId, num) => {
 export const getGameAchievements = async (gameId) => {
     return apiClient(`Achievement/game/${gameId}/all`, "GET", null, {}, true);
 };
+
+export const getUserAchievements = async (userId) => {
+    return apiClient(`Achievement/user/${userId}/achievements`, "GET", null, {}, true);
+};
+
+export const getUserProfileHatImages = async (num) => {
+    return apiClient(`Files/profile-hat-variant?ProfileHatVariantId=${num}`, "GET", null, {}, true);
+};
+
+export const updateUserProfileHatVariant = async (userId, variant) => {
+    const body = {
+        userId,
+        variant
+    };
+    console.log("updateUserProfileHatVariant", body);
+    return apiClient(`User/profile-hat-variant/`, "POST", body, {}, true);
+};
+
+export const updateUserProfile = async (body) => {
+    return apiClient(`User/profile`, "PUT", body, {}, true);
+};
+
+export const getUserProfileByIdentifier = async (identifier) => {
+    return apiClient(`User/profile?identifier=${identifier}`, "GET", null, {}, true);
+};

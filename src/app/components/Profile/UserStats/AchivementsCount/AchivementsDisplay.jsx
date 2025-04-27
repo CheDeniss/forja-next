@@ -1,7 +1,7 @@
 'use client';
 
 import acStyle from "./AchivementsDisplay.module.scss";
-import GameAchievementItem from "./GameAchievementItem/GameAchievementItem";
+import GameAchievementItem from "./GameAchievementItem/GameAchievementItem.jsx";
 import { useEffect, useState } from "react";
 import { getUserGameAchievementsNum } from "@/api/profileService.js";
 
@@ -32,7 +32,10 @@ const AchievementsDisplay = ({ userId }) => {
                 <p>Loading...</p>
             ) : (
                 lastAchievements.map((achievement) => (
-                    <GameAchievementItem key={achievement.id} achievement={achievement} />
+                    <GameAchievementItem key={achievement.id}
+                                         achievement={achievement}
+                                         userId={userId}
+                    />
                 ))
             )}
         </div>

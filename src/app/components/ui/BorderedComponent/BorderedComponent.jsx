@@ -7,12 +7,14 @@ const BorderedComponent = ({
                                children,
                                cornerWidth = '15%',
                                cornerHeight = '20%',
-                               padding = '3px'
+                               padding = '3px',
+                               borderColor = 'var(--gray-100)'
                            }) => {
     const customVars = {
         '--corner-width': cornerWidth,
         '--corner-height': cornerHeight,
-        '--bordered-padding': padding
+        '--bordered-padding': padding,
+        '--border-color': borderColor,
     };
 
     return (

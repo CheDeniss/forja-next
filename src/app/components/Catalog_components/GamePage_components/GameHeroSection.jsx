@@ -2,9 +2,9 @@
 
 import React from 'react';
 import styles from './GameHeroSection.module.scss';
-import ImageGallery from '../../../components/Catalog_components/GamePage_components/ImageGallery.jsx';
+import ImageGallery from './ImageGallery.jsx';
 import fallback from '../../../../../public/assets/images/ImageGallery_fallback.png';
-import PriceBuyBlock from "../../../components/Catalog_components/GamePage_components/PriceBuyBlock.jsx";
+import PriceBuyBlock from "./PriceBuyBlock.jsx";
 import {addToCart} from "../../../../api/cartService.js";
 
 const GameHeroSection = ({ game }) => {

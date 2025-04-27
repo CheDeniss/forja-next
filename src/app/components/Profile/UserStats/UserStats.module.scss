@@ -32,7 +32,7 @@
     .statsContainerMainItem {
         display: flex;
         flex-direction: column;
-        border: 1px solid #89cc1c;
+        //border: 1px solid #89cc1c;
     }
 
     .leftSide {
@@ -41,7 +41,7 @@
         gap: 3vw;
         flex-direction: column;
         justify-content: space-between;
-        border: 1px solid green;
+        //border: 1px solid green;
         box-sizing: border-box;
     }
 
@@ -50,7 +50,7 @@
         flex-direction: column;
         background-color: #222;
         overflow-y: auto;
-        border: 1px solid #ff9100;
+        //border: 1px solid #ff9100;
         min-height: 0;
         flex-grow: 0;
         flex-shrink: 1;

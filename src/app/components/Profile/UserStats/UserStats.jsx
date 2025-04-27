@@ -1,8 +1,8 @@
 import React, { useLayoutEffect, useRef, useEffect } from "react";
 import usStyles from "./UserStats.module.scss";
-import GameCollector from "../../Profile/UserStats/GameCollector/GameCollector";
-import AchievementsDisplay from "../../Profile/UserStats/AchivementsCount/AchivementsDisplay";
-import FriendsList from "../../Profile/UserStats/FriendsList/FriendsList";
+import GameCollector from "./GameCollector/GameCollector.jsx";
+import AchievementsDisplay from "./AchivementsCount/AchivementsDisplay.jsx";
+import FriendsList from "./FriendsList/FriendsList.jsx";
 
 const UserStats = ({ userId }) => {
     const leftSideRef = useRef(null);

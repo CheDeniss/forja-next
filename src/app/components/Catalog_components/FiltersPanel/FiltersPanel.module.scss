@@ -27,15 +27,8 @@
   position: relative;
   min-height: 0;
   padding: 6px 0;
-  &::before {
-    //content: "";
-    //position: absolute;
-    //left: 0;
-    //top: 0;
-    //width: 5px;
-    //height: 100%;
-    //background-color: gray; // default, перебʼється далі
 
+  &::before {
     content: "";
     position: absolute;
     left: 8px;
@@ -89,4 +82,5 @@
   padding: 6px 0 10px;
   font-family: "Fixel Display", sans-serif;
   font-size: 0.85rem;
+  background-color: var(--gray-800);
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 import loaderStyles from './Loader.module.scss';
 
-const Loader = ({isLoading}) => {
+const Loader = ({isLoading = true}) => {
     if (!isLoading) {
         return null;
     }
