@@ -3,8 +3,8 @@
 import React, { useEffect, useState } from 'react';
 import styles from './UserLibraryAchieveModal.module.scss';
 import MinioImage from '@/app/components/ui/MinioImage/MinioImage.jsx';
-import lockedIcon from '@/../public/assets/images/profile/lock_achivment.svg';
 import { getGameAchievements } from "@/api/profileService.js";
+import BorderedComponent from "@/app/components/ui/BorderedComponent/BorderedComponent.jsx";
 
 const UserLibraryAchieveModal = ({ gameId, completedAchievements = [] }) => {
     const [achievements, setAchievements] = useState([]);
@@ -25,22 +25,27 @@ const UserLibraryAchieveModal = ({ gameId, completedAchievements = [] }) => {
                     const unlocked = isUnlocked(ach.id);
 
                     return (
-                        <div key={ach.id} className={styles.achievementCard} style={unlocked ? {} : { borderColor: '#ff4c4c', borderWidth: '2px', borderStyle: 'solid' }}>
-                            <div className={styles.imageWrapper}>
-                                <MinioImage
-                                    src={unlocked ? ach.logoUrl : lockedIcon}
-                                    alt={unlocked ? ach.name : "Locked"}
-                                    className={styles.image}
-                                />
-                            </div>
-                            <div className={styles.text}>
-                                <div className={styles.title}>
-                                    {unlocked ? ach.name : "?? Locked"}
+                        <div key={ach.id} className={styles.achievementCard}>
+                                <div className={styles.imageWrapper}>
+                                    <BorderedComponent padding="0">
+                                        <MinioImage
+                                        src={unlocked ? ach.logoUrl : "/assets/images/profile/lock_achivment.svg"}
+                                        alt={unlocked ? ach.name : "Locked"}
+                                        className={styles.image}
+                                        />
+                                    </BorderedComponent>
                                 </div>
-                                <div className={styles.description}>
-                                    {unlocked ? ach.description : "Something's lurking. You just don’t see it yet."}
+
+                            <BorderedComponent borderColor={`${!unlocked ? 'var(--warning-color)' : 'var(--gray-100)'}`} padding="0">
+                                <div className={styles.text}>
+                                    <div className={styles.title}>
+                                        {unlocked ? ach.name : "?? Locked"}
+                                    </div>
+                                    <div className={styles.description}>
+                                        {unlocked ? ach.description : "Something's lurking. You just don’t see it yet."}
+                                    </div>
                                 </div>
-                            </div>
+                            </BorderedComponent>
                         </div>
                     );
                 })}

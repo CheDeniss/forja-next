@@ -1,80 +1,77 @@
 'use client';
 
-import userInfoStyles from "./UserInfo.module.css";
-import Image from "next/image";
-import ava from "../../../../../public/assets/images/profile/Recovered_jpg_file(1526).jpg";
+import userInfoStyles from "./UserInfo.module.scss";
 import {useParams, useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
-import CustomButtonOther from "../../../components/ui/CustomButtonOther/CustomButtonOther";
-import {useEffect, useState} from "react";
-import {getImageURL} from "../../../../api/profileService.js";
+import CustomButtonOther from "../../ui/CustomButtonOther/CustomButtonOther.jsx";
+import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
+import React, {useEffect, useState} from "react";
+import {getUserProfileHatImages} from "@/api/profileService.js";
+import {Skeleton} from "@mui/material";
 
 const UserInfo = ({logout, user}) => {
     const {locale} = useParams();
     const { t } = useTranslation();
     const router = useRouter();
-    const [ava, setAva] = useState('');
+    const [hatUrl, setHatUrl] = useState(null);
 
     useEffect(() => {
-        console.log(" user.avatarUrl", user.avatarUrl);
+        if (!user?.profileHatVariant) return;
 
-        const fetchAvatar = async () => {
-            if (user.avatarUrl) {
+        getUserProfileHatImages(user.profileHatVariant)
+            .then(path => setHatUrl(path))
+            .catch(err => console.error(err));
 
-                try {
-                    const response = await getImageURL(user.avatarUrl);
-                    if (response) {
-                        console.log("ava", response);
-                        setAva(response); // якщо хочеш встановити аватарку
-                    }
-                } catch (error) {
-                    console.error("Error fetching avatar:", error);
-                }
-            }
-        };
-
-        fetchAvatar(); // викликаємо функцію
-    }, [user]);
-
-
+    }, [user?.profileHatVariant]);
 
     const handleLogout = async () => {
         await logout();
         router.push(`/${locale}`);
     }
 
+    const handleEditPage = () => {
+        router.push(`/${locale}/profile/settings`);
+    }
+
     return (
         <div className={userInfoStyles.userInfoContainer}>
+
             <div className={userInfoStyles.avatarContainer}>
-                {/*<Image className={userInfoStyles.avatarka} src={ava} alt={"avatarka"}/>*/}
+                <MinioImage width='86%' src={user.avatarUrl} alt="Avatar"/>
             </div>
 
-            <div className={userInfoStyles.userDetails}>
-                <span className={userInfoStyles.userDetailsUsername}>
-                    {user.username}
-                    {user.firstname || user.lastname ?
-                        ` · ${user.firstname ?? ""} ${user.lastname ?? ""}` : ""}
-                </span>
+            <div className={userInfoStyles.profileHero}>
+                <div className={userInfoStyles.userDetails}>
+                    <span className={userInfoStyles.userDetailsUsername}>
+                        {user.firstname || user.lastname ?
+                            `${user.firstname ?? ""} ${user.lastname ?? ""}` : user.username}
+                    </span>
 
-                <span className={userInfoStyles.userDetailsOtherData}>
-                    {user.country || user.city ?
-                        `${user.country ?? ""} · ${user.city ?? ""}` : ""}
-                </span>
+                    {/*<span className={userInfoStyles.userDetailsOtherData}>*/}
+                    {/*    {user.country || user.city ?*/}
+                    {/*        `${user.country ?? ""} · ${user.city ?? ""}` : ""}*/}
+                    {/*</span>*/}
 
-                {/*<span className={userInfoStyles.userDetailsOtherData}>*/}
-                {/*    {user.phoneNumber || user.birthDate || user.gender ?*/}
-                {/*        `${user.phoneNumber ?? ""} · ${user.birthDate ?? ""} · ${user.gender ?? ""}` : ""}*/}
-                {/*</span>*/}
+                    {/*<span className={userInfoStyles.userDetailsOtherData}>*/}
+                    {/*    {user.phoneNumber || user.birthDate || user.gender ?*/}
+                    {/*        `${user.phoneNumber ?? ""} · ${user.birthDate ?? ""} · ${user.gender ?? ""}` : ""}*/}
+                    {/*</span>*/}
 
-                <textarea className={userInfoStyles.userDetailsBio} value={user.selfDescription} disabled={true}>
-                </textarea>
-                <div className={userInfoStyles.userDetailsButtons}>
-                    <CustomButtonOther >
-                        Edit page
-                    </CustomButtonOther>
-                    <CustomButtonOther onClick={handleLogout}>
-                        Logout
-                    </CustomButtonOther>
+                    <textarea className={userInfoStyles.userDetailsBio} value={user.selfDescription} disabled={true}>
+                    </textarea>
+                    <div className={userInfoStyles.userDetailsButtons}>
+                        <CustomButtonOther onClick={handleEditPage}>
+                            Edit page
+                        </CustomButtonOther>
+                        <CustomButtonOther onClick={handleLogout}>
+                            Logout
+                        </CustomButtonOther>
+                    </div>
+                </div>
+                <div className={userInfoStyles.backgroundImage}>
+                    <MinioImage key={hatUrl}
+                                src={hatUrl || 'public/assets/fallbacks/default.png'}
+                                alt="Profile Background"/>
                 </div>
             </div>
         </div>

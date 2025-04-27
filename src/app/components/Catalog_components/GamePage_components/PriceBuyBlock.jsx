@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './PriceBuyBlock.module.scss';
-import DiscountOldPriceBlock from "../../../components/Catalog_components/DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
+import DiscountOldPriceBlock from "../DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
 
 const PriceBuyBlock = ({ gamePrice, discountValue = 0, onBuyClick }) => {
 

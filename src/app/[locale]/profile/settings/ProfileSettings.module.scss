@@ -1,0 +1,18 @@
+.settingsContainer {
+  display: flex;
+  max-width: 100%;
+  gap: 1vw;
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+
+  .mainContent {
+    display: flex;
+    width: 80%;
+    flex-direction: column;
+    gap: 2vh;
+  }
+
+  .accordionSection {
+    width: 20%;
+    height: auto;
+  }
+}

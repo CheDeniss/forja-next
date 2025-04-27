@@ -1,5 +1,5 @@
 import styles from "./GameLibrary.module.css";
-import {memo, useEffect, useState} from "react";
+import React, {memo, useEffect, useState} from "react";
 import ProfileUserGameItem from "./ProfileUserGameItem/ProfileUserGameItem.jsx";
 import {getUserGameLibrary} from "@/api/profileService.js";
 
@@ -21,8 +21,9 @@ const GameLibrary = ({userId}) => {
 
     return (
         <div className={styles.libraryContainer}>
+            <span className="sectionTitle">User Library</span>
             {games.map((game) => (
-                <ProfileUserGameItem key={game.id} game={game} />
+                <ProfileUserGameItem key={game.id} game={game}/>
             ))}
         </div>
     );

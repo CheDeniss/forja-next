@@ -2,12 +2,12 @@
 
 import React from "react";
 import styles from "./GameItem.module.scss";
-import CustomButtonSimple from "../../../components/ui/CustomButtonSimple/CustomButtonSimple.jsx";
-import InfoItemValueWithTooltip from "../../../components/ui/TooltipIfvalueOverflowed/InfoItemValueWithTooltip.jsx";
-import {getRatingLabel} from "../../../components/Catalog_components/GetRating/getRating.jsx";
+import CustomButtonSimple from "../../ui/CustomButtonSimple/CustomButtonSimple.jsx";
+import InfoItemValueWithTooltip from "../../ui/TooltipIfvalueOverflowed/InfoItemValueWithTooltip.jsx";
+import {getRatingLabel} from "../GetRating/getRating.jsx";
 import {useParams, useRouter} from "next/navigation";
 import {useTranslation} from "react-i18next";
-import DiscountOldPriceBlock from "../../../components/Catalog_components/DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
+import DiscountOldPriceBlock from "../DiscountOldPriceBlock/DiscountOldPriceBlock.jsx";
 import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
 
 const GameItem = ({ data }) => {

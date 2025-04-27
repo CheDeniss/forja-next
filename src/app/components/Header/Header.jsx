@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from "./Header.module.css";
-import EmailConfirmationNotice from "../../components/ui/EmailConfirmationNotice/EmailConfirmationNotice";
+import EmailConfirmationNotice from "../ui/EmailConfirmationNotice/EmailConfirmationNotice.jsx";
 
 const Header = ({ isScrolled, showIcons = true }) => {
     return (

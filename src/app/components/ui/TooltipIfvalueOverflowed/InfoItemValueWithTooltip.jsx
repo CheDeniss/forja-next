@@ -2,7 +2,7 @@
 
 import React, { useRef, useState, useEffect } from "react";
 import styles from "./InfoItemValueWithTooltip.module.scss";
-import CustomButtonSimple from "../../../components/ui/CustomButtonSimple/CustomButtonSimple.jsx";
+import CustomButtonSimple from "../CustomButtonSimple/CustomButtonSimple.jsx";
 import { Tooltip } from "@mui/material";
 
 const InfoItemValueWithTooltip = ({ children }) => {

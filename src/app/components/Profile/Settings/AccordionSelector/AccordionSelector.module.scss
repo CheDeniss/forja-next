@@ -1,0 +1,51 @@
+.accordionContainer {
+  background-color: #2a2a2a; // Темно-сірий фон
+  color: #fff; // Білий текст
+  border-radius: 4px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  font-family: 'Fixel Display', sans-serif; // За бажанням
+  }
+
+.accordion {
+  background-color: var(--gray-900) !important;
+  border-bottom: 1px solid var(--gray-400);
+  box-shadow: none;
+  font-family: "Fixel Display", sans-serif;
+  margin: 0 !important;
+  border-radius: 2px !important;
+
+  &::before {
+    display: none;
+  }
+
+  .accordionSummary {
+    position: relative;
+    min-height: 0;
+    padding: 2px 0 0 15px;
+
+
+    .MuiAccordionSummary-content {
+      margin: 0;
+    }
+
+    .MuiAccordionSummary-expandIconWrapper {
+      color: #aaa;
+    }
+
+    .label {
+      font-size: 1.2rem;
+      font-weight: 400;
+      padding-left: 4px;
+      color: var(--main_page_text);
+      font-family: "Fixel Display", sans-serif;
+    }
+  }
+}
+
+.accordionDetails {
+  font-family: "Fixel Display", sans-serif;
+  font-size: 1rem;
+  background-color: var(--gray-800);
+}
+

@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './GameDlc.module.scss';
 import Image from "next/image";
-import dlcImg from "@/../public/assets/images/profile/DlcOwned.svg";
+import dlcImg from "../../../../../../../../public/assets/images/profile/DlcOwned.svg";
 
 const GameDlc = ({ addons = [], total = 0 }) => {
     const owned = addons?.length || 0;

@@ -2,7 +2,7 @@ import React from 'react';
 import frItemStyles from './FriendItem.module.scss';
 import Image from "next/image";
 import pic from '../../../../../../../public/assets/images/profile/sova.jpg';
-import CustomButtonFollow from "../../../../../components/ui/CustomButtonFollow/CustomButtonFollow.jsx";
+import CustomButtonFollow from "../../../../ui/CustomButtonFollow/CustomButtonFollow.jsx";
 import BorderedComponent from "@/app/components/ui/BorderedComponent/BorderedComponent.jsx";
 
 const FriendItem = ({ friend }) => {

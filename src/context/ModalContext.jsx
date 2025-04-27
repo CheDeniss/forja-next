@@ -1,11 +1,13 @@
-// 📁 context/ModalContext.jsx
 'use client';
+
 import React, { createContext, useContext, useState, useCallback } from 'react';
 import ModalWrapper from '@/app/components/ui/Modal_components/ModalWrapper';
 import ErrorModal from '@/app/components/ui/Modal_components/ErrorModal/ErrorModal.jsx';
 import SuccessModal from '@/app/components/ui/Modal_components/SuccessModal/SuccessModal.jsx';
 import UserLibraryAchieveModal
     from "@/app/components/ui/Modal_components/UserLibraryAchieveModal/UserLibraryAchieveModal.jsx";
+import AllUsersAchievesModal
+    from "@/app/components/ui/Modal_components/AllUsersAchievesModal/AllUsersAchievesModal.jsx";
 // import AchievementDetails from '@/app/components/ui/Modal_components/AchievementDetails/AchievementDetails.jsx';
 // import ConfirmModal from '@/app/components/modals/ConfirmModal';
 
@@ -35,8 +37,8 @@ export const ModalProvider = ({ children }) => {
                 return <SuccessModal {...modalProps} />;
             case 'user-library-achievements':
                 return <UserLibraryAchieveModal {...modalProps} />;
-            // case 'confirm':
-            //     return <ConfirmModal {...modalProps} />;
+            case 'user-all-achievements':
+                return <AllUsersAchievesModal {...modalProps} />;
             default:
                 return null;
         }

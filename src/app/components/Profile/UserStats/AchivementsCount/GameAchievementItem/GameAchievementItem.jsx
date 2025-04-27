@@ -2,13 +2,23 @@ import React from 'react';
 import itemStyle from './GameAchivementItem.module.scss';
 import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
 import Tooltip from '@mui/material/Tooltip';
+import {useModal} from "@/context/ModalContext.jsx";
 
-const GameAchievementItem = ({ achievement }) => {
+const GameAchievementItem = ({ achievement, userId }) => {
+    const { showModal } = useModal();
+
     const {
         name,
         description,
         logoUrl,
     } = achievement.achievement;
+
+    const handleClick = () => {
+        showModal({
+            modalType: 'user-all-achievements',
+            modalProps: { userId }
+        });
+    };
 
     return (
         <Tooltip
@@ -36,7 +46,7 @@ const GameAchievementItem = ({ achievement }) => {
                 }
             }}
         >
-            <div className={itemStyle.gaItemContainer}>
+            <div className={itemStyle.gaItemContainer} onClick={handleClick}>
                 <MinioImage src={logoUrl} alt={name}/>
             </div>
         </Tooltip>

@@ -5,7 +5,7 @@ import { useAuth } from "../../../../context/AuthContext.js";
 import { resendEmailConfirmation } from "../../../../api/authService.js";
 import { Skeleton } from "@mui/material";
 import logger from "../../../../utils/logger.js";
-import CustomButtonOther from "../../../components/ui/CustomButtonOther/CustomButtonOther.jsx";
+import CustomButtonOther from "../CustomButtonOther/CustomButtonOther.jsx";
 
 const EMAIL_RESEND_TIMEOUT = 5 * 60 * 1000;
 
