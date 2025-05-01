@@ -3,8 +3,8 @@
 import React, {useEffect, useState} from 'react';
 import styles from './GamePage.module.scss';
 import {useParams} from "next/navigation";
-import {getGameById} from "../../../../api/catalogService.js";
-import GameHeroSection from "../../../components/Catalog_components/GamePage_components/GameHeroSection.jsx";
+import {getGameById} from "@/api/catalogService.js";
+import GameHeroSection from "../../../components/Catalog_components/GamePage_components/GameHero/GameHeroSection.jsx";
 import Loader from "../../../components/ui/Loader/Loader.jsx";
 
 const GamePage = () => {
@@ -22,6 +22,7 @@ const GamePage = () => {
                 console.error('Error fetching game:', error);
             } finally {
                 setLoading(false);
+                console.log('Game fetched:', game);
             }
         };
 

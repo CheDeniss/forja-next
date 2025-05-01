@@ -70,7 +70,7 @@ const UserInfo = ({logout, user}) => {
                 </div>
                 <div className={userInfoStyles.backgroundImage}>
                     <MinioImage key={hatUrl}
-                                src={hatUrl || 'public/assets/fallbacks/default.png'}
+                                src={hatUrl || 'public/assets/fallbacks/NoImage.svg'}
                                 alt="Profile Background"/>
                 </div>
             </div>

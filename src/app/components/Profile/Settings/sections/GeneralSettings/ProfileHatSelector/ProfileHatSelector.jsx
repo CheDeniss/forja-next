@@ -97,7 +97,7 @@ const ProfileHatSelector = ({user}) => {
                         )}
                         {selected && (
                             <MinioImage
-                                src={selected || 'public/assets/fallbacks/default.png'}
+                                src={selected || 'public/assets/fallbacks/NoImage.svg'}
                                 alt="Profile Background"
                             />
                         )}
