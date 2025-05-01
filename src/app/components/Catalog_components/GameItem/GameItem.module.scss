@@ -11,8 +11,9 @@
   .LogoSection {
     position: relative;
     height: 100%; // фіксована висота
-    width: calc(16vh * 3 / 2);
-    overflow: hidden;
+    //width: calc(16vh * 3 / 2);
+    aspect-ratio: 240 / 135;
+    //overflow: hidden;
   }
 
 

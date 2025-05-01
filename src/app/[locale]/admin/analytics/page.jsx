@@ -22,14 +22,21 @@ const ImageUploadForm = () => {
         const form = e.target;
         const endpoint = form.endpoint.value;
         const objectId = form.objectId.value;
+        const alt = form.alt.value;
         const file = form.file.files[0];
 
         const formData = new FormData();
-        formData.append('ObjectId', objectId);
+        if (endpoint === '/Files/product-image') {
+            formData.append('ProductId', objectId);
+        } else {
+            formData.append('ObjectId', objectId);
+        }
         formData.append('File', file);
         formData.append('ObjectSize', file.size);
         formData.append('ContentType', file.type);
         formData.append('FileName', file.name);
+        formData.append('ImageAlt', alt);
+
 
         try {
             let result;
@@ -88,17 +95,22 @@ const ImageUploadForm = () => {
                     <option value="/Files/profile-hat-variant">Profile Hat Variant</option>
                 </select>
 
-                <br /><br />
+                <br/><br/>
 
                 <label htmlFor="objectId">Object ID:</label>
-                <input type="text" id="objectId" name="objectId" required style={{width:"300px"}} />
+                <input type="text" id="objectId" name="objectId" required style={{width: "300px"}}/>
 
-                <br /><br />
+                <br/><br/>
 
                 <label htmlFor="file">Choose image:</label>
-                <input type="file" id="file" name="file" accept="image/*" required />
+                <input type="file" id="file" name="file" accept="image/*" required/>
 
-                <br /><br />
+                <br/><br/>
+
+                <label htmlFor="alt">Choose ALT:</label>
+                <input type="text" id="alt" name="alt" required style={{width: "300px"}}/>
+
+                <br/><br/>
 
                 <button type="submit" disabled={loading}>
                     {loading ? 'Uploading...' : 'Upload'}
@@ -108,7 +120,7 @@ const ImageUploadForm = () => {
             {message && <p>{message}</p>}
 
             {/* 🟢 Додаткові кнопки для перевірки модалок */}
-            <button onClick={() => showModal({ modalType: 'success', modalProps: { message: 'Test success message' } })}>
+            <button onClick={() => showModal({modalType: 'success', modalProps: { message: 'Test success message' } })}>
                 Show Success Modal
             </button>
 

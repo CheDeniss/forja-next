@@ -2,10 +2,10 @@
 
 import React from 'react';
 import styles from './GameHeroSection.module.scss';
-import ImageGallery from './ImageGallery.jsx';
-import fallback from '../../../../../public/assets/images/ImageGallery_fallback.png';
-import PriceBuyBlock from "./PriceBuyBlock.jsx";
-import {addToCart} from "../../../../api/cartService.js";
+import ImageGallery from '../ImageGallery/ImageGallery.jsx';
+import fallback from '../../../../../../public/assets/fallbacks/NoImage.svg';
+import PriceBuyBlock from "../PriceBuyBlock/PriceBuyBlock.jsx";
+import {addToCart} from "../../../../../api/cartService.js";
 
 const GameHeroSection = ({ game }) => {
     const {
@@ -32,22 +32,23 @@ const GameHeroSection = ({ game }) => {
         startDate,
         endDate,
     } = discounts[discounts.length - 1] || {};
+    console.log('Game fetched:', game);
 
-    const testImages = [
-        'https://picsum.photos/id/1018/600/400',
-        'https://picsum.photos/id/1025/600/400',
-        'https://picsum.photos/id/1035/600/400',
-        'https://picsum.photos/id/1042/600/400',
-        'https://picsum.photos/id/1050/600/400',
-        'https://picsum.photos/id/1051/600/400',
-        'https://picsum.photos/id/1052/600/400',
-        'https://picsum.photos/id/1053/600/400',
-        'https://picsum.photos/id/1054/600/400',
-        'https://picsum.photos/id/1055/600/400',
-        'https://picsum.photos/id/1056/600/400',
-        'https://picsum.photos/id/1057/600/400',
-        'https://picsum.photos/id/1058/600/400',
-    ];
+    // const testImages = [
+    //     'https://picsum.photos/id/1018/600/400',
+    //     'https://picsum.photos/id/1025/600/400',
+    //     'https://picsum.photos/id/1035/600/400',
+    //     'https://picsum.photos/id/1042/600/400',
+    //     'https://picsum.photos/id/1050/600/400',
+    //     'https://picsum.photos/id/1051/600/400',
+    //     'https://picsum.photos/id/1052/600/400',
+    //     'https://picsum.photos/id/1053/600/400',
+    //     'https://picsum.photos/id/1054/600/400',
+    //     'https://picsum.photos/id/1055/600/400',
+    //     'https://picsum.photos/id/1056/600/400',
+    //     'https://picsum.photos/id/1057/600/400',
+    //     'https://picsum.photos/id/1058/600/400',
+    // ];
 
     const addProdToCart = async (productId) => {
         try {
@@ -67,7 +68,7 @@ const GameHeroSection = ({ game }) => {
         <section className={styles.hero}>
             <div className={styles.leftSection}>
                 <div className={styles.mainImage}>
-                    <ImageGallery images={testImages} fallback={logoUrl || fallback} />
+                    <ImageGallery images={images} fallback={logoUrl || fallback} />
                 </div>
                 <div className={styles.priceBlock}>
                     <PriceBuyBlock gamePrice={price} discountValue={discountValue} onBuyClick={() => {addProdToCart(id)}} />

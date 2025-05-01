@@ -83,6 +83,10 @@ $gap-height: 100% - $corner-height;
   }
 }
 
+.buttonWrapper:hover .buttonBorder {
+  border: 2px solid var(--hover-color);
+}
+
 .tooltip {
   visibility: hidden;
   width: auto;
