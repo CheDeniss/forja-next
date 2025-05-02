@@ -1,4 +1,5 @@
 import React, { useCallback, useEffect, useState } from 'react'
+import  './embla.css'
 
 export const usePrevNextButtons = (emblaApi, onButtonClick) => {
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)

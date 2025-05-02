@@ -46,7 +46,7 @@ const MainHome = () => {
 
     return (
         <div>
-            <div className={styles.generalSettings}>
+            <div className={styles.container}>
                 {/* FEATURED & RECOMMENDED: */}
                 <div className={styles.field}>
                     <label>FEATURED & RECOMMENDED:</label>

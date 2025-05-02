@@ -21,8 +21,6 @@ export const apiClient = async (endpoint, method = "GET", body = null, headers =
         Logger.info(`API_CLIENT -> Sending API request :: ${method} ${url}`, options);
         const response = await fetch(url, options);
 
-        // const responseData = response.status !== 204 ? await response.json().catch(() => null) : null;
-
         let responseData = null;
 
         if (response.status !== 204) {
