@@ -6,6 +6,9 @@ import ImageGallery from '../ImageGallery/ImageGallery.jsx';
 import fallback from '../../../../../../public/assets/fallbacks/NoImage.svg';
 import PriceBuyBlock from "../PriceBuyBlock/PriceBuyBlock.jsx";
 import {addToCart} from "../../../../../api/cartService.js";
+import CustomButtonOther from "@/app/components/ui/CustomButtonOther/CustomButtonOther.jsx";
+
+//TODO додати іконки на від обмеження
 
 const GameHeroSection = ({ game }) => {
     const {
@@ -34,22 +37,6 @@ const GameHeroSection = ({ game }) => {
     } = discounts[discounts.length - 1] || {};
     console.log('Game fetched:', game);
 
-    // const testImages = [
-    //     'https://picsum.photos/id/1018/600/400',
-    //     'https://picsum.photos/id/1025/600/400',
-    //     'https://picsum.photos/id/1035/600/400',
-    //     'https://picsum.photos/id/1042/600/400',
-    //     'https://picsum.photos/id/1050/600/400',
-    //     'https://picsum.photos/id/1051/600/400',
-    //     'https://picsum.photos/id/1052/600/400',
-    //     'https://picsum.photos/id/1053/600/400',
-    //     'https://picsum.photos/id/1054/600/400',
-    //     'https://picsum.photos/id/1055/600/400',
-    //     'https://picsum.photos/id/1056/600/400',
-    //     'https://picsum.photos/id/1057/600/400',
-    //     'https://picsum.photos/id/1058/600/400',
-    // ];
-
     const addProdToCart = async (productId) => {
         try {
             await addToCart(productId);
@@ -71,23 +58,44 @@ const GameHeroSection = ({ game }) => {
                     <ImageGallery images={images} fallback={logoUrl || fallback} />
                 </div>
                 <div className={styles.priceBlock}>
-                    <PriceBuyBlock gamePrice={price} discountValue={discountValue} onBuyClick={() => {addProdToCart(id)}} />
-                    <button className={styles.wishlistButton}>Add to Wishlist</button>
+                    <PriceBuyBlock productPrice={price} discountValue={discountValue} onBuyClick={() => {addProdToCart(id)}} />
+                    <CustomButtonOther>Add to Wishlist</CustomButtonOther>
                 </div>
             </div>
 
             <div className={styles.rightSection}>
-                <h1 className={styles.title}>{title}</h1>
-                <p className={styles.description}>{shortDescription}</p>
+                <div className={styles.meta}>
+                    <span className={styles.title}>{title}</span>
+                    <span className={styles.description}>{shortDescription}</span>
+                </div>
 
                 <div className={styles.meta}>
-                    <div><strong>AGE:</strong> {minimalAge}+</div>
-                    <div><strong>REVIEWS:</strong> {totalReviews} ({rating} positive)</div>
-                    <div><strong>GENRE:</strong> {genres.map(g => g.name).join(', ')}</div>
-                    <div><strong>DEVELOPER:</strong> {developer}</div>
-                    <div><strong>RELEASE DATE:</strong> {new Date(releaseDate).toLocaleDateString()}</div>
-                    <div><strong>TAGS:</strong> {tags.map(t => t.title).join(', ')}</div>
+                    <div>
+                        <span className={styles.label}>AGE:</span><br/>
+                        <span className={styles.value}>{minimalAge}+</span>
+                    </div>
+                    <div>
+                        <span className={styles.label}>REVIEWS:</span><br/>
+                        <span className={styles.value}>{totalReviews} ({rating} positive)</span>
+                    </div>
+                    <div>
+                        <span className={styles.label}>GENRE:</span><br/>
+                        <span className={styles.value}>{genres.map(g => g.name).join(', ')}</span>
+                    </div>
+                    <div>
+                        <span className={styles.label}>DEVELOPER:</span><br/>
+                        <span className={styles.value}>{developer}</span>
+                    </div>
+                    <div>
+                        <span className={styles.label}>RELEASE DATE:</span><br/>
+                        <span className={styles.value}>{new Date(releaseDate).toLocaleDateString()}</span>
+                    </div>
+                    <div>
+                        <span className={styles.label}>TAGS:</span><br/>
+                        <span className={styles.value}>{tags.map(t => t.title).join(', ')}</span>
+                    </div>
                 </div>
+
             </div>
         </section>
     );

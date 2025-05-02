@@ -1,8 +1,15 @@
 .priceBuyBlock {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   gap: 8px;
+}
+
+.right__side{
+  align-items: flex-end;
+}
+
+.left__side{
+  align-items: flex-start;
 }
 
 .discountSection {

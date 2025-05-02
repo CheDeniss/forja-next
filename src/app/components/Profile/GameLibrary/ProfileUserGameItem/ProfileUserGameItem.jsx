@@ -7,12 +7,12 @@ import AchievementProgress
     from "@/app/components/Profile/GameLibrary/ProfileUserGameItem/GameInfo/AchievementProgress/AchievementProgress.jsx";
 import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
 import BorderedComponent from "@/app/components/ui/BorderedComponent/BorderedComponent.jsx";
-const ProfileUserGameItem = ({ game }) => {
+const ProfileUserGameItem = ({ mechanic }) => {
 
     // {
     //     "id": "a1786fc0-dade-4ba8-a527-9636efd4315e",
     //     "userId": "b2f4ebe9-d240-4f35-9a78-0c4aaa18aa6c",
-    //     "game": {
+    //     "mechanic": {
     //     "id": "92abc22e-7f8c-4a20-b371-ec099b04d9b4",
     //         "title": "Adventure Quest",
     //         "shortDescription": "Explore the unknown!",
@@ -52,15 +52,15 @@ const ProfileUserGameItem = ({ game }) => {
     //       }]
     // },
 
-    const progress = game.totalGameAchievements > 0
-        ? Math.round((game.completedAchievements.length / game.totalGameAchievements) * 100)
+    const progress = mechanic.totalGameAchievements > 0
+        ? Math.round((mechanic.completedAchievements.length / mechanic.totalGameAchievements) * 100)
         : 0;
 
     return (
         <div className={styles.container}>
                 <div className={styles.left}>
                     <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
-                        <MinioImage src={game.game.logoUrl} alt="Game Logo"/>
+                        <MinioImage src={mechanic.mechanic.logoUrl} alt="Game Logo"/>
                     </BorderedComponent>
                 </div>
 
@@ -69,7 +69,7 @@ const ProfileUserGameItem = ({ game }) => {
                     <div className={styles.center}>
                         <div>
                             <AchievementProgress progress={progress}/>
-                            <span className={styles.title}>{game.game.title}</span>
+                            <span className={styles.title}>{mechanic.mechanic.title}</span>
                         </div>
                     </div>
                 </BorderedComponent>
@@ -77,10 +77,10 @@ const ProfileUserGameItem = ({ game }) => {
                 <div className={styles.right}>
                     <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
                         <div className={styles.rightContent}>
-                            <GameAchieve achievements={game.completedAchievements}
-                                         total={game.totalGameAchievements}
-                                         gameId={game.game.id}/>
-                            <GameDlc addons={game.addons}/>
+                            <GameAchieve achievements={mechanic.completedAchievements}
+                                         total={mechanic.totalGameAchievements}
+                                         gameId={mechanic.mechanic.id}/>
+                            <GameDlc addons={mechanic.addons}/>
                         </div>
                     </BorderedComponent>
                 </div>

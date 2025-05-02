@@ -85,7 +85,7 @@ const GameShowcase = ({ games }) => {
                 className={styles.leftSection}
                 onMouseEnter={() => setIsHovered_1(true)}
                 onMouseLeave={() => setIsHovered_1(false)}
-                onClick={handleClick}
+                onClick={() => handleClick(currentGame)}
             >
                 <BorderedComponent
                     cornerHeight={CORNER_H}
@@ -107,7 +107,7 @@ const GameShowcase = ({ games }) => {
                     className={styles.cell}
                     onMouseEnter={() => setIsHovered_2(true)}
                     onMouseLeave={() => setIsHovered_2(false)}
-                    onClick={handleClick}
+                    onClick={() => handleClick(currentGame)}
                 >
                     <BorderedComponent
                         cornerHeight={CORNER_H}
@@ -125,7 +125,7 @@ const GameShowcase = ({ games }) => {
                     className={styles.cell}
                     onMouseEnter={() => setIsHovered_3(true)}
                     onMouseLeave={() => setIsHovered_3(false)}
-                    onClick={handleClick}
+                    onClick={() => handleClick(currentGame)}
                 >
                     <BorderedComponent
                         cornerHeight={CORNER_H}
@@ -140,7 +140,7 @@ const GameShowcase = ({ games }) => {
                     className={styles.cell}
                     onMouseEnter={() => setIsHovered_4(true)}
                     onMouseLeave={() => setIsHovered_4(false)}
-                    onClick={handleClick}
+                    onClick={() => handleClick(currentGame)}
                 >
                     <BorderedComponent
                         cornerHeight={CORNER_H}
@@ -155,7 +155,7 @@ const GameShowcase = ({ games }) => {
                     className={styles.cell}
                     onMouseEnter={() => setIsHovered_5(true)}
                     onMouseLeave={() => setIsHovered_5(false)}
-                    onClick={handleClick}
+                    onClick={() => handleClick(currentGame)}
                 >
                     <BorderedComponent
                         cornerHeight={CORNER_H}

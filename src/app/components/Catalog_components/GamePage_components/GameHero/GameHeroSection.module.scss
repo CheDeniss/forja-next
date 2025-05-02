@@ -2,8 +2,8 @@
 .hero {
   display: flex;
   gap: 1vw;
-  background-color: #f35858;
-  color: #eee;
+  //background-color: #f35858;
+  color: var(--main_page_text);
 }
 
 .leftSection {
@@ -65,28 +65,52 @@
   flex: 1;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  padding: 20px 20px 20px 40px;
   gap: 1rem;
-  background-color: #1d578a;
-}
+  background-color: var(--gray-900);
+  color: var(--main_page_text);
 
-.title {
-  font-size: 2rem;
-  font-weight: bold;
-}
-
-.description {
-  font-style: italic;
-  color: #bbb;
-}
-
-.meta {
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-
-  strong {
-    color: #aaa;
+  .title {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
   }
+
+  .description {
+    text-transform: uppercase;
+  }
+
+  .partTitle{
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 400;
+    text-transform: uppercase;
+  }
+  .meta {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--main_page_text);
+
+    .label {
+      font-family: 'Oswald', sans-serif;
+      font-weight: 500;
+      font-size: 1.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+
+    .value {
+      font-family: "Fixel Display", sans-serif;
+      font-weight: 400;
+      font-size: 1.25rem;
+      margin-left: 1rem;
+      display: inline-block;
+    }
+}
+
+
 }
 
 .wishlistButton {
