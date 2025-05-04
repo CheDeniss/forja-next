@@ -1,0 +1,43 @@
+import React, {useEffect} from 'react';
+import styles from './CartItem.module.scss';
+import CustomButtonOther from "@/app/components/ui/CustomButtonOther/CustomButtonOther.jsx";
+import {getCart} from "@/api/cartService.js";
+import PriceBlock from "@/app/components/Cart_components/CartItem/PriceBlock/PriceBlock.jsx";
+
+const CartItem = ({ item, onRemove, onOpenStorePage }) => {
+    const hasDiscount = item.totalDiscountValue && item.totalDiscountValue > 0;
+
+    return (
+        <div className={styles.cartItem}>
+            <div className={styles.imageSection}>
+                <img src={item.logoUrl} alt={item.title} className={styles.itemImage} />
+                {item.isAddon && (<span className={styles.dlcLabel}>DLC</span>)}
+            </div>
+            <div className={styles.infoSection}>
+                <div className={styles.headerRow}>
+                    <div className={styles.textBlock}>
+                        <span className={styles.itemTitle}>{item.title}</span>
+                        <span className={styles.description}>
+                            {item.shortDescription}
+                        </span>
+                    </div>
+
+                    <PriceBlock
+                        price={item.totalPrice}
+                        originalPrice={item.originalPrice}
+                        discountValue={item.totalDiscountValue}
+                    />
+                </div>
+
+                <div className={styles.actions}>
+                    <CustomButtonOther onClick={onOpenStorePage}>{'TO STORE PAGE'}</CustomButtonOther>
+                    <CustomButtonOther onClick={onRemove}>{'REMOVE'}</CustomButtonOther>
+                </div>
+            </div>
+        </div>
+    );
+};
+
+export default CartItem;
+
+
