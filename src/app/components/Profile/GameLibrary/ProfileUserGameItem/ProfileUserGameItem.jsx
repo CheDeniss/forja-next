@@ -15,34 +15,34 @@ const ProfileUserGameItem = ({ game }) => {
 
     return (
         <div className={styles.container}>
-                <div className={styles.left}>
-                    <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
-                        <MinioImage src={game.game.logoUrl} alt="Game Logo"/>
-                    </BorderedComponent>
-                </div>
-
-
+            <div className={styles.left}>
                 <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
-                    <div className={styles.center}>
-                        <div>
-                            <AchievementProgress progress={progress}/>
-                            <span className={styles.title}>{game.game.title}</span>
-                        </div>
+                    <MinioImage src={game.game.logoUrl} alt="Game Logo"/>
+                </BorderedComponent>
+            </div>
+
+
+            <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
+                <div className={styles.center}>
+                    <div>
+                        <AchievementProgress progress={progress}/>
+                        <span className={styles.title}>{game.game.title}</span>
+                    </div>
+                </div>
+            </BorderedComponent>
+
+            <div className={styles.right}>
+                <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
+                    <div className={styles.rightContent}>
+                        <GameAchieve achievements={game.completedAchievements}
+                                     total={game.totalGameAchievements}
+                                     gameId={game.game.id}/>
+                        <GameDlc addons={game.addons}/>
                     </div>
                 </BorderedComponent>
-
-                <div className={styles.right}>
-                    <BorderedComponent cornerWidth='10%' cornerHeight='12%'>
-                        <div className={styles.rightContent}>
-                            <GameAchieve achievements={game.completedAchievements}
-                                         total={game.totalGameAchievements}
-                                         gameId={game.game.id}/>
-                            <GameDlc addons={game.addons}/>
-                        </div>
-                    </BorderedComponent>
-                </div>
+            </div>
         </div>
-);
+    );
 };
 
 export default ProfileUserGameItem;

@@ -1,0 +1,14 @@
+.cartContainer {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  gap: 1vw;
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+  box-sizing: border-box;
+
+  label {
+    font-size: 2rem;
+    font-weight: 300;
+    text-transform: uppercase;
+  }
+}
