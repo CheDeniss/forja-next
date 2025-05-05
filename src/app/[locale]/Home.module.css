@@ -1,4 +1,3 @@
 .container{
-    padding: 0 var(--spacing-perimeter-w);
-    padding-bottom: 200px;
+    padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
 }

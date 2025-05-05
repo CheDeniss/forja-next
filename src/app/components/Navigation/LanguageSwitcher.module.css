@@ -1,6 +1,7 @@
 .languageSwitcher {
     position: relative;
     display: inline-block;
+    z-index: 99;
 }
 
 .langBtn {

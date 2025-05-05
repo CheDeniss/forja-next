@@ -17,7 +17,7 @@ const GameItem = ({ data }) => {
         logoUrl,
         releaseDate,
         price,
-        discounts=[20],
+        discounts=[],
         genres,
         tags,
         positiveRating,

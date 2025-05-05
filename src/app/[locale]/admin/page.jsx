@@ -12,7 +12,7 @@ export default function AdminHomePage() {
     const links = [
         { title: 'Користувачі', href: `/${locale}/admin/users` },
         { title: 'Ігри та контент', href: `/${locale}/admin/games` },
-        { title: 'Магазин', href: `/${locale}/admin/store/orders` },
+        { title: 'Магазин', href: `/${locale}/admin/store` },
         { title: 'Техпідтримка', href: `/${locale}/admin/support/tickets` },
         { title: 'Аналітика', href: `/${locale}/admin/analytics` },
     ];
