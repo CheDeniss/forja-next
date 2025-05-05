@@ -3,6 +3,7 @@ import styles from './CartItem.module.scss';
 import CustomButtonOther from "@/app/components/ui/CustomButtonOther/CustomButtonOther.jsx";
 import {getCart} from "@/api/cartService.js";
 import PriceBlock from "@/app/components/Cart_components/CartItem/PriceBlock/PriceBlock.jsx";
+import MinioImage from "@/app/components/ui/MinioImage/MinioImage.jsx";
 
 const CartItem = ({ item, onRemove, onOpenStorePage }) => {
     const hasDiscount = item.totalDiscountValue && item.totalDiscountValue > 0;
@@ -10,8 +11,9 @@ const CartItem = ({ item, onRemove, onOpenStorePage }) => {
     return (
         <div className={styles.cartItem}>
             <div className={styles.imageSection}>
-                <img src={item.logoUrl} alt={item.title} className={styles.itemImage} />
+                {/*<img src={item.logoUrl} alt={item.title} className={styles.itemImage} />*/}
                 {item.isAddon && (<span className={styles.dlcLabel}>DLC</span>)}
+                <MinioImage src={item.logoUrl} alt={item.title}/>
             </div>
             <div className={styles.infoSection}>
                 <div className={styles.headerRow}>

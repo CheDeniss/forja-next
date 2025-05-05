@@ -4,8 +4,7 @@ import ErrorScreen from "@/app/components/ui/ErrorScreen/ErrorScreen.jsx";
 const MyComponent = () => {
     return (
         <div>
-            <ErrorScreen error={"Якась хуйня..."} reset={1}/>
-
+            <ErrorScreen error={{message: "Сталася якась хуйня і ми не знаэмо, що з цим робити..."}} reset={1}/>
         </div>
     );
 };
