@@ -1,0 +1,47 @@
+.languageSwitcher {
+    position: relative;
+    display: inline-block;
+    z-index: 99;
+}
+
+.langBtn {
+    background: none;
+    border: none;
+    color: var(--main_page_text);
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+    cursor: pointer;
+    padding: 5px 10px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.langDropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #444;
+    padding: 10px;
+    border-radius: 4px;
+    list-style: none;
+    margin: 0;
+    min-width: 120px;
+}
+
+.langDropdown li {
+    color: var(--main_page_text);
+    font-size: 1rem;
+    padding: 5px;
+    cursor: pointer;
+}
+
+.langDropdown li:hover {
+    background: #666;
+}
+
+
+
+
+

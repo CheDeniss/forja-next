@@ -1,0 +1,83 @@
+/* Навігаційна панель */
+.navbar {
+    background-color: var(--gray-900);
+    min-height: 55px;
+    padding: 0 var(--spacing-perimeter-w);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+}
+
+.navbarFixed {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.navContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+.navLinks {
+    list-style: none;
+    display: flex;
+    justify-content: space-between ;
+    gap: clamp(1vw, 2vw, 3vw);
+    margin: 0;
+    padding: 0;
+    align-items: center;
+}
+
+.navLinks li a {
+    display: flex;
+    text-decoration: none;
+    color: var(--main_page_text);
+    font-size: clamp(1rem, 1.5vw, 2rem);
+    font-family: 'Oswald', sans-serif;
+    text-transform: uppercase;
+    font-weight: 400;
+    transition: color 0.3s;
+    align-items: center;
+}
+
+.navLinks li a:hover {
+    color: #f39c12;
+}
+
+.navLeftMenu {
+    width: 100%;
+}
+
+.navRightMenu {
+    width: 100%;
+}
+
+.navSearchBar {
+    width: 100%;
+    margin: 0 clamp(1vw, 5vw, 6vw);
+    height: 45%;
+}
+
+.navSearchBar input {
+    border-radius: 0;
+    border: none;
+    background-color: #595959;
+    width: 100%;
+    height: 100%;
+}
+
+.navSearchBar input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+

@@ -1,0 +1,17 @@
+.successModal {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding: 0 20px
+}
+
+.title {
+  color: #4caf50;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.message {
+  color: #ffffff;
+  font-size: 16px;
+}

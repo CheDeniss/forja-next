@@ -1,0 +1,44 @@
+//.embla {
+//  overflow: hidden;
+//  max-width: 1200px;
+//  margin: 0 auto;
+//}
+//
+//.embla__container {
+//  display: flex;
+//  padding: 0 20px;
+//}
+//
+//.embla__slide {
+//  flex: 0 0 18%;
+//  margin: 0 5px;
+//  transition: transform 0.3s ease, opacity 0.3s ease;
+//  text-align: center;
+//
+//  img {
+//    border-radius: 10px;
+//  }
+//
+//  .genreName {
+//    margin-top: 10px;
+//    color: #fff;
+//    font-size: 1.2rem;
+//  }
+//}
+.embla {
+  overflow: hidden;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.embla__container {
+  display: flex;
+  padding: 0 20px;
+}
+
+.embla__slide {
+  flex: 0 0 20%;
+  margin: 0 10px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  text-align: center;
+}
