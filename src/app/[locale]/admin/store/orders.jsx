@@ -1,5 +1,5 @@
 import React from 'react';
-import ErrorScreen from "@/app/components/ui/ErrorScreen/ErrorScreen.jsx";
+import ErrorScreen from "@/components/ui/ErrorScreen/ErrorScreen.jsx";
 
 const MyComponent = () => {
     return (

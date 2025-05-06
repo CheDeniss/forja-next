@@ -2,9 +2,9 @@
 
 import React, { useEffect, useState, useRef } from 'react';
 import catalogStyles from './Catalog.module.scss';
-import FiltersPanel from '../../components/Catalog_components/FiltersPanel/FiltersPanel.jsx';
+import FiltersPanel from '@/components/Catalog_components/FiltersPanel/FiltersPanel.jsx';
 import { getCatalogFull } from '../../../api/catalogService.js';
-import GameItem from '../../components/Catalog_components/GameItem/GameItem.jsx';
+import GameItem from '@/components/Catalog_components/GameItem/GameItem.jsx';
 import { Skeleton, Pagination } from '@mui/material';
 import { useRouter, useSearchParams } from 'next/navigation';
 import CancelIcon from '@mui/icons-material/Cancel';

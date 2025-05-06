@@ -2,9 +2,9 @@
 
 import {useSearchParams, useRouter, useParams} from 'next/navigation';
 import React from 'react';
-import AccordionSelector from '@/app/components/Profile/Settings/AccordionSelector/AccordionSelector.jsx';
+import AccordionSelector from '@/components/Profile/Settings/AccordionSelector/AccordionSelector.jsx';
 import styles from './ProfileSettings.module.scss';
-import GeneralSettings from "@/app/components/Profile/Settings/sections/GeneralSettings/GeneralSettings.jsx";
+import GeneralSettings from "@/components/Profile/Settings/sections/GeneralSettings/GeneralSettings.jsx";
 import {useAuth} from "@/context/AuthContext.js";
 
 const SettingsPage = () => {

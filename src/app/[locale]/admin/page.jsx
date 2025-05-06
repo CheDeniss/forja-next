@@ -3,7 +3,7 @@ import React from 'react';
 import { Typography, Box, Grid, Paper, Link } from '@mui/material';
 import { useTranslation } from 'react-i18next';
 import mainStyles from './mainAdminStyles.module.scss';
-import CustomButtonOther from "../../components/ui/CustomButtonOther/CustomButtonOther.jsx";
+import CustomButtonOther from "@/components/ui/CustomButtonOther/CustomButtonOther.jsx";
 
 export default function AdminHomePage() {
     const { i18n } = useTranslation();
