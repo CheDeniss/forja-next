@@ -17,7 +17,7 @@ export default function ErrorScreen({ error, reset }) {
           <p className={styles.message}>{error?.message || 'Невідома помилка'}</p>
 
           <div className={styles.actions}>
-            <CustomButtonOther onClick={reset}>
+            <CustomButtonOther>
               Перезавантажити сторінку
             </CustomButtonOther>
             <Link href="/public" className={styles.homeLink}>

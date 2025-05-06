@@ -2,15 +2,15 @@
 
 import React, {useState} from 'react';
 import regStyles from './Register.module.scss';
-import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
-import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
+import CustomInput from "@/components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "@/components/ui/CustomButtonForms/CustomButtonForms.jsx";
 import {validateConfirmPassword, validateEmail, validatePassword} from "../../../../utils/validationUtils.js";
 import Image from "next/image";
 import {useTranslation} from "react-i18next";
 import {useParams} from "next/navigation";
 import { useAuth } from "../../../../context/AuthContext.js";
 import Link from "next/link";
-import Loader from "../../../components/ui/Loader/Loader.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
 
 import googleIcon from "../../../../../public/assets/icons/svg/Google.svg";
 import appleIcon from "../../../../../public/assets/icons/svg/Apple.svg";

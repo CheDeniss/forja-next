@@ -2,8 +2,8 @@
 
 import React, {useEffect, useState} from 'react';
 import loginStyles from './Login.module.css';
-import CustomInput from "../../../components/ui/CustomInput/CustomInput.jsx";
-import CustomButtonForm from "../../../components/ui/CustomButtonForms/CustomButtonForms.jsx";
+import CustomInput from "@/components/ui/CustomInput/CustomInput.jsx";
+import CustomButtonForm from "@/components/ui/CustomButtonForms/CustomButtonForms.jsx";
 import { useAuth } from "../../../../context/AuthContext.js";
 import {validateEmail, validatePassword} from "../../../../utils/validationUtils.js";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import Link from "next/link";
 import { useTranslation } from "react-i18next";
 import {useParams, useRouter} from "next/navigation";
 import logger from "../../../../utils/logger.js";
-import Loader from "../../../components/ui/Loader/Loader.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
 
 import googleIcon from "../../../../../public/assets/icons/svg/Google.svg";
 import appleIcon from "../../../../../public/assets/icons/svg/Apple.svg";

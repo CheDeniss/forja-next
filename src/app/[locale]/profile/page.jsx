@@ -2,10 +2,10 @@
 
 import profileStyles from "./Profile.module.scss";
 import { useAuth } from "@/context/AuthContext.js";
-import UserInfo from "../../../app/components/Profile/UserInfo/UserInfo.jsx";
-import UserStats from "../../../app/components/Profile/UserStats/UserStats.jsx";
-import GameLibrary from "../../../app/components/Profile/GameLibrary/GameLibrary.jsx";
-import Loader from "../../components/ui/Loader/Loader.jsx";
+import UserInfo from "@/components/Profile/UserInfo/UserInfo.jsx";
+import UserStats from "@/components/Profile/UserStats/UserStats.jsx";
+import GameLibrary from "@/components/Profile/GameLibrary/GameLibrary.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
 import React from "react";
 
 const Profile = () => {

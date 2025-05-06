@@ -4,8 +4,8 @@ import React, { useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useTranslation } from 'react-i18next';
 import { getCart } from '../../../api/cartService';
-import Loader from "../../components/ui/Loader/Loader.jsx";
-import CartLayout from "@/app/components/Cart_components/CartLayout/CartLayout.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
+import CartLayout from "@/components/Cart_components/CartLayout/CartLayout.jsx";
 
 const Cart = () => {
     const {t} = useTranslation(['common', 'navmenu']); // вибір namespace за потреби

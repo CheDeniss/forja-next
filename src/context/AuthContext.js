@@ -146,6 +146,7 @@ export const AuthProvider = ({ children }) => {
         } finally {
             setUser(null);
             setLoadingState(false);
+
         }
     }, [user, isAuthLoading]);
 

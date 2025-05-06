@@ -4,16 +4,16 @@ import React, {useEffect, useState} from 'react';
 import styles from './GamePage.module.scss';
 import {useParams} from "next/navigation";
 import {getGameById} from "@/api/catalogService.js";
-import GameHeroSection from "../../../components/Catalog_components/GamePage_components/GameHero/GameHeroSection.jsx";
-import Loader from "../../../components/ui/Loader/Loader.jsx";
-import DlcCard from "@/app/components/Catalog_components/GamePage_components/DlcCard/DlcCard.jsx";
+import GameHeroSection from "@/components/Catalog_components/GamePage_components/GameHero/GameHeroSection.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
+import DlcCard from "@/components/Catalog_components/GamePage_components/DlcCard/DlcCard.jsx";
 import {Skeleton} from "@mui/material";
 import GameDescriptionBlock
-    from "@/app/components/Catalog_components/GamePage_components/GameDescriptionBlock/GameDescriptionBlock.jsx";
+    from "@/components/Catalog_components/GamePage_components/GameDescriptionBlock/GameDescriptionBlock.jsx";
 import GameDetailsFooter
-    from "@/app/components/Catalog_components/GamePage_components/GameDetailsFooter/GameDetailsFooter.jsx";
+    from "@/components/Catalog_components/GamePage_components/GameDetailsFooter/GameDetailsFooter.jsx";
 import MechanicsCarousel
-    from "@/app/components/Catalog_components/GamePage_components/MechanicsCourusel/MechanicsCourusel.jsx";
+    from "@/components/Catalog_components/GamePage_components/MechanicsCourusel/MechanicsCourusel.jsx";
 
 //TODO зробити кнопку адд ту вішліст, протестувати на іграх з різним наповненням.
 

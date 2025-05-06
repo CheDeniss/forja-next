@@ -1,5 +1,5 @@
-import FooterWrapper from '../components/Footer/FooterWrapper.jsx';
-import NavbarWrapper from '../components/Navigation/NavbarWrapper.jsx';
+import FooterWrapper from '@/components/Footer/FooterWrapper.jsx';
+import NavbarWrapper from '@/components/Navigation/NavbarWrapper.jsx';
 import I18nProvider from './i18n-provider.jsx';
 import {ThemeProvider} from "@mui/material";
 import muiTheme from '../styles/muiTheme.js';
