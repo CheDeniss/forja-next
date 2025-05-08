@@ -1,6 +1,7 @@
 import Logger from "../utils/logger";
 
-export const API_URL = "https://localhost:7052/api"; // Базовий URL бекенду
+export const API_URL = "https://localhost:7052/api";
+
 
 export const apiClient = async (endpoint, method = "GET", body = null, headers = {}, withCredentials = false) => {
     const url = `${API_URL}/${endpoint}`;
@@ -19,6 +20,8 @@ export const apiClient = async (endpoint, method = "GET", body = null, headers =
 
     try {
         Logger.info(`API_CLIENT -> Sending API request :: ${method} ${url}`, options);
+        console.log("🔍 NODE_EXTRA_CA_CERTS =", process.env.NODE_EXTRA_CA_CERTS);
+
         const response = await fetch(url, options);
 
         let responseData = null;

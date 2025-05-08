@@ -8,8 +8,7 @@ import UserLibraryAchieveModal
     from "@/components/ui/Modal_components/UserLibraryAchieveModal/UserLibraryAchieveModal.jsx";
 import AllUsersAchievesModal
     from "@/components/ui/Modal_components/AllUsersAchievesModal/AllUsersAchievesModal.jsx";
-// import AchievementDetails from '@/app/components/ui/Modal_components/AchievementDetails/AchievementDetails.jsx';
-// import ConfirmModal from '@/app/components/modals/ConfirmModal';
+import LoginModal from "@/components/ui/Modal_components/LoginModal/LoginModal.jsx";
 
 const ModalContext = createContext();
 
@@ -39,6 +38,8 @@ export const ModalProvider = ({ children }) => {
                 return <UserLibraryAchieveModal {...modalProps} />;
             case 'user-all-achievements':
                 return <AllUsersAchievesModal {...modalProps} />;
+            case 'login':
+                return <LoginModal onSuccess={modalProps?.onSuccess} />;
             default:
                 return null;
         }

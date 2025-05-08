@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
+    "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 NODE_ENV=development NODE_EXTRA_CA_CERTS=C:\\Users\\User\\AppData\\Local\\mkcert\\rootCA.pem node server.js",
     "lint": "next lint"
   },
   "dependencies": {
@@ -27,6 +27,7 @@
   "devDependencies": {
     "@types/node": "22.13.4",
     "@types/react": "19.0.10",
+    "cross-env": "^7.0.3",
     "typescript": "5.7.3"
   },
   "type": "module"

@@ -21,6 +21,7 @@ const Cart = () => {
                 alert('Помилка при завантаженні кошика');
             } finally {
                 setLoading(false);
+                console.log('Cart fetched:', cart);
             }
         };
         fetchCart();

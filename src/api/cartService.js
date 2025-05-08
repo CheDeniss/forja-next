@@ -22,9 +22,19 @@ export const addToCart = async (productId) => {
         productId
     };
 
+    window.dispatchEvent(new Event("cart-updated"));
     return apiClient("Cart/items", "POST", payload, {}, true);
 };
 
 export const getCartItems = async (cartId) => {
     return apiClient(`Cart/${cartId}`, "GET", null, {}, true);
 }
+
+export const removeFromCart = async (itemId) => {
+    window.dispatchEvent(new Event("cart-updated"));
+    return apiClient(`Cart/items/${itemId}`, "DELETE", null, {}, true);
+};
+
+export const getCartSummary = async () => {
+     return apiClient("Cart/summary", "GET", null, {}, true);
+};

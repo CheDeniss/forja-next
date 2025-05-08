@@ -86,7 +86,7 @@ const GameItem = ({ data }) => {
             <div className={styles.GamePriceSection}>
                 {(discounts && discounts.length > 0) ? (
                     <>
-                        <span className={styles.validPeriod}>Sale ends 2/21/2025 at 3:00 AM</span>
+                        <span className={styles.validPeriod}>SALE ENDS: {new Date(discounts[0].endDate).toLocaleString()}</span>
                         <div className={styles.priceBox}>
                             <DiscountOldPriceBlock discountValue={discounts[discounts.length-1].discountValue}
                                                    oldPrice={price}/>

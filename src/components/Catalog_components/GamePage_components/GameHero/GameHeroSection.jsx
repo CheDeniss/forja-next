@@ -3,14 +3,18 @@
 import React from 'react';
 import styles from './GameHeroSection.module.scss';
 import ImageGallery from '../ImageGallery/ImageGallery.jsx';
-import fallback from '../../../../../public/assets/fallbacks/NoImage.svg';
 import PriceBuyBlock from "../PriceBuyBlock/PriceBuyBlock.jsx";
-import {addToCart} from "../../../../api/cartService.js";
+import {addToCart} from "@/api/cartService.js";
 import CustomButtonOther from "@/components/ui/CustomButtonOther/CustomButtonOther.jsx";
+import {useAuth} from "@/context/AuthContext.js";
+import {useModal} from "@/context/ModalContext.jsx";
 
-//TODO додати іконки на від обмеження
+//TODO додати іконки на від обмеження, перехід на сторінку гри
 
 const GameHeroSection = ({ game }) => {
+    const { user, isAuthLoading } = useAuth();
+    const { showModal, hideModal } = useModal();
+
     const {
         id,
         title,
@@ -38,14 +42,35 @@ const GameHeroSection = ({ game }) => {
     console.log('Game fetched:', game);
 
     const addProdToCart = async (productId) => {
-        try {
-            await addToCart(productId);
-            alert("Товар додано до кошика!");
-        } catch (e) {
-            console.error(e);
-            alert("Не вдалося додати товар.");
+        if (!!user && !isAuthLoading) {
+            try {
+                await addToCart(productId);
+                alert("Товар додано до кошика!");
+            } catch (e) {
+                console.error(e);
+                alert("Не вдалося додати товар.");
+            }
+        } else {
+            showModal({
+                modalType: 'login',
+                modalProps: {
+                    onSuccess: async () => {
+                        console.log('-----------onSuccess');
+                        hideModal();
+                        await new Promise((resolve) => setTimeout(resolve, 100));
+                        try {
+                            await addToCart(productId);
+                            showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } })
+                        } catch (e) {
+                            console.error(e);
+                            showModal({ modalType: 'error', modalProps: { message: 'Не вдалося додати товар.' } })
+                        }
+                    }
+                }
+            });
         }
-    }
+    };
+
 
     const totalReviews = positiveReviewsCount + negativeReviewsCount;
     const rating = totalReviews > 0
@@ -55,7 +80,7 @@ const GameHeroSection = ({ game }) => {
         <section className={styles.hero}>
             <div className={styles.leftSection}>
                 <div className={styles.mainImage}>
-                    <ImageGallery images={images} fallback={logoUrl || fallback} />
+                    <ImageGallery images={images} fallback={logoUrl || '@/../public/assets/fallbacks/NoImage.svg'} />
                 </div>
                 <div className={styles.priceBlock}>
                     <PriceBuyBlock productPrice={price} discountValue={discountValue} onBuyClick={() => {addProdToCart(id)}} />

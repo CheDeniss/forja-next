@@ -33,7 +33,7 @@ const CartItem = ({ item, onRemove, onOpenStorePage }) => {
 
                 <div className={styles.actions}>
                     <CustomButtonOther onClick={onOpenStorePage}>{'TO STORE PAGE'}</CustomButtonOther>
-                    <CustomButtonOther onClick={onRemove}>{'REMOVE'}</CustomButtonOther>
+                    <CustomButtonOther onClick={onRemove(item.id)}>{'REMOVE'}</CustomButtonOther>
                 </div>
             </div>
         </div>

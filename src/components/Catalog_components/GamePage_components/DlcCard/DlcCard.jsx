@@ -8,11 +8,11 @@ import PriceBuyBlock from "@/components/Catalog_components/GamePage_components/P
 // TODO:  БЕК - зробити повернення одного останнього повного аддона, переробити компонент під розширені дані??.
 
 const DlcCard = ({ latestDlc }) => {
-    if (!latestDlc) return null;
+    if (!latestDlc) return <div className={styles.empty}>No DLC available</div>;
 
     return (
         <div className={styles.container}>
-            <div className={styles.blockName}>
+        <div className={styles.blockName}>
                 DLC
             </div>
             <div className={styles.dlcCard}>

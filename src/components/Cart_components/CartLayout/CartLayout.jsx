@@ -4,9 +4,12 @@ import styles from './Cart.module.scss';
 import { useTranslation } from 'react-i18next';
 import CartItem from "@/components/Cart_components/CartItem/CartItem.jsx";
 import SummaryBlock from "@/components/Cart_components/SummaryBlock/SummaryBlock.jsx";
+import {removeFromCart} from "@/api/cartService.js";
+import {useModal} from "@/context/ModalContext.jsx";
 
 const CartLayout = ({cart}) => {
     const { t } = useTranslation(['cart']);
+    const { showModal, hideModal } = useModal();
 
     const price = cart.cartItems.reduce((sum, item) => sum + (item.originalPrice || 0), 0);
     const discount = cart.cartItems.reduce((sum, item) => {
@@ -14,13 +17,20 @@ const CartLayout = ({cart}) => {
         return sum + (item.originalPrice * item.totalDiscountValue / 100);
     }, 0);
 
+
+    const handleRemoveFromCart = async (itemId) => {
+        await removeFromCart(itemId)
+            .then(showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } }))
+            .catch(showModal({modalType: 'error', modalProps: { message: 'Не вдалося видалити товар.' } }));
+    }
+
     return (
         <div className={styles.cartContainer}>
             <div className={styles.mainContent}>
                 <div className={styles.cartItemsList}>
                     {cart.cartItems.map(item => (
-                        <CartItem key={item.id} item={item} />
-                    ))}
+                        <CartItem key={item.id} item={item} onRemove={handleRemoveFromCart} />
+                    ))}(
                 </div>
             </div>
 

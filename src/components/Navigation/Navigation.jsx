@@ -9,6 +9,7 @@ import Link from "next/link";
 import { useParams } from "next/navigation";
 import { useAuth } from "../../context/AuthContext.js";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
+import BorderedComponent from "@/components/ui/BorderedComponent/BorderedComponent.jsx";
 
 const Navbar = ({ onTestClick }) => {
     const { user, userRoles } = useAuth();
@@ -18,6 +19,7 @@ const Navbar = ({ onTestClick }) => {
     const { locale } = useParams();
     const isAdmin = userRoles?.includes("Administrator");
 
+    console.log('isAdmin:', isAdmin);
     useEffect(() => {
         const handleScroll = () => {
             const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
@@ -34,6 +36,7 @@ const Navbar = ({ onTestClick }) => {
             <nav className={`${stylesNav.navbar} ${isScrolled ? stylesNav.navbarFixed : ""}`}>
                 <div className={stylesNav.navLeftMenu}>
                     <ul className={stylesNav.navLinks}>
+
                         <li><Link href={`/${locale}/`}>{t("home")}</Link></li>
                         <li><Link href={`/${locale}/news`}>{t("news")}</Link></li>
                         <li><Link href={`/${locale}/catalog`}>{t("catalog")}</Link></li>
