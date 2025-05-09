@@ -19,10 +19,14 @@ const CartLayout = ({cart}) => {
 
 
     const handleRemoveFromCart = async (itemId) => {
-        await removeFromCart(itemId)
-            .then(showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } }))
-            .catch(showModal({modalType: 'error', modalProps: { message: 'Не вдалося видалити товар.' } }));
-    }
+        try {
+            await removeFromCart(itemId);
+            showModal({ modalType: 'success', modalProps: { message: 'Товар видалено з кошика.' } });
+        } catch (e) {
+            showModal({ modalType: 'error', modalProps: { message: 'Не вдалося видалити товар.' } });
+        }
+    };
+
 
     return (
         <div className={styles.cartContainer}>
@@ -30,7 +34,7 @@ const CartLayout = ({cart}) => {
                 <div className={styles.cartItemsList}>
                     {cart.cartItems.map(item => (
                         <CartItem key={item.id} item={item} onRemove={handleRemoveFromCart} />
-                    ))}(
+                    ))}
                 </div>
             </div>
 

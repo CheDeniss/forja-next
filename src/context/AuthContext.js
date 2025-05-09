@@ -1,7 +1,15 @@
-
 'use client';
 
-import { createContext, useContext, useState, useCallback, useMemo } from "react";
+import {
+    createContext,
+    useContext,
+    useState,
+    useCallback,
+    useMemo,
+    useEffect,
+    useRef
+} from "react";
+
 import {
     loginUser,
     logoutUser,
@@ -10,17 +18,17 @@ import {
     resetPassword,
     triggerForgotPassword
 } from "@/api/authService";
-import logger from "@/utils/logger";
 import { authMe } from "@/api/userService";
+import logger from "@/utils/logger";
 import { useRouter } from 'next/navigation';
 
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-    const [user, setUser] = useState(null);
-    const [userRoles, setUserRoles] = useState([]);
+    const [userData, setUserData] = useState({ user: null, userRoles: null });
     const [isAuthLoading, setIsAuthLoading] = useState(false);
     const router = useRouter();
+    const refreshIntervalRef = useRef(null);
 
     const setLoadingState = (state) => {
         setIsAuthLoading((prev) => (prev === state ? prev : state));
@@ -31,8 +39,10 @@ export const AuthProvider = ({ children }) => {
         try {
             const response = await authMe();
             if (response) {
-                setUser(response.userProfile);
-                setUserRoles(response.userRoles);
+                setUserData({
+                    user: response.userProfile,
+                    userRoles: response.userRoles
+                });
                 logger.info("AUTH_CONTEXT -> fetchUser :: Користувача отримано");
                 return true;
             } else {
@@ -50,9 +60,8 @@ export const AuthProvider = ({ children }) => {
     const logout = useCallback(async () => {
         setLoadingState(true);
         try {
+            setUserData({ user: null, userRoles: null });
             await logoutUser();
-            setUser(null);
-            setUserRoles([]);
             logger.info("AUTH_CONTEXT -> logout :: Вихід виконано успішно");
             return true;
         } catch (error) {
@@ -62,7 +71,6 @@ export const AuthProvider = ({ children }) => {
             setLoadingState(false);
         }
     }, []);
-
 
     const handleRefreshToken = useCallback(async () => {
         if (isAuthLoading) {
@@ -75,16 +83,19 @@ export const AuthProvider = ({ children }) => {
             await new Promise((resolve) => setTimeout(resolve, 50));
             await refreshToken();
             logger.info('AUTH_CONTEXT -> handleRefreshToken :: Токен оновлено успішно');
-            await fetchUser();
-        } catch (error) {
-            logger.error('AUTH_CONTEXT -> handleRefreshToken :: Не вдалося оновити токен', error);
 
+            const success = await fetchUser();
+            if (!success) {
+                throw new Error("fetchUser failed after token refresh");
+            }
+
+        } catch (error) {
+            logger.error('AUTH_CONTEXT -> handleRefreshToken :: Не вдалося оновити токен або отримати користувача, спроба виходу..', error);
             await logout();
-            // router.replace('/login'); // редірект на логін
         } finally {
             setLoadingState(false);
         }
-    }, [fetchUser, isAuthLoading, logout, router]);
+    }, [fetchUser, isAuthLoading, logout]);
 
     const login = useCallback(async (formData) => {
         setLoadingState(true);
@@ -140,23 +151,53 @@ export const AuthProvider = ({ children }) => {
         }
     }, []);
 
-    const value = useMemo(
-        () => ({
-            user,
-            userRoles,
-            isAuthLoading,
-            login,
-            register,
-            logout,
-            fetchUser,
-            handleRefreshToken,
-            handleForgotPassword,
-            handleResetPassword
-        }),
-        [user, userRoles, isAuthLoading, login, register, logout, fetchUser, handleRefreshToken, handleForgotPassword, handleResetPassword]
-    );
+    useEffect(() => {
+        if (!userData.user) return;
 
-    return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
+        refreshIntervalRef.current = setInterval(async () => {
+            try {
+                await handleRefreshToken();
+            } catch (err) {
+                logger.error("AUTH_CONTEXT -> silent refresh :: не вдалося оновити токен", err);
+            }
+        }, 4 * 60 * 1000);
+
+        return () => {
+            if (refreshIntervalRef.current) {
+                clearInterval(refreshIntervalRef.current);
+            }
+        };
+    }, [userData.user, handleRefreshToken]);
+
+    const value = useMemo(() => ({
+        user: userData.user,
+        userRoles: userData.userRoles,
+        isAuthLoading,
+        login,
+        register,
+        logout,
+        fetchUser,
+        handleRefreshToken,
+        handleForgotPassword,
+        handleResetPassword
+    }), [
+        userData.user,
+        userData.userRoles,
+        isAuthLoading,
+        login,
+        register,
+        logout,
+        fetchUser,
+        handleRefreshToken,
+        handleForgotPassword,
+        handleResetPassword
+    ]);
+
+    return (
+        <AuthContext.Provider value={value}>
+            {children}
+        </AuthContext.Provider>
+    );
 };
 
 export const useAuth = () => useContext(AuthContext);

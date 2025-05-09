@@ -36,5 +36,5 @@ export const removeFromCart = async (itemId) => {
 };
 
 export const getCartSummary = async () => {
-     return apiClient("Cart/summary", "GET", null, {}, true);
+     return apiClient("Cart/indicator", "GET", null, {}, true);
 };

@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import styles from './LanguageSwitcher.module.css';
+import styles from './LanguageSwitcher.module.scss';
 import { useParams, usePathname, useRouter } from 'next/navigation';
 import Cookies from 'js-cookie';
 import Loader from "../ui/Loader/Loader.jsx";

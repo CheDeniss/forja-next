@@ -2,22 +2,22 @@ import { useEffect, useState } from "react";
 import { getCartSummary } from "@/api/cartService";
 
 export const useCartSummary = () => {
-    const [hasItems, setHasItems] = useState(false);
+    const [cartData, setCartData] = useState(null);
 
     useEffect(() => {
-        const fetchCart = async () => {
-            const { hasItems } = await getCartSummary();
-            setHasItems(hasItems);
+        const fetchCartIndicator = async () => {
+            const { data } = await getCartSummary();
+            setCartData(data);
         };
 
-        fetchCart();
-        window.addEventListener("cart-updated", fetchCart);
+        fetchCartIndicator();
+        window.addEventListener("cart-updated", fetchCartIndicator);
 
         return () => {
-            window.removeEventListener("cart-updated", fetchCart);
+            window.removeEventListener("cart-updated", fetchCartIndicator);
         };
     }, []);
 
 
-    return { hasItems };
+    return { cartData };
 };

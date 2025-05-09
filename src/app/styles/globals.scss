@@ -85,6 +85,13 @@
 
   --spacing-perimeter-w: 4vw;
   --spacing-perimeter-h: 4vh;
+
+  --spacing-perimeter-nav-w: 4vw;
+  --spacing-perimeter-nav-h: 4vh;
+
+  @media screen and (min-width: 1920px) {
+    --spacing-perimeter-w: 12vw;
+  }
 }
 
 @media (prefers-color-scheme: dark) {

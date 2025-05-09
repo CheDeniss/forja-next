@@ -1,7 +1,7 @@
 .header {
     display: flex;
     min-height: 95px;
-    padding: 0 var(--spacing-perimeter-w);
+    padding: 0 var(--spacing-perimeter-nav-w);
     background-color: #454545;
     color: white;
     align-items: center;
