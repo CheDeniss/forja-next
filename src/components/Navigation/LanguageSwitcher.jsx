@@ -24,7 +24,6 @@ const LanguageSwitcher = () => {
         setLoading(true);
         Cookies.set('NEXT_LOCALE', lng, { expires: 365 });
 
-        // змінюємо локаль у URL
         const segments = pathname.split('/');
         segments[1] = lng;
         const newPath = segments.join('/');

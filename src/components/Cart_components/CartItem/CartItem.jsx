@@ -11,7 +11,6 @@ const CartItem = ({ item, onRemove, onOpenStorePage }) => {
     return (
         <div className={styles.cartItem}>
             <div className={styles.imageSection}>
-                {/*<img src={item.logoUrl} alt={item.title} className={styles.itemImage} />*/}
                 {item.isAddon && (<span className={styles.dlcLabel}>DLC</span>)}
                 <MinioImage src={item.logoUrl} alt={item.title}/>
             </div>

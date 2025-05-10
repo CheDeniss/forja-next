@@ -1,17 +1,20 @@
-import './styles/globals.scss';
-import { ModalProvider } from '@/context/ModalContext';
-import {AuthProvider} from "@/context/AuthContext.js";
 
-export default function RootLayout({ children }) {
+import './styles/globals.scss';
+import ClientProviders from './ClientProviders';
+import {getUserDataFromServer} from "@/lib/server/authMeServer.js";
+
+export default async function RootLayout({ children }) {
+    const user = await getUserDataFromServer();
+
     return (
         <html lang="en">
-            <body className="app-container">
-                <AuthProvider>
-                    <ModalProvider>
-                        {children}
-                    </ModalProvider>
-                </AuthProvider>
-            </body>
+        <body className="app-container">
+        <ClientProviders initialUserData={user}>
+            {children}
+        </ClientProviders>
+        </body>
         </html>
     );
 }
+
+

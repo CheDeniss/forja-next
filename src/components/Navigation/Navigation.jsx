@@ -12,10 +12,10 @@ import { useAuth } from "@/context/AuthContext.js";
 import AdminPanelSettingsIcon from '@mui/icons-material/AdminPanelSettings';
 import { useCartSummary} from "@/hooks/useCartSummary.js";
 import BadgeDot from "@/components/ui/BadgeDot/BadgeDot.jsx";
+import Tooltip from "@mui/material/Tooltip";
 
 const Navbar = () => {
     const { user, userRoles } = useAuth();
-    // const [IsAdmin, setIsAdmin] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
     const { t, i18n } = useTranslation('navmenu');
     const { locale } = useParams();
@@ -75,36 +75,90 @@ const Navbar = () => {
 
                 <div className={stylesNav.navRightMenu}>
                     <ul className={stylesNav.navLinks}>
-                        {user &&
+                        {user && (
                             <li>
-                                <Link href={`/${locale}/cart`}>
-                                    {t("cart")}                  {/*     Cart      */}
-                                </Link>
-                                {cartData?.hasItems && <BadgeDot className={stylesNav.dot} />}
-                            </li>}
+                                {cartData?.hasItems === true ? (
+                                    <Tooltip
+                                        title={
+                                            <div>
+                                                <div style={{
+                                                    fontWeight: 500,
+                                                    fontFamily: "Fixel Display",
+                                                    fontSize: '20px',
+                                                    marginBottom: '4px'
+                                                }}>
+                                                    {t("items")}: {cartData.totalItems}
+                                                </div>
+                                                <hr style={{ borderColor: '#555' }} />
+                                                <div style={{
+                                                    fontWeight: 500,
+                                                    fontFamily: "Fixel Display",
+                                                    fontSize: '20px'
+                                                }}>
+                                                    {t("total")}: {cartData.totalPrice.toFixed(2)} ₴
+                                                </div>
+                                            </div>
+                                        }
+                                        placement="bottom"
+                                        componentsProps={{
+                                            popper: {
+                                                sx: {
+                                                    '& .MuiTooltip-tooltip': {
+                                                        fontFamily: 'Fixel Display',
+                                                        fontSize: '16px',
+                                                        border: '3px solid #E2E2E2',
+                                                        borderRadius: '2px',
+                                                        backgroundColor: '#363636',
+                                                        padding: '10px 12px',
+                                                        maxWidth: 220,
+                                                        color: '#E2E2E2',
+                                                        lineHeight: 1.4,
+                                                    }
+                                                }
+                                            }
+                                        }}
+                                    >
+                                        <div style={{ position: 'relative', display: 'inline-block' }}>
+                                            <Link href={`/${locale}/cart`}>
+                                                {t("cart")}
+                                            </Link>
+                                            <BadgeDot className={stylesNav.dot} />
+                                        </div>
+                                    </Tooltip>
+                                ) : (
+                                    <Link href={`/${locale}/cart`}>
+                                        {t("cart")}
+                                    </Link>
+                                )}
+                            </li>
+                        )}
+
                         <li>
                             {user ? (
                                 <Link href={`/${locale}/profile`}>
-                                    {t("profile")}               {/*     Profile   */}
+                                    {t("profile")}
                                 </Link>
                             ) : (
                                 <Link href={`/${locale}/auth/login`}>
-                                    {t("login")}                 {/*     Login     */}
+                                    {t("login")}
                                 </Link>
                             )}
                         </li>
+
                         <li>
                             <LanguageSwitcher />
                         </li>
+
                         {IsAdmin && (
                             <li>
-                                <Link href={`/${locale}/admin`}>      {/*     Admin     */}
+                                <Link href={`/${locale}/admin`}>
                                     <AdminPanelSettingsIcon sx={{ fontSize: 35, color: '#FF6568' }} />
                                 </Link>
                             </li>
                         )}
                     </ul>
                 </div>
+
             </nav>
         </>
     );

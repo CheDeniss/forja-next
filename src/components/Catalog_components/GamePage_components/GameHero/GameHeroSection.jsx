@@ -45,10 +45,11 @@ const GameHeroSection = ({ game }) => {
         if (!!user && !isAuthLoading) {
             try {
                 await addToCart(productId);
-                alert("Товар додано до кошика!");
+                window.dispatchEvent(new Event("cart-updated"));
+                showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } })
             } catch (e) {
                 console.error(e);
-                alert("Не вдалося додати товар.");
+                showModal({ modalType: 'error', modalProps: { message: 'Не вдалося додати товар.' } })
             }
         } else {
             showModal({
@@ -60,6 +61,7 @@ const GameHeroSection = ({ game }) => {
                         await new Promise((resolve) => setTimeout(resolve, 100));
                         try {
                             await addToCart(productId);
+                            window.dispatchEvent(new Event("cart-updated"));
                             showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } })
                         } catch (e) {
                             console.error(e);

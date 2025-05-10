@@ -6,8 +6,10 @@ import CartItem from "@/components/Cart_components/CartItem/CartItem.jsx";
 import SummaryBlock from "@/components/Cart_components/SummaryBlock/SummaryBlock.jsx";
 import {removeFromCart} from "@/api/cartService.js";
 import {useModal} from "@/context/ModalContext.jsx";
+import {useState} from "react";
 
-const CartLayout = ({cart}) => {
+const CartLayout = ({cart_}) => {
+    const [cart, setCart] = useState(cart_)
     const { t } = useTranslation(['cart']);
     const { showModal, hideModal } = useModal();
 
@@ -17,16 +19,20 @@ const CartLayout = ({cart}) => {
         return sum + (item.originalPrice * item.totalDiscountValue / 100);
     }, 0);
 
-
     const handleRemoveFromCart = async (itemId) => {
         try {
             await removeFromCart(itemId);
             showModal({ modalType: 'success', modalProps: { message: 'Товар видалено з кошика.' } });
+            window.dispatchEvent(new Event("cart-updated"));
+            const updatedCart = {
+                ...cart,
+                cartItems: cart.cartItems.filter(item => item.id !== itemId)
+            };
+            setCart(updatedCart);
         } catch (e) {
             showModal({ modalType: 'error', modalProps: { message: 'Не вдалося видалити товар.' } });
         }
     };
-
 
     return (
         <div className={styles.cartContainer}>

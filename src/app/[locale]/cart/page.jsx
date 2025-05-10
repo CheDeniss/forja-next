@@ -38,7 +38,7 @@ const Cart = () => {
     return (
         <div className={styles.cartContainer}>
             <label>My cart</label>
-            <CartLayout cart={cart}/>
+            <CartLayout cart_={cart}/>
         </div>
     );
 }
