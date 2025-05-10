@@ -9,7 +9,13 @@
     display: flex;
     justify-content: center;
     height: 10vh;
+    cursor: pointer;
     background-color: var(--gray-800);
+    transition: background-color 0.3s ease;
+
+    &:hover {
+        background-color: var(--gray-700);
+    }
 }
 
 .topButtonText {

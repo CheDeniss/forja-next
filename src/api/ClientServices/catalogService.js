@@ -4,10 +4,6 @@ export const getAttributes  = async (id) => {
     return apiClient('FilterData/product-filters', "GET", null, {}, false);
 }
 
-// export const getGameById = async (id) => {
-//     return apiClient(`Games/games/${id}`, "GET", null, {}, false);
-// }
-
 export async function getCatalogFull( filters, pageNumber = 1, pageSize = 10 ) {
     const params = new URLSearchParams();
 

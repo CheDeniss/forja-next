@@ -16,9 +16,16 @@ import smooooke from '../../../public/assets/images/footer/smoke_element.svg';
 const Footer = () => {
     const { t } = useTranslation('footer');
 
+    const handleScrollToTop = () => {
+        document.body.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    };
+
     return (
         <footer className={footerStyles.footer}>
-            <div className={footerStyles.topButton}>
+            <div onClick={handleScrollToTop} className={footerStyles.topButton}>
                 <span className={footerStyles.topButtonText}>{t('back_To_Top')}</span>
             </div>
             <div className={footerStyles.content}>
