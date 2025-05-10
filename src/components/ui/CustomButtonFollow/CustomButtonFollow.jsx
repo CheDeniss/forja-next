@@ -2,7 +2,7 @@
 
 import React, { useState } from "react";
 import styles from "./CustomButtonFollow.module.scss";
-import { startFollow, unfollow } from "../../../api/profileService.js"; // або актуальний шлях
+import { startFollow, unfollow } from "../../../api/ClientServices/profileService.js"; // або актуальний шлях
 
 const CustomButtonFollow = ({ followerId, followedId, recordId, initiallyFollowing = false }) => {
     const [isFollow, setIsFollow] = useState(initiallyFollowing);

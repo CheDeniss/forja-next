@@ -6,7 +6,7 @@ import {useTranslation} from "react-i18next";
 import CustomButtonOther from "../../ui/CustomButtonOther/CustomButtonOther.jsx";
 import MinioImage from "@/components/ui/MinioImage/MinioImage.jsx";
 import React, {useEffect, useState} from "react";
-import {getUserProfileHatImages} from "@/api/profileService.js";
+import {getUserProfileHatImages} from "@/api/ClientServices/profileService.js";
 import {Skeleton} from "@mui/material";
 
 const UserInfo = ({logout, user}) => {

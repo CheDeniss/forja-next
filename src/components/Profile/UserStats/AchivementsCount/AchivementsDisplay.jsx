@@ -3,7 +3,7 @@
 import acStyle from "./AchivementsDisplay.module.scss";
 import GameAchievementItem from "./GameAchievementItem/GameAchievementItem.jsx";
 import { useEffect, useState } from "react";
-import { getUserGameAchievementsNum } from "@/api/profileService.js";
+import { getUserGameAchievementsNum } from "@/api/ClientServices/profileService.js";
 
 const AchievementsDisplay = ({ userId }) => {
     const [lastAchievements, setLastAchievements] = useState([]);

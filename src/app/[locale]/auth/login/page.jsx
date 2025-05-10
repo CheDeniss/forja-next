@@ -5,7 +5,7 @@ import loginStyles from './LoginPage.module.css';
 
 import Loader from "@/components/ui/Loader/Loader.jsx";
 import {useAuth} from "@/context/AuthContext.js";
-import Login from "@/components/Auth_components/Login/Login.jsx";
+import Login from "@/components/Auth/Login/Login.jsx";
 import {getLocaleFromCookie} from "@/utils/locale.js";
 import {useRouter} from "next/navigation";
 

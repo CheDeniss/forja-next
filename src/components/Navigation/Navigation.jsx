@@ -87,15 +87,21 @@ const Navbar = () => {
                                                     fontSize: '20px',
                                                     marginBottom: '4px'
                                                 }}>
-                                                    {t("items")}: {cartData.totalItems}
+                                                    {t("items")}:
+                                                    <strong>
+                                                        {cartData.totalItems}
+                                                    </strong>
                                                 </div>
-                                                <hr style={{ borderColor: '#555' }} />
+                                                <hr style={{borderColor: '#555'}}/>
                                                 <div style={{
                                                     fontWeight: 500,
                                                     fontFamily: "Fixel Display",
                                                     fontSize: '20px'
                                                 }}>
-                                                    {t("total")}: {cartData.totalPrice.toFixed(2)} ₴
+                                                    {t("total")}:
+                                                    <strong>
+                                                        {cartData.totalPrice.toFixed(2)} ₴
+                                                    </strong>
                                                 </div>
                                             </div>
                                         }

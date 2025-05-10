@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from './UserLibraryAchieveModal.module.scss';
 import MinioImage from '@/components/ui/MinioImage/MinioImage.jsx';
-import { getGameAchievements } from "@/api/profileService.js";
+import { getGameAchievements } from "@/api/ClientServices/profileService.js";
 import BorderedComponent from "@/components/ui/BorderedComponent/BorderedComponent.jsx";
 
 const UserLibraryAchieveModal = ({ gameId, completedAchievements = [] }) => {

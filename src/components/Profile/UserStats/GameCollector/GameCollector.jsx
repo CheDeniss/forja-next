@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import gcStyles from './GameCollector.module.scss';
-import { getUserStatistics } from '../../../../api/profileService.js';
+import { getUserStatistics } from '../../../../api/ClientServices/profileService.js';
 
 const GameCollector = ({ userId }) => {
     const [userStatData, setUserStatData] = useState(null);

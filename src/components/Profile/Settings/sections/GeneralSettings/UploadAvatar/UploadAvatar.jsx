@@ -1,9 +1,9 @@
 import React, { useRef, useState } from 'react';
 import styles from './UploadAvatar.module.scss';
 import CustomButtonOther from "@/components/ui/CustomButtonOther/CustomButtonOther.jsx";
-import {updateUserProfileHatVariant} from "@/api/profileService.js";
+import {updateUserProfileHatVariant} from "@/api/ClientServices/profileService.js";
 import {useModal} from "@/context/ModalContext.jsx";
-import {uploadAvatar} from "@/api/Admin_Services/filesAdminService.js";
+import {uploadAvatar} from "@/api/AdminServices/filesAdminService.js";
 
 const UploadAvatar = ({ user }) => {
     const fileInputRef = useRef(null);

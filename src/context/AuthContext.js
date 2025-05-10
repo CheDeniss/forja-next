@@ -14,8 +14,8 @@ import {
     registerUser,
     resetPassword,
     triggerForgotPassword
-} from "@/api/authService";
-import { authMe } from "@/api/userService";
+} from "@/api/ClientServices/authService.js";
+import { authMe } from "@/api/ClientServices/userService.js";
 import logger from "@/utils/logger";
 
 const AuthContext = createContext();

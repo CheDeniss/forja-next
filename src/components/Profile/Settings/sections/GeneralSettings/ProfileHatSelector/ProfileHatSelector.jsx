@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import styles from './ProfileHatSelector.module.scss';
 import MinioImage from "@/components/ui/MinioImage/MinioImage.jsx";
-import {getUserProfileHatImages, updateUserProfileHatVariant} from "@/api/profileService.js";
+import {getUserProfileHatImages, updateUserProfileHatVariant} from "@/api/ClientServices/profileService.js";
 import {useModal} from "@/context/ModalContext.jsx";
 import CustomButtonOther from "@/components/ui/CustomButtonOther/CustomButtonOther.jsx";
 import userInfoStyles from "@/components/Profile/UserInfo/UserInfo.module.scss";

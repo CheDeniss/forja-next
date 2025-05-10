@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import styles from '@/components/ui/Modal_components/UserLibraryAchieveModal/UserLibraryAchieveModal.module.scss';
 import MinioImage from '@/components/ui/MinioImage/MinioImage.jsx';
-import { getUserAchievements } from "@/api/profileService.js";
+import { getUserAchievements } from "@/api/ClientServices/profileService.js";
 import BorderedComponent from "@/components/ui/BorderedComponent/BorderedComponent.jsx";
 
 const AllUsersAchievesModal = ({ userId }) => {

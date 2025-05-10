@@ -10,7 +10,7 @@ import Loader from "@/components/ui/Loader/Loader.jsx";
 import TextareaWithActions
     from "@/components/Profile/Settings/sections/GeneralSettings/TextareaWithActions/TextareaWithActions.jsx";
 import {useState} from "react";
-import {getUserProfileByIdentifier, getUsersFriendsList, startFollow, updateUserProfile} from "@/api/profileService.js";
+import {getUserProfileByIdentifier, getUsersFriendsList, startFollow, updateUserProfile} from "@/api/ClientServices/profileService.js";
 import {useModal} from "@/context/ModalContext.jsx";
 
 const GeneralSettings = () => {

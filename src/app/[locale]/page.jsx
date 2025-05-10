@@ -3,7 +3,7 @@
 import "../../i18n/i18n";
 import { useTranslation } from "react-i18next";
 import homeStyles from "./Home.module.css";
-import MainHome from "@/components/Home_components/MainHome.jsx";
+import MainHome from "@/components/Home/MainHome.jsx";
 
 export default function HomePage() {
     const { t } = useTranslation(['common', 'navmenu']); // вибір namespace за потреби

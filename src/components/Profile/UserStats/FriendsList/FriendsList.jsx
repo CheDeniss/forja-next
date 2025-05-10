@@ -1,7 +1,7 @@
 import React, { useEffect, useState, memo } from 'react';
 import flStyle from './FriendsList.module.scss';
 import FriendItem from './FriendItem/FriendItem.jsx';
-import { getUsersFriendsList } from '../../../../api/profileService.js';
+import { getUsersFriendsList } from '../../../../api/ClientServices/profileService.js';
 
 const FriendsList = ({ userId }) => {
     const [friendsList, setFriendsList] = useState([]);

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getCartSummary } from "@/api/cartService";
+import { getCartSummary } from "@/api/ClientServices/cartService.js";
 
 export const useCartSummary = () => {
     const [cartData, setCartData] = useState(null);

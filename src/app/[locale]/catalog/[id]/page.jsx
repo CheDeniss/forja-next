@@ -1,11 +1,11 @@
-import { getGameById } from '@/api/catalogService';
-import GamePageContent from '@/components/Catalog_components/GamePage_components/GamePageContent/GamePageContent.jsx';
-import styles from './GamePage.module.scss';
+import styles from '@/app/styles/pageWrapper.module.scss';
+import {getGameByIdServer} from "@/api/ServerServices/serverFetchServices.js";
+import GameClient from "@/components/Catalog/Game/GameClient/GameClient.jsx";
 
 export default async function GamePage({ params }) {
     const { id } = params;
 
-    const game = await getGameById(id);
+    const game = await getGameByIdServer(id);
 
     if (!game) {
         throw new Error('Гра не знайдена');
@@ -13,7 +13,7 @@ export default async function GamePage({ params }) {
 
     return (
         <div className={styles.wrapper}>
-            <GamePageContent game={game}/>
+            <GameClient game={game}/>
         </div>
     );
 }

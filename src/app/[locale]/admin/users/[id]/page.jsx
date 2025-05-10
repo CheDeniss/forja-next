@@ -5,7 +5,7 @@ import {
   Box, Typography, TextField, Button, Divider, Tabs, Tab
 } from '@mui/material';
 import Link from 'next/link';
-import { getFullUserById } from '../../../../../api/Admin_Services/userAdminService.js';
+import { getFullUserById } from '@/api/AdminServices/userAdminService.js';
 import upStyles from './UserProfile.module.scss';
 
 export default function UserProfilePage() {

@@ -6,9 +6,9 @@ import {
     uploadAvatar, uploadMatureContentImage, uploadMechanicImage,
     uploadNewsArticleImage, uploadProductImage,
     uploadProductLogo, uploadProfileHatVariantImage
-} from "@/api/Admin_Services/filesAdminService.js";
+} from "@/api/AdminServices/filesAdminService.js";
 import {useModal} from "@/context/ModalContext.jsx";
-import {refreshToken} from "@/api/authService.js";
+import {refreshToken} from "@/api/ClientServices/authService.js";
 
 const ImageUploadForm = () => {
     const [message, setMessage] = useState('');

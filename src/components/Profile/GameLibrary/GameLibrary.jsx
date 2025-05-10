@@ -1,7 +1,7 @@
 import styles from "./GameLibrary.module.css";
 import React, {memo, useEffect, useState} from "react";
 import ProfileUserGameItem from "./ProfileUserGameItem/ProfileUserGameItem.jsx";
-import {getUserGameLibrary} from "@/api/profileService.js";
+import {getUserGameLibrary} from "@/api/ClientServices/profileService.js";
 
 const GameLibrary = ({userId}) => {
     const [games, setGames] = useState([])

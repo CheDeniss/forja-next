@@ -2,7 +2,7 @@
 
 import { useEffect } from 'react';
 import { useAuth } from '@/context/AuthContext';
-import { refreshToken } from '@/api/authService';
+import { refreshToken } from '@/api/ClientServices/authService.js';
 import logger from '@/utils/logger';
 
 const REFRESH_INTERVAL_MS = 4 * 60 * 1000; // 4 хв

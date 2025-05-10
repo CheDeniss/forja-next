@@ -1,5 +1,5 @@
 import React from 'react';
-import Login from "@/components/Auth_components/Login/Login.jsx";
+import Login from "@/components/Auth/Login/Login.jsx";
 import styles from './LoginModal.module.scss';
 import {useAuth} from "@/context/AuthContext.js";
 import Loader from "@/components/ui/Loader/Loader.jsx";
