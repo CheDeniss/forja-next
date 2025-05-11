@@ -1,5 +1,5 @@
 
-import './styles/globals.scss';
+import '@/styles/globals.scss';
 import ClientProviders from './ClientProviders';
 import {getUserDataFromServer} from "@/lib/server/authMeServer.js";
 

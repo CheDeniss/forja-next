@@ -1,4 +1,4 @@
-import styles from '@/app/styles/pageWrapper.module.scss';
+import styles from '@/styles/pageWrapper.module.scss';
 import {getGameByIdServer} from "@/api/ServerServices/serverFetchServices.js";
 import GameClient from "@/components/Catalog/Game/GameClient/GameClient.jsx";
 

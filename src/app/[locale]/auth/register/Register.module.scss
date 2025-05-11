@@ -2,7 +2,7 @@
 .registerPageContainer {
     display: flex;
     justify-content: center;
-    height: 100%;
+    flex: 1;
     width: 100%;
     background: var(--gray-900);
     background-image: url("../../../../../public/assets/images/register/Reg_image_bkg.svg");
@@ -93,7 +93,6 @@
 
 .regVariantsBarIcons{
     display: flex;
-    height: 100%;
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
