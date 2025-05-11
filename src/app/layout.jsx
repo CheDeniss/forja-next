@@ -8,11 +8,11 @@ export default async function RootLayout({ children }) {
 
     return (
         <html lang="en">
-        <body className="app-container">
-        <ClientProviders initialUserData={user}>
-            {children}
-        </ClientProviders>
-        </body>
+            <body>
+                <ClientProviders initialUserData={user}>
+                    {children}
+                </ClientProviders>
+            </body>
         </html>
     );
 }

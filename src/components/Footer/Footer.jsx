@@ -5,19 +5,19 @@ import Link from "next/link";
 import Image from "next/image";
 import { useTranslation } from "react-i18next";
 
-import steam from '../../../public/assets/icons/svg/steam.svg';
-import facebook from '../../../public/assets/icons/svg/Facebook.svg';
-import epicgames from '../../../public/assets/icons/svg/EpicGames.svg';
-import instagram from '../../../public/assets/icons/svg/Instagram.svg';
-import twitter from '../../../public/assets/icons/svg/twiter_ico.svg';
-import forjaLogo from '../../../public/assets/images/footer/Vector.png';
-import smooooke from '../../../public/assets/images/footer/smoke_element.svg';
+import steam from '@/../public/assets/icons/svg/steam.svg';
+import facebook from '@/../public/assets/icons/svg/Facebook.svg';
+import epicgames from '@/../public/assets/icons/svg/EpicGames.svg';
+import instagram from '@/../public/assets/icons/svg/Instagram.svg';
+import twitter from '@/../public/assets/icons/svg/twiter_ico.svg';
+import forjaLogo from '@/../public/assets/images/footer/Vector.png';
+import smooooke from '@/../public/assets/images/footer/smoke_element.svg';
 
 const Footer = () => {
     const { t } = useTranslation('footer');
 
     const handleScrollToTop = () => {
-        document.body.scrollTo({
+        window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });

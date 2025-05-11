@@ -29,12 +29,12 @@ const Navbar = () => {
 
     useEffect(() => {
         const handleScroll = () => {
-            const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+            const scrollTop = document.documentElement.scrollTop;
             setIsScrolled(scrollTop > 80);
         };
 
-        document.body.addEventListener('scroll', handleScroll);
-        return () => document.body.removeEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (

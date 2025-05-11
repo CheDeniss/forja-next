@@ -10,11 +10,13 @@ export default async function LocaleLayout({ children, params }) {
     return (
         <ThemeProvider theme={muiTheme}>
             <I18nProvider locale={locale}>
-                <NavbarWrapper />
-                    <main className="main">
-                        {children}
-                    </main>
-                <FooterWrapper />
+                    <div className="wrapper">
+                        <NavbarWrapper />
+                            <div className="main">
+                                {children}
+                            </div>
+                        <FooterWrapper />
+                    </div>
             </I18nProvider>
         </ThemeProvider>
     );
