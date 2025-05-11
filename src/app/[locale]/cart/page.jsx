@@ -3,9 +3,9 @@
 import React, { useEffect, useState } from 'react';
 import styles from './CartPage.module.scss';
 import { useTranslation } from 'react-i18next';
-import { getCart } from '../../../api/cartService';
-import Loader from "../../components/ui/Loader/Loader.jsx";
-import CartLayout from "@/app/components/Cart_components/CartLayout/CartLayout.jsx";
+import { getCart } from '../../../api/ClientServices/cartService.js';
+import Loader from "@/components/ui/Loader/Loader.jsx";
+import CartLayout from "@/components/Cart/CartLayout/CartLayout.jsx";
 
 const Cart = () => {
     const {t} = useTranslation(['common', 'navmenu']); // вибір namespace за потреби
@@ -21,6 +21,7 @@ const Cart = () => {
                 alert('Помилка при завантаженні кошика');
             } finally {
                 setLoading(false);
+                console.log('Cart fetched:', cart);
             }
         };
         fetchCart();
@@ -37,7 +38,7 @@ const Cart = () => {
     return (
         <div className={styles.cartContainer}>
             <label>My cart</label>
-            <CartLayout cart={cart}/>
+            <CartLayout cart_={cart}/>
         </div>
     );
 }

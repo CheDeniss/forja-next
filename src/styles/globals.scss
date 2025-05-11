@@ -1,0 +1,252 @@
+@import 'Fonts.css';
+
+:root {
+  /* Основні кольори */
+  --main_page_bckg: rgb(30, 30, 30);
+  --main_page_text: #E2E2E2;
+
+  --main_page_bckg_light: #E2E2E2;
+  --main_page_text_light: #1E1E1E;
+
+  --hover-color: #8D59F6; /* Фіолетовий для наведення */
+  --active-element: #FF9050; /* Оранжевий для активних елементів */
+  --warning-color: #FF6568; /* Червоний для попереджень */
+  --approval-color: #006568; /* Зелений для схвалення */
+  --auxiliary-green: #356568; /* Для вторинних акцентів */
+
+  /* Відтінки сірого */
+  --gray-100: #E2E2E2;
+  --gray-200: #D0D0D0;
+  --gray-300: #BEBEBE;
+  --gray-400: #ACACAC;
+  --gray-500: #999999;
+  --gray-600: #777777;
+  --gray-700: #666666;
+  --gray-800: #4D4D4D;
+  --gray-900: #363636;
+  --gray-950: #1E1E1E;
+
+  /* Відтінки фіолетового */
+  --purple-100: #E8DEFD;
+  --purple-200: #D1BDFB;
+  --purple-300: #BB9BFA;
+  --purple-400: #A47AF8;
+  --purple-500: #8D59F6;
+  --purple-600: #7147C5;
+  --purple-700: #553594;
+  --purple-800: #382462;
+  --purple-900: #1C1231;
+
+  /* Відтінки помаранчевого */
+  --orange-100: #FFE9DC;
+  --orange-200: #FFD3B9;
+  --orange-300: #FFBC96;
+  --orange-400: #FFA673;
+  --orange-500: #FF9050;
+  --orange-600: #CC7340;
+  --orange-700: #995630;
+  --orange-800: #663A20;
+  --orange-900: #331D10;
+
+  /* Відтінки червоного */
+  --red-100: #FFE0E1;
+  --red-200: #FFC1C3;
+  --red-300: #FFA3A4;
+  --red-400: #FF8486;
+  --red-500: #FF6568;
+  --red-600: #CC5153;
+  --red-700: #993D3E;
+  --red-800: #66282A;
+  --red-900: #331415;
+
+  /* Відтінки зеленого */
+  --green-100: #CCE0E1;
+  --green-200: #99C1C3;
+  --green-300: #66A3A4;
+  --green-400: #338486;
+  --green-500: #006568;
+  --green-600: #005153;
+  --green-700: #003D3E;
+  --green-800: #00282A;
+  --green-900: #001415;
+
+  /* help color*/
+  --ax-100: #D7E0E1;
+  --ax-200: #AEC1C3;
+  --ax-300: #86A3A4;
+  --ax-400: #5D8486;
+  --ax-500: #356568;
+  --ax-600: #2A5153;
+  --ax-700: #203D3E;
+  --ax-800: #15282A;
+  --ax-900: #0B1415;
+
+    /* Відступи */
+
+  --spacing-perimeter-w: 4vw;
+  --spacing-perimeter-h: 4vh;
+
+  --spacing-perimeter-nav-w: 4vw;
+  --spacing-perimeter-nav-h: 4vh;
+
+  @media screen and (min-width: 1920px) {
+    --spacing-perimeter-w: 12vw;
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+#__next-route-announcer__ {
+  display: none;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+  -webkit-text-fill-color: var(--main_page_text) !important;
+  -webkit-box-shadow: 0 0 0 30px var(--gray-700) inset !important;
+}
+
+//html,
+//body {
+//  //overflow-x: hidden;
+//  //height: 100%;
+//  //margin: 0;
+//  //padding: 0;
+//
+//  height: 100%;
+//  overflow-x: hidden;
+//  overflow-y: auto;
+//  //scrollbar-gutter: stable;
+//  margin: 0;
+//  padding: 0;
+//  font-family: 'Oswald', sans-serif;
+//  background-color: var(--main_page_bckg);
+//  color: var(--main_page_text);
+//  scrollbar-color: var(--gray-100) var(--gray-900);
+//}
+
+html {
+  height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+  margin: 0;
+  padding: 0;
+  font-family: 'Oswald', sans-serif;
+  background-color: var(--main_page_bckg);
+  color: var(--main_page_text);
+  scrollbar-color: var(--gray-100) var(--gray-900);
+
+  body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background: none;
+
+    .wrapper {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+
+      .main{
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+      }
+    }
+  }
+}
+
+/* Заголовок секції - span */
+.sectionTitle  {
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: var(--main_page_text);
+  line-height: 1;
+}
+
+.loader{
+  .loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 48px;
+    height: 48px;
+    color: #fff;
+  }
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+  .loader:after {
+    color: var(--active-element);
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+  }
+
+  @keyframes rotate {
+    0% {
+      transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+  }
+
+  @keyframes rotateccw {
+    0% {
+      transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+      transform: translate(-50%, -50%) rotate(-360deg);
+    }
+  }
+
+  @keyframes spin {
+    0%,
+    100% {
+      box-shadow: .2em 0px 0 0px currentcolor;
+    }
+    12% {
+      box-shadow: .2em .2em 0 0 currentcolor;
+    }
+    25% {
+      box-shadow: 0 .2em 0 0px currentcolor;
+    }
+    37% {
+      box-shadow: -.2em .2em 0 0 currentcolor;
+    }
+    50% {
+      box-shadow: -.2em 0 0 0 currentcolor;
+    }
+    62% {
+      box-shadow: -.2em -.2em 0 0 currentcolor;
+    }
+    75% {
+      box-shadow: 0px -.2em 0 0 currentcolor;
+    }
+    87% {
+      box-shadow: .2em -.2em 0 0 currentcolor;
+    }
+  }
+}
+
+
+

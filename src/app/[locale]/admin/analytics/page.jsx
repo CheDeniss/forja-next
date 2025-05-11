@@ -6,9 +6,9 @@ import {
     uploadAvatar, uploadMatureContentImage, uploadMechanicImage,
     uploadNewsArticleImage, uploadProductImage,
     uploadProductLogo, uploadProfileHatVariantImage
-} from "@/api/Admin_Services/filesAdminService.js";
+} from "@/api/AdminServices/filesAdminService.js";
 import {useModal} from "@/context/ModalContext.jsx";
-import {refreshToken} from "@/api/authService.js";
+import {refreshToken} from "@/api/ClientServices/authService.js";
 
 const ImageUploadForm = () => {
     const [message, setMessage] = useState('');
@@ -119,13 +119,17 @@ const ImageUploadForm = () => {
 
             {message && <p>{message}</p>}
 
-            {/* 🟢 Додаткові кнопки для перевірки модалок */}
+            {/* Додаткові кнопки для перевірки модалок */}
             <button onClick={() => showModal({modalType: 'success', modalProps: { message: 'Test success message' } })}>
                 Show Success Modal
             </button>
 
             <button onClick={() => showModal({ modalType: 'error', modalProps: { message: 'Test error message' } })}>
                 Show Error Modal
+            </button>
+
+            <button onClick={() => showModal({ modalType: 'login'})}>
+                Show Login Modal
             </button>
 
             <button onClick={() => refreshToken()}>Refresh</button>

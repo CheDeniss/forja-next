@@ -1,15 +1,14 @@
 'use client';
 
 import React, { createContext, useContext, useState, useCallback } from 'react';
-import ModalWrapper from '@/app/components/ui/Modal_components/ModalWrapper';
-import ErrorModal from '@/app/components/ui/Modal_components/ErrorModal/ErrorModal.jsx';
-import SuccessModal from '@/app/components/ui/Modal_components/SuccessModal/SuccessModal.jsx';
+import ModalWrapper from '@/components/ui/Modal_components/ModalWrapper';
+import ErrorModal from '@/components/ui/Modal_components/ErrorModal/ErrorModal.jsx';
+import SuccessModal from '@/components/ui/Modal_components/SuccessModal/SuccessModal.jsx';
 import UserLibraryAchieveModal
-    from "@/app/components/ui/Modal_components/UserLibraryAchieveModal/UserLibraryAchieveModal.jsx";
+    from "@/components/ui/Modal_components/UserLibraryAchieveModal/UserLibraryAchieveModal.jsx";
 import AllUsersAchievesModal
-    from "@/app/components/ui/Modal_components/AllUsersAchievesModal/AllUsersAchievesModal.jsx";
-// import AchievementDetails from '@/app/components/ui/Modal_components/AchievementDetails/AchievementDetails.jsx';
-// import ConfirmModal from '@/app/components/modals/ConfirmModal';
+    from "@/components/ui/Modal_components/AllUsersAchievesModal/AllUsersAchievesModal.jsx";
+import LoginModal from "@/components/ui/Modal_components/LoginModal/LoginModal.jsx";
 
 const ModalContext = createContext();
 
@@ -39,6 +38,8 @@ export const ModalProvider = ({ children }) => {
                 return <UserLibraryAchieveModal {...modalProps} />;
             case 'user-all-achievements':
                 return <AllUsersAchievesModal {...modalProps} />;
+            case 'login':
+                return <LoginModal onSuccess={modalProps?.onSuccess} />;
             default:
                 return null;
         }

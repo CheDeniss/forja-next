@@ -7,8 +7,8 @@ import {
 } from '@mui/material';
 import Link from 'next/link';
 import styles from './GameProfile.module.scss';
-import { getGameById } from '../../../../../api/catalogService';
-import { getAttributes } from '../../../../../api/catalogService';
+import { getGameById } from '../../../../../api/ClientServices/catalogService.js';
+import { getAttributes } from '../../../../../api/ClientServices/catalogService.js';
 
 import MainInfoTab from './MainInfoTab';
 import ContentTab from './ContentTab';

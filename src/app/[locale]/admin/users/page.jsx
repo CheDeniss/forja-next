@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {Box, Typography, Button, IconButton} from '@mui/material';
 import {DataGrid} from '@mui/x-data-grid';
 import styles from './UsersPage.module.scss';
-import {getAllUsers} from "../../../../api/Admin_Services/userAdminService.js";
+import {getAllUsers} from "@/api/AdminServices/userAdminService.js";
 import Link from 'next/link';
 import EditIcon from '@mui/icons-material/Edit';
 

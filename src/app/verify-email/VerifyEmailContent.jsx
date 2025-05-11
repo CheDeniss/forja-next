@@ -2,11 +2,11 @@
 
 import { useSearchParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import Header from "../components/Header/Header.jsx";
-import { verifyEmail } from "../../api/authService";
+import Header from "@/components/Header/Header.jsx";
+import { verifyEmail } from "../../api/ClientServices/authService.js";
 import styles from "./VerifyEmailPage.module.scss";
-import Loader from "../components/ui/Loader/Loader.jsx";
-import CustomButtonOther from "../components/ui/CustomButtonOther/CustomButtonOther.jsx";
+import Loader from "@/components/ui/Loader/Loader.jsx";
+import CustomButtonOther from "@/components/ui/CustomButtonOther/CustomButtonOther.jsx";
 
 const VerifyEmailContent = () => {
     const searchParams = useSearchParams();

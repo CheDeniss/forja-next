@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import {Box, Typography, Button, IconButton, Chip} from '@mui/material';
 import {DataGrid} from '@mui/x-data-grid';
 import styles from './GamesPage.module.scss';
-import {getAllGames} from "../../../../api/Admin_Services/gamesAdminService.js";
+import {getAllGames} from "@/api/AdminServices/gamesAdminService.js";
 import Link from 'next/link';
 import EditIcon from '@mui/icons-material/Edit';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
