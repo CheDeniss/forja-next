@@ -28,12 +28,29 @@ const Navbar = () => {
     console.log('user - nav:', user);
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
             const scrollTop = document.documentElement.scrollTop;
-            setIsScrolled(scrollTop > 80);
+            const shouldBeScrolled = scrollTop > 95;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    setIsScrolled(prev => {
+                        if (prev !== shouldBeScrolled) {
+                            return shouldBeScrolled;
+                        }
+                        return prev;
+                    });
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 

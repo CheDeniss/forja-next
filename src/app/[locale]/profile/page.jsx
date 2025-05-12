@@ -2,9 +2,9 @@
 
 import profileStyles from "./Profile.module.scss";
 import { useAuth } from "@/context/AuthContext.js";
-import UserInfo from "@/components/Profile/UserInfo/UserInfo.jsx";
-import UserStats from "@/components/Profile/UserStats/UserStats.jsx";
-import GameLibrary from "@/components/Profile/GameLibrary/GameLibrary.jsx";
+import UserInfo from "@/components/Profile/MyProfile/UserInfo/UserInfo.jsx";
+import UserStats from "@/components/Profile/MyProfile/UserStats/UserStats.jsx";
+import GameLibrary from "@/components/Profile/MyProfile/GameLibrary/GameLibrary.jsx";
 import Loader from "@/components/ui/Loader/Loader.jsx";
 import React from "react";
 
@@ -17,10 +17,13 @@ const Profile = () => {
 
     return (
         <div className={profileStyles.profileContainer}>
-            <Loader isLoading={isAuthLoading} />
+            <Loader isLoading={isAuthLoading}/>
             <UserInfo logout={logout} user={user}/>
             <UserStats userId={user.id}/>
-            <GameLibrary userId={user.id}/>
+            <div style={{display: "flex", flexDirection: "column"}}>
+                <span className="sectionTitle">User Library</span>
+                <GameLibrary userId={user.id}/>
+            </div>
         </div>
     );
 };

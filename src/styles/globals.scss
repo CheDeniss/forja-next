@@ -113,25 +113,6 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--gray-700) inset !important;
 }
 
-//html,
-//body {
-//  //overflow-x: hidden;
-//  //height: 100%;
-//  //margin: 0;
-//  //padding: 0;
-//
-//  height: 100%;
-//  overflow-x: hidden;
-//  overflow-y: auto;
-//  //scrollbar-gutter: stable;
-//  margin: 0;
-//  padding: 0;
-//  font-family: 'Oswald', sans-serif;
-//  background-color: var(--main_page_bckg);
-//  color: var(--main_page_text);
-//  scrollbar-color: var(--gray-100) var(--gray-900);
-//}
-
 html {
   height: 100%;
   overflow-x: hidden;
@@ -171,6 +152,15 @@ html {
   text-transform: uppercase;
   color: var(--main_page_text);
   line-height: 1;
+  padding-bottom: 20px;
+}
+
+/* Заголовок секцій де немає інфи */
+.no_Items_Found{
+  font-family: "Fixel Display", sans-serif;
+  font-size: 2rem;
+  font-weight: 400;
+  color: var(--gray-500);
 }
 
 .loader{
