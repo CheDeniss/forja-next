@@ -68,7 +68,7 @@ const UserProfile = () => {
         <div className={style.profileContainer}>
             <UserInfo user={otherUser} myId={user.id} isIFollowing={isMyFriend} recordId={friendshipRecordId}/>
             <UserStats userId={otherUser.id} myId={user.id}/>
-            <div style={{display: "flex", flexDirection: "column"}}>
+            <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
                 <span className="sectionTitle">User Library</span>
                 <GameLibrary userId={otherUser.id}/>
             </div>

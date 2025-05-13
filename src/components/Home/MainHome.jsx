@@ -7,6 +7,7 @@ import GameShowcase from "@/components/Home/GameShowcase/GameShowcase.jsx";
 import {Skeleton} from "@mui/material";
 import SpecialOffers from "@/components/Home/SpecialOffers/SpecialOffers.jsx";
 import GameCarousel from "@/components/Home/GameCarousel/GameCarousel.jsx";
+import GameShowcaseV2 from "@/components/Home/GameShowcaseV2/GameShowcaseV2.jsx";
 
 
 const MainHome = () => {
@@ -53,7 +54,7 @@ const MainHome = () => {
                     {!homePageData ? (
                         <Skeleton variant="rectangular" width="100%" height={400} animation="wave"  />
                     ) : (
-                        <GameShowcase games={homePageData.games} />
+                        <GameShowcaseV2 games={homePageData.games} />
                     )}
                 </div>
 

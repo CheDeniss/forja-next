@@ -20,7 +20,7 @@ const Profile = () => {
             <Loader isLoading={isAuthLoading}/>
             <UserInfo logout={logout} user={user}/>
             <UserStats userId={user.id}/>
-            <div style={{display: "flex", flexDirection: "column"}}>
+            <div style={{display: "flex", flexDirection: "column", width: "100%"}}>
                 <span className="sectionTitle">User Library</span>
                 <GameLibrary userId={user.id}/>
             </div>

@@ -35,7 +35,7 @@ const FriendItem = ({ friend, isMe, isFollowing, myId }) => {
                         width={60}
                         height={60}
                         onClick={handleClick}
-                        className={frItemStyles.profileImage}
+                        pointer={true}
                     />
                 </BorderedComponent>
                 <div className={frItemStyles.textDataContainer}>

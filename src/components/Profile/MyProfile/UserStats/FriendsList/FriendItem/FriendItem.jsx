@@ -1,7 +1,5 @@
 import React from 'react';
 import frItemStyles from './FriendItem.module.scss';
-import Image from "next/image";
-import pic from '../../../../../../../public/assets/images/profile/sova.jpg';
 import CustomButtonFollow from "../../../../../ui/CustomButtonFollow/CustomButtonFollow.jsx";
 import BorderedComponent from "@/components/ui/BorderedComponent/BorderedComponent.jsx";
 import {getLocaleFromCookie} from "@/utils/locale.js";
@@ -34,9 +32,8 @@ const FriendItem = ({ friend }) => {
                         alt="profile picture"
                         width={60}
                         height={60}
-                        className={frItemStyles.profileImage}
                         onClick={handleClick}
-                        style={{ cursor: 'pointer' }}
+                        pointer={true}
                     />
                 </BorderedComponent>
                 <div className={frItemStyles.textDataContainer}>

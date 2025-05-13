@@ -25,7 +25,6 @@ const GameLibrary = ({userId}) => {
 
     return (
         <div className={styles.libraryContainer}>
-            <span className="sectionTitle">User Library</span>
             {games.map((game) => (
                 <ProfileUserGameItem key={game.id} game={game}/>
             ))}

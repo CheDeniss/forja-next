@@ -14,6 +14,8 @@ const MinioImage = ({
                         style = {},
                         skeleton = true,
                         onClick = undefined,
+                        pointer = false,
+                        onLoad = undefined
                     }) => {
     const [imgSrc, setImgSrc] = useState(src);
     const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
@@ -39,12 +41,22 @@ const MinioImage = ({
         };
     }, [src, fallbackSrc]);
 
+    const computedWidth = typeof width === 'number' ? `${width}px` : width;
+    const computedHeight = typeof height === 'number' ? `${height}px` : height;
+
+    const combinedStyle = {
+        width: computedWidth,
+        height: computedHeight,
+        ...(pointer ? { cursor: 'pointer' } : {}),
+        ...style,
+    };
+
     if (status === 'loading' && skeleton) {
         return (
             <Skeleton
                 variant="rectangular"
-                width={width}
-                height={height}
+                width={computedWidth}
+                height={computedHeight}
                 className={className}
                 sx={{ ...style }}
             />
@@ -55,7 +67,7 @@ const MinioImage = ({
         return (
             <div
                 className={`${styles.altFallback} ${className}`}
-                style={{ width, height, ...style }}
+                style={combinedStyle}
                 onClick={onClick}
             >
                 {alt}
@@ -68,9 +80,9 @@ const MinioImage = ({
             src={imgSrc}
             alt={alt}
             className={`${styles.image} ${className}`}
-            width={width}
-            height={height}
-            style={{...style}} onClick={onClick}
+            style={combinedStyle}
+            onClick={onClick}
+            onLoad={onLoad}
         />
     );
 };
@@ -93,6 +105,8 @@ export default MinioImage;
 //                         className = '',
 //                         style = {},
 //                         skeleton = true,
+//                         onClick = undefined,
+//                         pointer = false
 //                     }) => {
 //     const [imgSrc, setImgSrc] = useState(src);
 //     const [status, setStatus] = useState('loading'); // 'loading' | 'loaded' | 'error'
@@ -134,8 +148,11 @@ export default MinioImage;
 //         return (
 //             <div
 //                 className={`${styles.altFallback} ${className}`}
-//                 style={{ width, height, ...style }}
-//             >
+//                 style={{
+//                     width: typeof width === 'number' ? `${width}px` : width,
+//                     height: typeof height === 'number' ? `${height}px` : height,
+//                     ...style,
+//                 }}            >
 //                 {alt}
 //             </div>
 //         );
@@ -146,9 +163,15 @@ export default MinioImage;
 //             src={imgSrc}
 //             alt={alt}
 //             className={`${styles.image} ${className}`}
-//             style={{ width, height, ...style }}
+//             style={{
+//                 width: typeof width === 'number' ? `${width}px` : width,
+//                 height: typeof height === 'number' ? `${height}px` : height,
+//                 ...style,
+//             }}
+//             onClick={onClick}
 //         />
 //     );
 // };
 //
 // export default MinioImage;
+//
