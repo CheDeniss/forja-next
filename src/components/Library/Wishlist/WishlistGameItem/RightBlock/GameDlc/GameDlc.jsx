@@ -1,14 +1,16 @@
 import React from 'react';
 import styles from './GameDlc.module.scss';
 import Image from "next/image";
-import dlcImg from "../../../../../../../../public/assets/images/Game/DlcOwned.svg";
+import dlcImg from "@/../public/assets/images/Game/DlcOwned.svg";
+import {useRouter} from "next/navigation";
 
-const GameDlc = ({ addons = [], total = 0 }) => {
-    const owned = addons?.length || 0;
+const GameDlc = ({ gameId, total = 0 }) => {
+    const router = useRouter();
+
     return (
         <div className={styles.card}>
             <span className={styles.title}>
-                DLC Owned:
+                DLC:
             </span>
 
             <div className={styles.imgWrapper}>
@@ -16,10 +18,11 @@ const GameDlc = ({ addons = [], total = 0 }) => {
                        alt={'DLC'}
                        fill
                        style={{ objectFit: 'contain' }}/>
+                       onClick={() => router.push(`/catalog/${gameId}`)}
             </div>
 
             <span className={styles.progress}>
-                {owned}
+                {total}
             </span>
         </div>
     );

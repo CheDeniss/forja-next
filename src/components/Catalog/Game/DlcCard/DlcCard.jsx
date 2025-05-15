@@ -12,7 +12,7 @@ const DlcCard = ({ latestDlc }) => {
 
     return (
         <div className={styles.container}>
-        <div className={styles.blockName}>
+            <div className={styles.blockName}>
                 DLC
             </div>
             <div className={styles.dlcCard}>

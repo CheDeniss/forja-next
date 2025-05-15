@@ -2,14 +2,9 @@
   display: flex;
   color: var(--main_page_text);
   align-items: stretch;
-  //height: 25vh;
   height: 244px;
 
   .left, .right {
-    //flex: 0 0 calc(180px * 5 / 3);
-
-    //aspect-ratio: 5 / 3;
-
     display: flex;
     align-items: stretch;
     flex: 0 0 406px;

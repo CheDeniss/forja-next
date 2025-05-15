@@ -1,28 +1,27 @@
 import React from 'react';
-import styles from './GameDlc.module.scss';
+import styles from './GameAchieve.module.scss';
 import Image from "next/image";
-import dlcImg from "../../../../../../../../public/assets/images/Game/DlcOwned.svg";
+import achImg from "@/../public/assets/images/Game/achivments-icon.svg";
 
-const GameDlc = ({ addons = [], total = 0 }) => {
-    const owned = addons?.length || 0;
+const GameAchieve = ({ gameId, total = 0 }) => {
     return (
         <div className={styles.card}>
             <span className={styles.title}>
-                DLC Owned:
+                Achivements:
             </span>
 
             <div className={styles.imgWrapper}>
-                <Image src={dlcImg}
-                       alt={'DLC'}
+                <Image src={achImg}
+                       alt={'Ach'}
                        fill
                        style={{ objectFit: 'contain' }}/>
             </div>
 
             <span className={styles.progress}>
-                {owned}
+                {total}
             </span>
         </div>
     );
 };
 
-export default GameDlc;
+export default GameAchieve;
