@@ -78,7 +78,7 @@ export default function AuditLogTab() {
                     disableRowSelectionOnClick
                 />
             </Box>
-            <Typography variant="h6">Діяльність за типами</Typography>
+            <Typography variant="h6">Події за типами</Typography>
             <ResponsiveContainer width="100%" height={300}>
                 <BarChart data={formattedChart}>
                     <CartesianGrid strokeDasharray="3 3" />
