@@ -9,6 +9,14 @@ const ModalWrapper = ({ open, onClose, children }) => {
         <Modal open={open}
                onClose={onClose}
                closeAfterTransition
+               ModalProps={{
+                   sx: {
+                       display: 'flex',
+                       alignItems: 'center',
+                       justifyContent: 'center',
+                       boxSizing: 'border-box',
+                   },
+               }}
                BackdropProps={{
                    sx: {
                        backdropFilter: 'blur(2px)',

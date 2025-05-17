@@ -9,6 +9,7 @@ import UserLibraryAchieveModal
 import AllUsersAchievesModal
     from "@/components/ui/Modal_components/AllUsersAchievesModal/AllUsersAchievesModal.jsx";
 import LoginModal from "@/components/ui/Modal_components/LoginModal/LoginModal.jsx";
+import ReviewModal from "@/components/ui/Modal_components/ReviewModal/ReviewModal.jsx";
 
 const ModalContext = createContext();
 
@@ -40,6 +41,8 @@ export const ModalProvider = ({ children }) => {
                 return <AllUsersAchievesModal {...modalProps} />;
             case 'login':
                 return <LoginModal onSuccess={modalProps?.onSuccess} />;
+            case 'review':
+                return <ReviewModal onClose={modalProps?.onClose} onSubmit={modalProps?.onSubmit} />;
             default:
                 return null;
         }

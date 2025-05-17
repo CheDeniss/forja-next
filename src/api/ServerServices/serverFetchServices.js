@@ -68,3 +68,77 @@ export async function getGameByIdServer(id) {
 
     return await res.json();
 }
+
+{/* FAQ */}
+export async function getAllFAQ(locale) {
+    const lang = locale === 'uk' ? 'uk' : 'en';
+
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/FAQ`);
+    if (!res.ok) throw new Error("Failed to fetch FAQs");
+
+    const data = await res.json();
+
+    return data.filter(faq =>
+        lang === 'uk' ? faq.order < 0 : faq.order > 0
+    ).map(faq => ({
+        ...faq,
+        order: Math.abs(faq.order)
+    })).sort((a, b) => a.order - b.order);
+}
+
+{/* НОВИНИ */}
+export async function getAllNews(pageNumber = 1, pageSize = 10) {
+    const params = new URLSearchParams({
+        pageNumber: pageNumber.toString(),
+        pageSize: pageSize.toString(),
+    });
+
+    const url = `${process.env.NEXT_PUBLIC_API_URL}/NewsArticle/active?${params.toString()}`;
+
+    try {
+        const res = await fetch(url, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            cache: "no-store"
+        });
+
+        if (!res.ok) {
+            console.error(`Error: ${res.status} ${res.statusText}`);
+            return { paginatedResult: { items: [], totalCount: 0 }, prioritizedNewsArticles: [] };
+        }
+
+        const text = await res.text();
+        if (!text) {
+            console.warn('Empty response body');
+            return { paginatedResult: { items: [], totalCount: 0 }, prioritizedNewsArticles: [] };
+        }
+
+        return JSON.parse(text);
+    } catch (error) {
+        console.error("getAllNews error:", error);
+        return { paginatedResult: { items: [], totalCount: 0 }, prioritizedNewsArticles: [] };
+    }
+}
+
+
+export async function getNewsById(id) {
+    try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/NewsArticle/${id}`, {
+            cache: "no-store"
+        });
+
+        if (!res.ok) {
+            console.warn(`getNewsById → Failed to fetch news with id ${id}. Status: ${res.status}`);
+            return [];
+        }
+
+        return await res.json();
+    } catch (error) {
+        console.error(`getNewsById → Error fetching news with id ${id}:`, error);
+        return [];
+    }
+}
+
+

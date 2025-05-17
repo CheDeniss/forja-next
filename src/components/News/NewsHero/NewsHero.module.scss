@@ -1,0 +1,117 @@
+.container {
+  display: flex;
+  flex-direction: column;
+
+  .newsHero {
+    display: grid;
+    font-family: "Fixel Display", sans-serif;
+    color: var(--main_page_text);
+    grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+    gap: 20px;
+
+    .newsItem {
+      display: flex;
+      flex-direction: column;
+
+      .imageWrapper {
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          display: block;
+        }
+      }
+
+      .meta {
+        font-size: 14px;
+        margin: 12px 0 0 0;
+
+        .date{
+          font-weight: 300;
+        }
+      }
+
+      .title {
+        font-size: 24px;
+        font-weight: 700;
+        line-height: 1;
+        padding: 30px 0;
+        margin: 0;
+      }
+
+      .excerpt {
+        font-size: 16px;
+        font-weight: 400;
+        flex: 1;
+        margin: 0;
+        padding-bottom: 25px;
+      }
+
+      .readMore {
+        margin: 0 8px 8px;
+        align-self: flex-start;
+        padding: 6px 12px;
+        background: none;
+        border: 2px solid var(--main_page_text);
+        color: var(--main_page_text);
+        font-size: 13px;
+        cursor: pointer;
+        transition: 0.2s;
+
+        &:hover {
+          background-color: var(--main_page_text);
+          color: var(--gray-900);
+        }
+      }
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+//.hero {
+//  display: grid;
+//  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+//  gap: 16px;
+//  margin-bottom: 40px;
+//}
+//
+//.item {
+//  position: relative;
+//  display: block;
+//  border-radius: 12px;
+//  overflow: hidden;
+//  text-decoration: none;
+//}
+//
+//.image {
+//  width: 100%;
+//  height: 240px;
+//  object-fit: cover;
+//  filter: brightness(0.75);
+//  transition: transform 0.3s;
+//}
+//
+//.item:hover .image {
+//  transform: scale(1.03);
+//}
+//
+//.overlay {
+//  position: absolute;
+//  bottom: 0;
+//  padding: 16px;
+//  color: white;
+//  background: linear-gradient(to top, rgba(0,0,0,0.7), transparent 60%);
+//  width: 100%;
+//  box-sizing: border-box;
+//}

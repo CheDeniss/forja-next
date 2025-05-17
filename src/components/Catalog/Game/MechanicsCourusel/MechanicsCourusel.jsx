@@ -40,7 +40,7 @@ const MechanicsCarousel = ({ mechanics = [], options }) => {
     };
 
     if (!mechanics.length) {
-        return <div className={styles.empty}>No mechanics available</div>;
+        return <div className="no_Items_Found">No mechanics available</div>;
     }
 
     return (

@@ -3,14 +3,31 @@
 import styles from './ReviewItem.module.scss';
 import MinioImage from "@/components/ui/MinioImage/MinioImage.jsx";
 import React from "react";
+import Image from "next/image";
+import {getLocaleFromCookie} from "@/utils/locale.js";
+import {useModal} from "@/context/ModalContext.jsx";
 
 export default function ReviewItem({ review }) {
     const { user, positiveRating, comment } = review;
     const avatarUrl = user.avatarUrl;
     const username = user.username || 'Unknown';
     const userTag = user.userTag || 'Unknown';
-    const achievements = user.achievements || [];
-    const hatUrl = user.profileHatVariant ? user.profileHatVariant : 'null';
+    const hatUrl = user.hatVariantUrl || 'null';
+    const { showModal } = useModal();
+
+    const handleClick = () => {
+        if (!userTag) {
+            showModal({
+                modalType: 'error',
+                modalProps: { message: 'This user has not set a tag yet.' }
+            });
+            return;
+        }
+        const locale = getLocaleFromCookie();
+        const identifier = userTag || username;
+        const url = `/${locale}/profile/${identifier}`;
+        window.open(url, '_blank');
+    };
 
     return (
         <div className={styles.reviewItem}>
@@ -18,48 +35,51 @@ export default function ReviewItem({ review }) {
             <div className={styles.leftSide}>
                 <div className={styles.avatar}>
                     <MinioImage
-                    src={avatarUrl}
-                    alt="Avatar"
+                        src={avatarUrl}
+                        alt="Avatar"
+                        onClick={handleClick}
+                        pointer={true}
                     />
                 </div>
                 <div className={styles.profileHero}>
                     <div className={styles.userDetails}>
                         <div className={styles.textData}>
-                            <span className={styles.userDetailsUsername}>
-                                {username}
+                           <span onClick={handleClick}
+                                 className={styles.userDetailsUsername}>
+                                 {username}
                             </span>
-                                <span className={styles.userDetailsOtherData}>
+                            { userTag &&
+                                <span onClick={handleClick}
+                                      className={styles.userDetailsOtherData}>
                                 {userTag}
-                            </span>
+                            </span>}
                         </div>
-                        <div className={styles.ratingIcon}>
+                        <div className={`${styles.ratingIcon} ${positiveRating ? styles.like : styles.dislike}`}>
                             {positiveRating ? (
-                                <Image src="/assets/icons/svg/like.svg" alt="Like" width={'100%'} height={'100%'}/>
+                                <Image src="/assets/icons/svg/like.svg" alt="Like" width={48} height={48}/>
                             ) : (
-                                <Image src='/assets/icons/svg/dislike.svg' alt="Dislike" width={'100%'} height={'100%'}/>
+                                <Image src="/assets/icons/svg/dislike.svg" alt="Dislike" width={48} height={48}/>
                             )}
                         </div>
+
                     </div>
                     <div className={styles.backgroundImage}>
                         <MinioImage
-                                    src={hatUrl || 'public/assets/fallbacks/NoImage.svg'}
-                                    alt="Profile Background"/>
+                            src={hatUrl || 'public/assets/fallbacks/NoImage.svg'}
+                            alt="Profile Background"/>
                     </div>
                 </div>
             </div>
 
             <div className={styles.rightSide}>
                 <div className={styles.comment}>
-                    {comment || (
-                        <>
-                            Lorem ipsum dolor sit amet consectetur. Enim leo lectus urna tristique aenean morbi in
-                            in fames.
-                            A blandit sit aenean faucibus rhoncus vel arcu egestas. Adipiscing sodales purus pretium
-                            massa etiam ullamcorper. Dui netus sed pellentesque enim nunc curabitur semper
-                            pellentesque
-                            nunc. Vel nibh amet condimentum netus faucibus velit nunc nec.
-                        </>
-                    )}
+                    <div className={styles.commentInner}>
+                        {comment || (
+                            <>
+                                No review text provided.
+                            </>
+                        )}
+                    </div>
                 </div>
             </div>
         </div>

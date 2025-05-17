@@ -34,13 +34,13 @@ const GameShowcaseV2 = ({ games }) => {
 
     const preloadGame = async (game) => {
         const logoUrl = await preloadImage(game.logoUrl);
-        const images = await Promise.all((game.images || []).map(preloadImage));
+        const images = await Promise.all((game.images || []).slice(0, 3).map(preloadImage));
         return { ...game, logoUrl, images };
     };
 
     useEffect(() => {
         if (games == null) {
-            return; // нічого не вантажимо
+            return;
         }
 
         const preloadInitialGames = async () => {
@@ -49,16 +49,14 @@ const GameShowcaseV2 = ({ games }) => {
                 setLoading(false);
                 return;
             }
-            setAnimateSkeleton(true); // Анімація скелетону
+            setAnimateSkeleton(true);
 
-            // Спочатку завантажуємо тільки перші 2 гри
             const firstGames = await Promise.all(games.slice(0, 2).map(preloadGame));
 
             setPreparedGames(firstGames);
             setAnimateSkeleton(false);
             setLoading(false);
 
-            // Потім фоном догружаємо решту
             preloadRestGames();
         };
 

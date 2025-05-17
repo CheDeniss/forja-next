@@ -4,8 +4,11 @@ import ReviewItem from './ReviewItem/ReviewItem.jsx';
 import styles from './ReviewList.module.scss';
 import React, { useEffect, useState } from 'react';
 import CustomButtonOther from '@/components/ui/CustomButtonOther/CustomButtonOther.jsx';
-import { GetAllReviewsForGame } from '@/api/ClientServices/gameService.js';
+import {GetAllReviewsForGame, SubmitReviewForGame} from '@/api/ClientServices/gameService.js';
 import { Skeleton, Pagination } from '@mui/material';
+import {useModal} from "@/context/ModalContext.jsx";
+import {useAuth} from "@/context/AuthContext.js";
+import {addToCart} from "@/api/ClientServices/cartService.js";
 
 export default function ReviewList({ gameId, gameName }) {
     const [reviews, setReviews] = useState([]);
@@ -14,6 +17,8 @@ export default function ReviewList({ gameId, gameName }) {
     const [page, setPage] = useState(1);
     const [totalCount, setTotalCount] = useState(0);
     const [pageSize, setPageSize] = useState(10); // За замовчуванням 10, як у тебе в даних
+    const { showModal, hideModal } = useModal();
+    const { user, isAuthLoading } = useAuth();
 
     useEffect(() => {
         const loadReviews = async () => {
@@ -46,13 +51,71 @@ export default function ReviewList({ gameId, gameName }) {
         setPage(value);
     };
 
+    const handleReviewSubmit = async (reviewData) => {
+        console.log('Submitting review:', reviewData);
+
+        if (!user.id) {
+            hideModal();
+            console.error('Failed get user');
+            setError('Uh-oh! We have a problem with your account. Please contact support.');
+            return;
+        }
+
+        try {
+            setLoading(true);
+            await SubmitReviewForGame({
+                userId: user.id,
+                productId: gameId,
+                positiveRating: reviewData.recommend,
+                comment: reviewData.reviewText,
+                createdAt: new Date().toISOString(),
+            });
+
+            const response = await GetAllReviewsForGame(gameId, page, pageSize);
+            setReviews(response.items || []);
+            setTotalCount(response.totalCount || 0);
+
+            hideModal();
+            showModal({ modalType: 'success', modalProps: { message: 'Thanks! Your review will appear after a quick check.' } });
+        } catch (err) {
+            console.error('Failed to submit review:', err);
+            showModal({ modalType: 'error', modalProps: { message: 'Uh-oh! We couldn’t submit your review. Give it another shot!' } });
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    const handleAddReview = () => {
+        const openReviewModal = () => {
+            showModal({
+                modalType: 'review',
+                modalProps: { onClose: hideModal, onSubmit: handleReviewSubmit },
+            });
+        };
+
+        if (!user && !isAuthLoading) {
+            showModal({
+                modalType: 'login',
+                modalProps: {
+                    onSuccess: async () => {
+                        hideModal();
+                        openReviewModal();
+                    },
+                },
+            });
+            return;
+        }
+
+        openReviewModal();
+    };
+
     const totalPages = Math.ceil(totalCount / pageSize);
 
     return (
         <div className={styles.reviewList}>
             <div className={styles.header}>
                 <span className={styles.blockName}>{`REVIEWS FOR GAME ${gameName}`}</span>
-                <CustomButtonOther>Add review</CustomButtonOther>
+                <div><CustomButtonOther onClick={handleAddReview}>Add review</CustomButtonOther></div>
             </div>
 
             {loading && renderSkeletons()}

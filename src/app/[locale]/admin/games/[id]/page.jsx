@@ -5,9 +5,7 @@ import { useParams } from 'next/navigation';
 import {
     Box, Typography, Button, Tabs, Tab, Divider
 } from '@mui/material';
-import Link from 'next/link';
 import styles from './GameProfile.module.scss';
-import { getGameById } from '../../../../../api/ClientServices/catalogService.js';
 import { getAttributes } from '../../../../../api/ClientServices/catalogService.js';
 
 import MainInfoTab from './MainInfoTab';
@@ -15,6 +13,7 @@ import ContentTab from './ContentTab';
 import AddonsTab from './AddonsTab';
 import DiscountsTab from './DiscountsTab';
 import ImagesTab from './ImagesTab';
+import {getGameById} from "@/api/ClientServices/gameService.js";
 
 export default function GameProfilePage() {
     const { id } = useParams();

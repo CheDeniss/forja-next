@@ -19,7 +19,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const { t, i18n } = useTranslation('navmenu');
     const { locale } = useParams();
-    const IsAdmin = userRoles?.includes("Administrator");
+    const IsAdmin = userRoles?.includes("Administrator" || "SystemAdministrator");
     const { cartData } = useCartSummary();
 
     console.log('cartData - nav:', cartData);

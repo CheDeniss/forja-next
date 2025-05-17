@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
 import { getCartSummary } from "@/api/ClientServices/cartService.js";
+import { useAuth } from "@/context/AuthContext.js";
 
 export const useCartSummary = () => {
     const [cartData, setCartData] = useState(null);
+    const { user } = useAuth();
 
     const fetchCartIndicator = async () => {
         try {
@@ -15,13 +17,15 @@ export const useCartSummary = () => {
     };
 
     useEffect(() => {
+        if (!user) return;
+
         fetchCartIndicator();
         window.addEventListener("cart-updated", fetchCartIndicator);
 
         return () => {
             window.removeEventListener("cart-updated", fetchCartIndicator);
         };
-    }, []);
+    }, [user]);
 
     return { cartData };
 };

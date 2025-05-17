@@ -31,7 +31,7 @@ const DlcCard = ({ latestDlc }) => {
                         </div>
 
                         <div className={styles.priceSection}>
-                            <CustomButtonOther>Add to Wishlist</CustomButtonOther>
+                            {/*<CustomButtonOther>Add to Wishlist</CustomButtonOther>*/}
                             <PriceBuyBlock productPrice={latestDlc.price}
                                            onBuyClick={null}
                                            discountValue={latestDlc.discounts?.[0]?.discountValue ?? ''}

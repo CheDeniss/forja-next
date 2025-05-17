@@ -113,6 +113,10 @@ input:-webkit-autofill:active {
   -webkit-box-shadow: 0 0 0 30px var(--gray-700) inset !important;
 }
 
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 html {
   height: 100%;
   overflow-x: hidden;

@@ -42,37 +42,32 @@ const GameHeroSection = ({ game }) => {
     console.log('Game fetched:', game);
 
     const addProdToCart = async (productId) => {
-        if (!!user && !isAuthLoading) {
+        const performAddToCart = async () => {
             try {
                 await addToCart(productId);
                 window.dispatchEvent(new Event("cart-updated"));
-                showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } })
+                showModal({ modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } });
             } catch (e) {
                 console.error(e);
-                showModal({ modalType: 'error', modalProps: { message: 'Не вдалося додати товар.' } })
+                showModal({ modalType: 'error', modalProps: { message: 'Не вдалося додати товар.' } });
             }
+        };
+
+        if (user && !isAuthLoading) {
+            await performAddToCart();
         } else {
             showModal({
                 modalType: 'login',
                 modalProps: {
                     onSuccess: async () => {
-                        console.log('-----------onSuccess');
                         hideModal();
-                        await new Promise((resolve) => setTimeout(resolve, 100));
-                        try {
-                            await addToCart(productId);
-                            window.dispatchEvent(new Event("cart-updated"));
-                            showModal({modalType: 'success', modalProps: { message: 'Товар додано до кошика!' } })
-                        } catch (e) {
-                            console.error(e);
-                            showModal({ modalType: 'error', modalProps: { message: 'Не вдалося додати товар.' } })
-                        }
-                    }
-                }
+                        await new Promise((resolve) => setTimeout(resolve, 100)); // Можна буде замінити краще
+                        await performAddToCart();
+                    },
+                },
             });
         }
     };
-
 
     const totalReviews = positiveReviewsCount + negativeReviewsCount;
     const rating = totalReviews > 0

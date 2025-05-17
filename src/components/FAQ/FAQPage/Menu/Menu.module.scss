@@ -1,0 +1,33 @@
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+
+.hrline{
+  width: 100%;
+  height: 1px;
+  background:linear-gradient(to right, #595959, var(--gray-900));
+}
+
+.menuItem {
+  width: 100%;
+  aspect-ratio: 415/69;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Oswald', sans-serif;
+  background-color: var(--gray-900);
+  border: none;
+  text-align: left;
+  text-transform: uppercase;
+  padding: 8px 12px;
+  font-size: 20px;
+  font-weight: 400;
+  cursor: pointer;
+  color: var(--main_page_text);
+  transition: background 0.2s;
+
+  &:hover {
+    background-color: var(--gray-700);
+  }
+}

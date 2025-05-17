@@ -21,10 +21,7 @@ $default-corner-height: 20%;
 
 .borderedClip {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  inset: 0; // новий стиль - займає весь простір
   border: 2px solid var(--border-color);
   border-radius: 3px;
 
@@ -60,13 +57,55 @@ $default-corner-height: 20%;
   z-index: 1;
 }
 
+
+//.borderedClip {
+//  position: absolute;
+//  top: -4px;
+//  left: -4px;
+//  width: calc(100% + 4px);
+//  height: calc(100% + 4px);
+//  border: 2px solid var(--border-color);
+//  border-radius: 3px;
+//
+//  $corner-width: var(--corner-width, $default-corner-width);
+//  $corner-height: var(--corner-height, $default-corner-height);
+//  $gap-size: calc(100% - #{$corner-width});
+//  $gap-height: calc(100% - #{$corner-height});
+//
+//  clip-path: polygon(
+//                  #{$corner-width} #{$corner-height},
+//                  0% #{$corner-height},
+//                  0% 0%,
+//                  #{$corner-width} 0%,
+//
+//                  #{$corner-width} 100%,
+//                  0% 100%,
+//                  0% #{$gap-height},
+//
+//                  100% #{$gap-height},
+//                  100% 100%,
+//                  #{$gap-size} 100%,
+//
+//                  #{$gap-size} 0%,
+//                  100% 0%,
+//                  100% #{$corner-height},
+//
+//                  #{$gap-size} #{$corner-height},
+//                  #{$gap-size} 100%,
+//                  #{$gap-size} #{$gap-height},
+//                  #{$corner-width} #{$gap-height},
+//                  #{$corner-width} 100%
+//  );
+//  z-index: 1;
+//}
+
 .borderedContent {
   position: relative;
   z-index: 2;
   background-color: transparent;
   width: 100%;
   height: 100%;
-  padding: var(--bordered-padding, 3px);
+  padding: var(--bordered-padding, 6px);
   box-sizing: border-box;
   display: flex;
   align-items: center;
