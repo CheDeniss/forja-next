@@ -7,16 +7,23 @@ import Loader from "@/components/ui/Loader/Loader.jsx";
 import {useAuth} from "@/context/AuthContext.js";
 import Login from "@/components/Auth/Login/Login.jsx";
 import {getLocaleFromCookie} from "@/utils/locale.js";
-import {useRouter} from "next/navigation";
+import {useRouter, useSearchParams} from "next/navigation";
 
 const LoginPage = () => {
     const isAuthLoading = useAuth().isAuthLoading;
     const router = useRouter();
+    const searchParams = useSearchParams();
 
     const redirect = () => {
+        const returnTo = searchParams.get('returnTo');
         const locale = getLocaleFromCookie();
-        const url = `/${locale}/profile`;
-        router.push(url);
+        const fallback = `/${locale}/profile`;
+
+        if (returnTo && returnTo.startsWith('/')) {
+            router.push(returnTo);
+        } else {
+            router.push(fallback);
+        }
     };
 
     return (

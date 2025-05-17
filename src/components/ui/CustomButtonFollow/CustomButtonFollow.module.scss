@@ -19,42 +19,42 @@ $gap-height: 100% - $corner-height;
   height: auto;
 }
 
-/* Зовнішня рамка (імітація куточків) */
 .buttonBorder {
   position: absolute;
-  top: -4px;
-  left: -4px;
-  width: calc(100% + 4px);
-  height: calc(100% + 4px);
+  inset: -4px;
   border: 2px solid var(--gray-100);
   border-radius: 3px;
-  transition: border 0.3s ease;
+
+  $corner-width: var(--corner-width, 15%);
+  $corner-height: var(--corner-height, 20%);
+  $gap-size: calc(100% - #{$corner-width});
+  $gap-height: calc(100% - #{$corner-height});
+
   clip-path: polygon(
-                  $corner-width $corner-height, /* Верхній лівий кут */
+                  $corner-width $corner-height,
                   0% $corner-height,
                   0% 0%,
                   $corner-width 0%,
 
-                  $corner-width 100%, /* Нижній лівий кут */
+                  $corner-width 100%,
                   0% 100%,
                   0% $gap-height,
 
-                  100% $gap-height, /* Нижній правий кут */
+                  100% $gap-height,
                   100% 100%,
                   $gap-size 100%,
 
-                  $gap-size 0%, /* Верхній правий кут */
+                  $gap-size 0%,
                   100% 0%,
                   100% $corner-height,
 
                   $gap-size $corner-height,
-
-                  $gap-size 100%, /* Повторний прохід через нижній правий кут */
+                  $gap-size 100%,
                   $gap-size $gap-height,
-
-                  $corner-width $gap-height, /* Завершення у нижньому лівому куті */
+                  $corner-width $gap-height,
                   $corner-width 100%
   );
+  z-index: 99;
 }
 
 .buttonWrapper:hover .buttonBorder {

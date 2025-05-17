@@ -9,11 +9,11 @@ export const loginUser = async (credentials) => {
 };
 
 export const logoutUser = async () => {
-    return apiClient("Auth/logout", "POST", null, {}, true);
+    return apiClient("Auth/logout", "POST", null, {}, true, false);
 }
 
 export const refreshToken = async () => {
-    return apiClient("Auth/refresh", "POST", null, {}, true);
+    return apiClient("Auth/refresh", "POST", null, {}, true, false);
 }
 
 export const resendEmailConfirmation = async () => {

@@ -1,0 +1,33 @@
+.section {
+  padding: 20px 80px;
+  background-color: var(--gray-800);
+  margin-right: 20px;
+  color: var(--main_page_text);
+
+  h2 {
+    font-family: 'Oswald', sans-serif;
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1.1;
+  }
+
+  .qaItem {
+    margin-bottom: 20px;
+
+    h3 {
+      font-family: 'Oswald', sans-serif;
+      font-size: 20px;
+      margin: 20px 0;
+      text-transform: uppercase;
+      font-weight: 400;
+    }
+
+    p {
+      font-family: "Fixel Display", sans-serif;
+      margin: 0;
+      font-size: 20px;
+      color: var(--main_page_text);
+    }
+  }
+}

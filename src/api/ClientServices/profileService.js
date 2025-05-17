@@ -22,14 +22,6 @@ export const unfollow = async (followedId) => {
     return apiClient(`UserFollower/${followedId}`, "DELETE", null, {}, true);
 }
 
-export const getImageURL = async (avatarURL) => {
-    return apiClient(`Files/images/url?objectPath=${avatarURL}`, "GET", null, {}, true);
-}
-
-export const getUserGameLibrary = async (userId) => {
-    return apiClient(`UserLibrary/games/user/${userId}`, "GET", null, {}, true);
-};
-
 export const getUserGameAchievementsNum = async (userId, num) => {
     return apiClient(`Achievement/user/${userId}/achievements/${num}`, "GET", null, {}, true);
 }

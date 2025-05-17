@@ -9,12 +9,13 @@
   .leftSection {
     display: flex;
     flex: 1;
+    cursor: pointer;
 
     .imgContainer{
-      display: flex;
       width: 100%;
       height: 100%;
-      position: relative;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
     }
 
     .mainImage {
@@ -47,6 +48,7 @@
       height: calc(50% - 7px);
       flex-direction: column;
       justify-content: center;
+      cursor: pointer;
       //border: 1px solid red;
 
       .cellContent {
@@ -105,6 +107,14 @@
 
       img:hover{
         opacity: 1;
+      }
+
+      .cellContent p{
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 9;
+        overflow: hidden;
+        margin-bottom: 0;
       }
     }
   }

@@ -12,8 +12,9 @@ export default function AdminHomePage() {
     const links = [
         { title: 'Користувачі', href: `/${locale}/admin/users` },
         { title: 'Ігри та контент', href: `/${locale}/admin/games` },
+        { title: 'Новини', href: `/${locale}/admin/news` },
         { title: 'Магазин', href: `/${locale}/admin/store` },
-        { title: 'Техпідтримка', href: `/${locale}/admin/support/tickets` },
+        { title: 'Техпідтримка', href: `/${locale}/admin/support` },
         { title: 'Аналітика', href: `/${locale}/admin/analytics` },
     ];
 
@@ -28,15 +29,7 @@ export default function AdminHomePage() {
 
             <div className={mainStyles.buttonContainer}>
                 {links.map((item, index) => (
-                    // <Grid item xs={12} sm={6} md={4} key={index}>
-                    //     <Paper elevation={3} sx={{ p: 2 }}>
-                    //         <Link href={item.href} underline="none">
-                    //             <Typography variant="h6">{item.title}</Typography>
-                    //         </Link>
-                    //     </Paper>
-                    // </Grid>
-                    <CustomButtonOther width="200px" height="50px" link={item.href} key={index}>{item.title}</CustomButtonOther>
-
+                    <CustomButtonOther width="175px" height="50px" link={item.href} key={index}>{item.title}</CustomButtonOther>
                 ))}
             </div>
         </Box>

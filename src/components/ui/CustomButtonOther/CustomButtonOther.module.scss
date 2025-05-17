@@ -17,42 +17,48 @@ $gap-height: 100% - $corner-height;
     width: auto;
     height: auto;
 
-    /* Зовнішня рамка (імітація куточків) */
+    &:has(.customButton:disabled) .buttonBorder {
+      border: 2px solid var(--gray-900);
+    }
+
     .buttonBorder {
       position: absolute;
-      top: -4px;
-      left: -4px;
-      width: calc(100% + 4px);
-      height: calc(100% + 4px);
+      inset: -4px;
       border: 2px solid var(--gray-100);
       border-radius: 3px;
+
+      $corner-width: var(--corner-width, 15%);
+      $corner-height: var(--corner-height, 20%);
+      $gap-size: calc(100% - #{$corner-width});
+      $gap-height: calc(100% - #{$corner-height});
+
       clip-path: polygon(
-                      $corner-width $corner-height, /* Верхній лівий кут */
+                      $corner-width $corner-height,
                       0% $corner-height,
                       0% 0%,
                       $corner-width 0%,
 
-                      $corner-width 100%, /* Нижній лівий кут */
+                      $corner-width 100%,
                       0% 100%,
                       0% $gap-height,
 
-                      100% $gap-height, /* Нижній правий кут */
+                      100% $gap-height,
                       100% 100%,
                       $gap-size 100%,
 
-                      $gap-size 0%, /* Верхній правий кут */
+                      $gap-size 0%,
                       100% 0%,
                       100% $corner-height,
 
                       $gap-size $corner-height,
-
-                      $gap-size 100%, /* Повторний прохід через нижній правий кут */
+                      $gap-size 100%,
                       $gap-size $gap-height,
-
-                      $corner-width $gap-height, /* Завершення у нижньому лівому куті */
+                      $corner-width $gap-height,
                       $corner-width 100%
       );
+      z-index: 99;
     }
+
 
     /* Основний стиль для button */
     .customButton {
@@ -78,7 +84,11 @@ $gap-height: 100% - $corner-height;
       transition: background-color 0.3s ease;
     }
 
-    .customButton:active {
+    .customButton:disabled {
+      opacity: 0.6;
+      cursor: not-allowed;
+      filter: grayscale(50%);
+      transition: all 0.3s ease;
     }
   }
 }

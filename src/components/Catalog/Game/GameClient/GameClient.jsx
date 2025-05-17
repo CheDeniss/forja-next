@@ -6,6 +6,7 @@ import GameDescriptionBlock from '@/components/Catalog/Game/GameDescriptionBlock
 import GameDetailsFooter from '@/components/Catalog/Game/GameDetailsFooter/GameDetailsFooter.jsx';
 import MechanicsCarousel from '@/components/Catalog/Game/MechanicsCourusel/MechanicsCourusel.jsx';
 import styles from './GameClient.module.scss';
+import ReviewList from "@/components/Catalog/Game/Review/ReviewList.jsx";
 
 export default function GameClient({ game }) {
     const OPTIONS = { loop: true, align: 'start', skipSnaps: false };
@@ -33,11 +34,13 @@ export default function GameClient({ game }) {
                                interfaceLanguages={game.interfaceLanguages}
             />
 
-
             {/* Карусель механік */}
             <div className={styles.hrline}></div>
             <MechanicsCarousel mechanics={game.mechanics} options={OPTIONS}/>
 
+            {/* Карусель Відгуки */}
+            <div className={styles.hrline}></div>
+            <ReviewList gameId={game.id} gameName={game.title}/>
         </main>
     );
 }

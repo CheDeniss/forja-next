@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import styles from './CatalogClient.module.scss';
-import FiltersPanel from '@/components/Catalog/FiltersPanel/FiltersPanel.jsx';
+import FiltersPanel from '@/components/ui/FiltersPanel/FiltersPanel.jsx';
 import { getCatalogFull } from '@/api/ClientServices/catalogService.js';
 import GameItem from '@/components/Catalog/GameItem/GameItem.jsx';
 import { Skeleton, Pagination, CircularProgress, IconButton } from '@mui/material';

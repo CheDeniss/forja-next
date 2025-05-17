@@ -8,4 +8,6 @@ export const getFullUserById = async (id) => {
     return apiClient(`User/user/${id}`, "GET", null, {}, true);
 }
 
-// export const getUserById = async (id) => {
+export const getAllWishlists = async () => {
+    return apiClient("UserWishList", "GET", null, {}, false);
+}

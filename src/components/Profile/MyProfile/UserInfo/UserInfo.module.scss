@@ -1,0 +1,171 @@
+
+.userInfoContainer {
+  display: flex;
+  width: 100%;
+  aspect-ratio: 3.4 / 1;
+  gap: 20px;
+  align-items: stretch;
+}
+
+
+.avatarContainer {
+    display: flex;
+    flex-shrink: 9;
+    aspect-ratio: 100/86;
+    position: relative;
+
+    .avatarka {
+        width: 86%;
+        height: 100%;
+    }
+}
+
+.avatarContainer::after {
+    display: inline-block;
+    content: "";
+    position: absolute;
+    width: 14%;
+    height: 100%;
+    right: 0;
+    top: 0;
+    clip-path: polygon(0 0, 100% 10%, 100% 90%, 0 100%);
+    background: linear-gradient(to right, var(--gray-800) 5%, rgba(255, 255, 255, 0) 100%);
+}
+
+.profileHero {
+    display: flex;
+    position: relative;
+    aspect-ratio: auto;
+    overflow: hidden;
+    flex-shrink: 2;
+
+    .userDetails {
+        display: flex;
+        flex: 1;
+        position: absolute;
+        flex-direction: column;
+        padding: 20px 40px;
+        justify-content: space-between;
+        z-index: 2;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2)), center/cover no-repeat;
+        box-sizing: border-box;
+
+        .backgroundImage {
+            display: flex;
+            position: absolute;
+            align-self: center;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            z-index: 1;
+        }
+
+      .userDetailsUsername {
+        font-size: 3rem;
+        font-weight: 700;
+        color: var(--main_page_text);
+        text-transform: uppercase;
+      }
+
+      .userDetailsOtherData {
+        font-size: 1rem;
+        font-family: "Fixel Display", sans-serif;
+        margin: 0;
+        color: var(--main_page_text);
+      }
+
+      .userDetailsBio {
+        display: flex;
+        flex-grow: 2;
+        resize: none;
+        padding-top: 20px;
+        border: 0;
+        font-size: 1rem;
+        font-family: 'Oswald', sans-serif;
+        color: var(--main_page_text);
+        background-color: transparent;
+      }
+
+      .userDetailsButtons{
+        display: flex;
+        gap: 10px;
+        margin: 20px 0;
+      }
+
+      .followButton {
+        background: var(--gray-800);
+        padding: 8px 16px;
+        border-radius: 5px;
+        color: white;
+        cursor: pointer;
+        text-transform: uppercase;
+      }
+    }
+}
+
+
+
+/////////////////////////////////////////////////
+
+
+//.userInfoContainer {
+//  display: flex;
+//  width: 100%;
+//  gap: 20px;
+//  align-items: stretch;
+//  box-sizing: border-box;
+//
+//  .avatarContainer {
+//    flex-shrink: 0;
+//    width: auto;
+//    aspect-ratio: 1 / 1;
+//    height: auto;
+//    align-self: stretch; // розтягується по висоті правої частини
+//
+//    .avatarka {
+//      width: 100%;
+//      height: 100%;
+//      object-fit: cover;
+//    }
+//  }
+//
+//  .profileHero {
+//    flex-grow: 1;
+//    position: relative;
+//    aspect-ratio: 1134 / 516;
+//    overflow: hidden;
+//    display: flex; // додаємо, щоб align-items працював
+//
+//    .userDetails {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      display: flex;
+//      flex-direction: column;
+//      justify-content: space-between;
+//      padding: 20px 40px;
+//      width: 100%;
+//      height: 100%;
+//      background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.2));
+//      box-sizing: border-box;
+//      z-index: 2;
+//    }
+//
+//    .backgroundImage {
+//      position: absolute;
+//      top: 0;
+//      left: 0;
+//      width: 100%;
+//      height: 100%;
+//      object-fit: cover;
+//      z-index: 1;
+//    }
+//}
+//
+//
+//}

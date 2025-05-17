@@ -19,7 +19,7 @@ const Navbar = () => {
     const [isScrolled, setIsScrolled] = useState(false);
     const { t, i18n } = useTranslation('navmenu');
     const { locale } = useParams();
-    const IsAdmin = userRoles?.includes("Administrator");
+    const IsAdmin = userRoles?.includes("Administrator" || "SystemAdministrator");
     const { cartData } = useCartSummary();
 
     console.log('cartData - nav:', cartData);
@@ -28,12 +28,29 @@ const Navbar = () => {
     console.log('user - nav:', user);
 
     useEffect(() => {
+        let ticking = false;
+
         const handleScroll = () => {
             const scrollTop = document.documentElement.scrollTop;
-            setIsScrolled(scrollTop > 80);
+            const shouldBeScrolled = scrollTop > 95;
+
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    setIsScrolled(prev => {
+                        if (prev !== shouldBeScrolled) {
+                            return shouldBeScrolled;
+                        }
+                        return prev;
+                    });
+                    ticking = false;
+                });
+
+                ticking = true;
+            }
         };
 
-        window.addEventListener('scroll', handleScroll);
+        window.addEventListener('scroll', handleScroll, { passive: true });
+
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 

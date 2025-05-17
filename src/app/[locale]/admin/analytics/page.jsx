@@ -1,140 +1,61 @@
 'use client';
 
 import React, { useState } from 'react';
-import {
-    uploadAchievementImage,
-    uploadAvatar, uploadMatureContentImage, uploadMechanicImage,
-    uploadNewsArticleImage, uploadProductImage,
-    uploadProductLogo, uploadProfileHatVariantImage
-} from "@/api/AdminServices/filesAdminService.js";
-import {useModal} from "@/context/ModalContext.jsx";
-import {refreshToken} from "@/api/ClientServices/authService.js";
+import { Box, Typography, Tabs, Tab } from '@mui/material';
+import styles from './AdminAnalyticsPage.module.scss';
 
-const ImageUploadForm = () => {
-    const [message, setMessage] = useState('');
-    const [loading, setLoading] = useState(false);
-    const { showModal } = useModal();
+import AuditLogTab from './components/AuditLogTab.jsx';
+import SessionsTab from './components/SessionsTab.jsx';
+import AggregateTab from './components/AggregateTab.jsx';
 
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-        setMessage('');
+export default function Page() {
+    const [tab, setTab] = useState(0);
 
-        const form = e.target;
-        const endpoint = form.endpoint.value;
-        const objectId = form.objectId.value;
-        const alt = form.alt.value;
-        const file = form.file.files[0];
-
-        const formData = new FormData();
-        if (endpoint === '/Files/product-image') {
-            formData.append('ProductId', objectId);
-        } else {
-            formData.append('ObjectId', objectId);
-        }
-        formData.append('File', file);
-        formData.append('ObjectSize', file.size);
-        formData.append('ContentType', file.type);
-        formData.append('FileName', file.name);
-        formData.append('ImageAlt', alt);
-
-
-        try {
-            let result;
-            switch (endpoint) {
-                case '/Files/avatar':
-                    result = await uploadAvatar(formData);
-                    break;
-                case '/Files/product-logo':
-                    result = await uploadProductLogo(formData);
-                    break;
-                case '/Files/achievement-image':
-                    result = await uploadAchievementImage(formData);
-                    break;
-                case '/Files/news-article':
-                    result = await uploadNewsArticleImage(formData);
-                    break;
-                case '/Files/mature-content-image':
-                    result = await uploadMatureContentImage(formData);
-                    break;
-                case '/Files/mechanic-image':
-                    result = await uploadMechanicImage(formData);
-                    break;
-                case '/Files/product-image':
-                    result = await uploadProductImage(formData);
-                    break;
-                case '/Files/profile-hat-variant':
-                    result = await uploadProfileHatVariantImage(formData);
-                    break;
-                default:
-                    throw new Error('Invalid endpoint');
-            }
-
-            setMessage(`✅ Success! Path: ${result}`);
-            showModal({ modalType: 'success', modalProps: { message: 'Upload successful!' } });
-        } catch (err) {
-            setMessage(`❌ Error: ${err.message}`);
-            showModal({ modalType: 'error', modalProps: { message: err.message } });
-        }
-
+    const handleTabChange = (_, newValue) => {
+        setTab(newValue);
     };
 
     return (
-        <div>
-            <h2>Upload Image</h2>
+        <Box className={styles.analitWrapper}>
+            <Typography variant="h4" className={styles.titleContainer}>
+                Аналітика
+            </Typography>
 
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="endpoint">Select upload method:</label>
-                <select id="endpoint" name="endpoint">
-                    <option value="/Files/avatar">Avatar</option>
-                    <option value="/Files/product-logo">Product Logo</option>
-                    <option value="/Files/achievement-image">Achievement Image</option>
-                    <option value="/Files/news-article">News Article</option>
-                    <option value="/Files/mature-content-image">Mature Content Image</option>
-                    <option value="/Files/mechanic-image">Mechanic Image</option>
-                    <option value="/Files/product-image">Product Image</option>
-                    <option value="/Files/profile-hat-variant">Profile Hat Variant</option>
-                </select>
+            <Tabs
+                value={tab}
+                onChange={handleTabChange}
+                className={styles.tabBar}
+                sx={{
+                    borderBottom: '1px solid #333',
+                    marginBottom: '20px',
 
-                <br/><br/>
+                    '.MuiTab-root': {
+                        fontWeight: 500,
+                        textTransform: 'uppercase',
+                        minWidth: 'auto',
+                        padding: '8px 16px',
+                        '&:hover': { color: 'var(--hover-color)' },
+                        '&.Mui-selected': {
+                            color: 'var(--active-element)',
+                            fontWeight: 600
+                        }
+                    },
+                    '.MuiTabs-indicator': {
+                        backgroundColor: 'var(--active-element)',
+                        height: '1px'
+                    }
+                }}
+            >
+                <Tab label="Аудит лог" />
+                <Tab label="Сесії" />
+                <Tab label="Агрегація" />
+            </Tabs>
 
-                <label htmlFor="objectId">Object ID:</label>
-                <input type="text" id="objectId" name="objectId" required style={{width: "300px"}}/>
-
-                <br/><br/>
-
-                <label htmlFor="file">Choose image:</label>
-                <input type="file" id="file" name="file" accept="image/*" required/>
-
-                <br/><br/>
-
-                <label htmlFor="alt">Choose ALT:</label>
-                <input type="text" id="alt" name="alt" required style={{width: "300px"}}/>
-
-                <br/><br/>
-
-                <button type="submit" disabled={loading}>
-                    {loading ? 'Uploading...' : 'Upload'}
-                </button>
-            </form>
-
-            {message && <p>{message}</p>}
-
-            {/* Додаткові кнопки для перевірки модалок */}
-            <button onClick={() => showModal({modalType: 'success', modalProps: { message: 'Test success message' } })}>
-                Show Success Modal
-            </button>
-
-            <button onClick={() => showModal({ modalType: 'error', modalProps: { message: 'Test error message' } })}>
-                Show Error Modal
-            </button>
-
-            <button onClick={() => showModal({ modalType: 'login'})}>
-                Show Login Modal
-            </button>
-
-            <button onClick={() => refreshToken()}>Refresh</button>
-        </div>
+            <Box className={styles.tabContent}>
+                {tab === 0 && <AuditLogTab />}
+                {tab === 1 && <SessionsTab />}
+                {tab === 2 && <AggregateTab />}
+            </Box>
+        </Box>
     );
-};
-
-export default ImageUploadForm;
+}

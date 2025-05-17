@@ -14,9 +14,10 @@
 
   .buttonContainer{
     display: flex;
-    flex-wrap: wrap;
+    justify-content: space-between;
+    flex-wrap: nowrap;
     margin: 2vh 0;
     width: 100%;
-    gap: 5vw;
   }
+
 }
