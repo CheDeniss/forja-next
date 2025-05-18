@@ -1,18 +1,18 @@
-import { getNewsById } from "@/api/ServerServices/serverFetchServices.js";
-import ReactMarkdown from "react-markdown";
+import {getAllNews, getNewsById} from "@/api/ServerServices/serverFetchServices.js";
+import styles from "./NewsPage.module.scss";
+import React from "react";
+import NewsDetailsPage from "@/components/News/NewsDetailsPage/NewsDetailsPage.jsx";
 
-export default async function NewsDetailsPage({ params }) {
-  const data = await getNewsById(params.id);
-  const { title, imageUrl, publicationDate, content } = data;
+export default async function NewsPage({ params }) {
+    const { id } = await params;
+    const allData = await getAllNews(1);
+    const pageData = await getNewsById(id);
 
-  return (
-    <div style={{ maxWidth: "800px", margin: "40px auto", padding: "20px" }}>
-      <h1 style={{ fontSize: "36px", marginBottom: "16px" }}>{title}</h1>
-      <p style={{ color: "#888", marginBottom: "16px" }}>
-        {new Date(publicationDate).toLocaleDateString()}
-      </p>
-      <img src={imageUrl} alt={title} style={{ width: "100%", borderRadius: "12px", marginBottom: "24px" }} />
-      <ReactMarkdown>{content.replaceAll('\\n', '\n')}</ReactMarkdown>
-    </div>
-  );
+    const { prioritizedNewsArticles, paginatedResult } = allData;
+
+    return (
+        <div className={styles.wrapper}>
+            <NewsDetailsPage left={pageData} right={prioritizedNewsArticles} />
+        </div>
+    );
 }

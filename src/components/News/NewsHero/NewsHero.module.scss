@@ -13,16 +13,22 @@
       display: flex;
       flex-direction: column;
 
+      &:hover img {
+        transform: scale(1.02);
+      }
+
       .imageWrapper {
         width: 100%;
         aspect-ratio: 16 / 9;
         overflow: hidden;
+        border-radius: 2px;
 
         img {
           width: 100%;
           height: 100%;
           object-fit: cover;
           display: block;
+          transition: transform 0.3s;
         }
       }
 

@@ -15,9 +15,9 @@ export default function TrendingCard({ article }) {
                 />
             </div>
             <div className={styles.footer}>
-                <p className={styles.title}>
+                <span className={styles.title}>
                     {article.title.toUpperCase()}
-                </p>
+                </span>
                 <CustomButtonOther onClick={() => openNewsInNewTab(article.id)}>Read more</CustomButtonOther>
             </div>
         </div>
