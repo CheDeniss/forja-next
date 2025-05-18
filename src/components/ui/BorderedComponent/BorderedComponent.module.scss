@@ -22,7 +22,7 @@ $default-corner-height: 20%;
 .borderedClip {
   position: absolute;
   inset: 0; // новий стиль - займає весь простір
-  border: 2px solid var(--border-color);
+  border: 3px solid var(--border-color);
   border-radius: 3px;
 
   $corner-width: var(--corner-width, $default-corner-width);

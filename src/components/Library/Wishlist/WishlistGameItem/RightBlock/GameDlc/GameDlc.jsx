@@ -18,7 +18,7 @@ const GameDlc = ({ gameId, total = 0 }) => {
                        alt={'DLC'}
                        fill
                        style={{ objectFit: 'contain' }}/>
-                       onClick={() => router.push(`/catalog/${gameId}`)}
+
             </div>
 
             <span className={styles.progress}>

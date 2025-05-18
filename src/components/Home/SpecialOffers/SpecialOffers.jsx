@@ -50,6 +50,7 @@ const SpecialOffers = ({ games = [] }) => {
             >
                 <div className={styles.imageWrapper}>
                     <MinioImage
+                        className={styles.image}
                         filled
                         src={filledGames[0].logoUrl}
                         alt={filledGames[0].title}
@@ -75,6 +76,7 @@ const SpecialOffers = ({ games = [] }) => {
                     >
                         <div className={styles.imageWrapper}>
                             <MinioImage
+                                className={styles.image}
                                 filled
                                 src={game.logoUrl}
                                 alt={game.title}

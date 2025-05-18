@@ -17,7 +17,7 @@ const WishlistGameItem = ({ wishlistItem }) => {
         game,
         totalGameAchievements,
         completedAchievements,
-        addons
+        addons,
     } = wishlistItem;
 
     if (!game) {
@@ -126,7 +126,7 @@ const WishlistGameItem = ({ wishlistItem }) => {
                         <GameAchieve
                             total={totalGameAchievements}
                         />
-                        <GameDlc addons={addons.length}
+                        <GameDlc addons={addons?.length || '0'}
                                  gameId={id}
                         />
                     </div>
