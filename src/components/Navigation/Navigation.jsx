@@ -1,4 +1,3 @@
-
 'use client';
 
 import React, { useState, useEffect } from 'react';
@@ -63,8 +62,8 @@ const Navbar = () => {
                 <div className={stylesNav.navRightMenu}>
                     <ul className={stylesNav.navLinks}>
                         {user && (
-                            <li>
-                                {cartData?.hasItems === true ? (
+                            cartData?.hasItems === true ? (
+                                <NavLink href={`/${locale}/cart`}>
                                     <Tooltip
                                         title={
                                             <div>
@@ -95,7 +94,7 @@ const Navbar = () => {
                                                     '& .MuiTooltip-tooltip': {
                                                         fontFamily: 'Fixel Display',
                                                         fontSize: '16px',
-                                                        border: '3px solid #E2E2E2',
+                                                        border: '1px solid #E2E2E2',
                                                         borderRadius: '2px',
                                                         backgroundColor: '#363636',
                                                         padding: '10px 12px',
@@ -107,24 +106,22 @@ const Navbar = () => {
                                             }
                                         }}
                                     >
-                                        <div style={{ position: 'relative', display: 'inline-block' }}>
-                                            <NavLink href={`/${locale}/cart`}>{t("cart")}</NavLink>
+                                        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '4px' }}>
+                                            {t("cart")}
                                             <BadgeDot className={stylesNav.dot} />
                                         </div>
                                     </Tooltip>
-                                ) : (
-                                    <NavLink href={`/${locale}/cart`}>{t("cart")}</NavLink>
-                                )}
-                            </li>
+                                </NavLink>
+                            ) : (
+                                <NavLink href={`/${locale}/cart`}>{t("cart")}</NavLink>
+                            )
                         )}
 
-                        <li>
-                            {user ? (
-                                <NavLink href={`/${locale}/profile`}>{t("profile")}</NavLink>
-                            ) : (
-                                <NavLink href={`/${locale}/auth/login`}>{t("login")}</NavLink>
-                            )}
-                        </li>
+                        {user ? (
+                            <NavLink href={`/${locale}/profile`}>{t("profile")}</NavLink>
+                        ) : (
+                            <NavLink href={`/${locale}/auth/login`}>{t("login")}</NavLink>
+                        )}
 
                         <li><LanguageSwitcher /></li>
 

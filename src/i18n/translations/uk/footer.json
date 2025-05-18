@@ -3,8 +3,8 @@
   "links": {
     "privacy": "Конфіденційність",
     "legal": "Правова інформація",
-    "cookie_settings": "Налаштування cookie",
-    "cookie_policy": "Політика щодо cookie",
+    "cookie": "cookie",
+    "rules": "Правила",
     "terms": "Умови користування"
   },
   "roles": {

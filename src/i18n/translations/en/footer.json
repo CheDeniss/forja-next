@@ -3,8 +3,8 @@
   "links": {
     "privacy": "Privacy",
     "legal": "Legal",
-    "cookie_settings": "Cookie Settings",
-    "cookie_policy": "Cookie Policy",
+    "cookie": "Cookie",
+    "rules": "Rules",
     "terms": "Terms"
   },
   "roles": {

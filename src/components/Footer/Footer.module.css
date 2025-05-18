@@ -58,6 +58,7 @@
     gap: 2rem;
     flex-direction: column;
     justify-content: space-around;
+    flex: 1;
 }
 
 .logoText {
@@ -68,17 +69,23 @@
 .nav {
     display: flex;
     gap: 20px;
+    justify-content: space-between;
 }
 
 .navLink {
     color: var(--main_page_text);
     text-decoration: none;
     font-size: 1.2rem;
+
+    &:hover {
+        color: var(--hover-color);
+    }
 }
 
 .social {
     display: flex;
     gap: 2.5vw;
+    justify-content: space-between;
 }
 
 .socialLink img {
@@ -87,9 +94,12 @@
 }
 
 .info {
+    font-family: "Fixel Display", sans-serif;
     display: flex;
     gap: 50px;
-    font-size: 14px;
+    font-size: 1rem;
+    font-weight: 400;
+    justify-content: space-between;
 }
 
 .section{
@@ -101,7 +111,7 @@
 .sectionTitle {
     display: flex;
     font-size: 1.2rem;
-    font-weight: normal;
+    font-weight: 500;
     margin-top: 0;
     margin-bottom: 1rem;
 }

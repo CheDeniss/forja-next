@@ -1,0 +1,23 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+  color: var(--main_page_text);
+  background-color: var(--gray-800);
+  height: auto;
+  border-radius: 2px;
+
+  span{
+    font-size: 36px;
+    text-transform: uppercase;
+    font-weight: 400;
+    line-height: 1;
+  }
+
+  p{
+    font-family: "Fixel Display", sans-serif;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+}

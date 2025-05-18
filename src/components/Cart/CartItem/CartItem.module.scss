@@ -46,6 +46,7 @@
   justify-content: space-between;
   align-items: flex-start;
   gap: 1rem;
+  overflow: hidden;
 
   .textBlock{
     display: flex;
@@ -62,6 +63,11 @@
       font-family: "Fixel Display", sans-serif;
       font-size: 1rem;
       line-height: 1.4;
+
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+      overflow: hidden;
     }
   }
 }

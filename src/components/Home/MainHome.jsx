@@ -3,7 +3,6 @@ import styles from "./MainHome.module.scss";
 import {getGenres, getHomePage} from "@/api/ClientServices/homeService.js";
 import {useModal} from "@/context/ModalContext.jsx";
 import GenreCarousel from "@/components/Home/GenreCarousel/GenreCarousel.jsx";
-import GameShowcase from "@/components/Home/GameShowcase/GameShowcase.jsx";
 import {Skeleton} from "@mui/material";
 import SpecialOffers from "@/components/Home/SpecialOffers/SpecialOffers.jsx";
 import GameCarousel from "@/components/Home/GameCarousel/GameCarousel.jsx";
