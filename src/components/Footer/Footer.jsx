@@ -57,7 +57,6 @@ const Footer = () => {
                         </div>
                         <div className={footerStyles.section}>
                             <h4 className={footerStyles.sectionTitle}>{t('roles.content')}:</h4>
-                            <p className={footerStyles.sectionText}>{t('team.daniil_korsunsky')}</p>
                             <p className={footerStyles.sectionText}>{t('team.rudenko_artem')}</p>
                         </div>
                         <div className={footerStyles.section}>
