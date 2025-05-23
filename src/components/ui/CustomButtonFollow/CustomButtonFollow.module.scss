@@ -1,0 +1,121 @@
+$corner-width: 15%; /* Ширина куточків */
+$corner-height: 20%;  /* Висота куточків */
+$gap-size: 100% - $corner-width;
+$gap-height: 100% - $corner-height;
+
+
+.customButtonMainContainer {
+  display: flex;
+  padding: 10px;
+  width: 120px;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.buttonWrapper {
+  position: relative;
+  display: inline-block;
+  width: 100%;
+  height: auto;
+}
+
+.buttonBorder {
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--gray-100);
+  border-radius: 3px;
+
+  $corner-width: var(--corner-width, 15%);
+  $corner-height: var(--corner-height, 20%);
+  $gap-size: calc(100% - #{$corner-width});
+  $gap-height: calc(100% - #{$corner-height});
+
+  clip-path: polygon(
+                  $corner-width $corner-height,
+                  0% $corner-height,
+                  0% 0%,
+                  $corner-width 0%,
+
+                  $corner-width 100%,
+                  0% 100%,
+                  0% $gap-height,
+
+                  100% $gap-height,
+                  100% 100%,
+                  $gap-size 100%,
+
+                  $gap-size 0%,
+                  100% 0%,
+                  100% $corner-height,
+
+                  $gap-size $corner-height,
+                  $gap-size 100%,
+                  $gap-size $gap-height,
+                  $corner-width $gap-height,
+                  $corner-width 100%
+  );
+  z-index: 99;
+}
+
+.buttonWrapper:hover .buttonBorder {
+  border: 2px solid var(--hover-color);
+}
+
+.buttonBorderUnfollow{
+  border: 2px solid var(--orange-500);
+}
+
+/* Основний стиль для button */
+.customButton {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 5px 30px;
+  font-size: 1rem;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 500;
+  text-transform: uppercase;
+  text-wrap: nowrap;
+  background-color: var(--gray-900);
+  color: var(--main_page_text);
+  border: none;
+  outline: none;
+  border-radius: 2px;
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.customButtonUnfollow{
+  background-color: var(--gray-100);
+  color: var(--gray-900);
+}
+
+.customButton:active {
+}
+
+
+
+/* Тултіп */
+.tooltip {
+  visibility: hidden;
+  width: auto;
+  font-family: 'Oswald', sans-serif;
+  font-weight: 300;
+  font-size: clamp(0.5rem, 1vw, 1.5rem);
+  background-color: var(--gray-900);
+  color: var(--main_page_text);
+  text-align: center;
+  padding: 5px;
+  border: 1px solid var(--main_page_text);
+  border-radius: 5px;
+  position: absolute;
+  bottom: 110%;
+  left: 20%;
+  opacity: 0;
+  transition: opacity 0.3s;
+  z-index: 15;
+}

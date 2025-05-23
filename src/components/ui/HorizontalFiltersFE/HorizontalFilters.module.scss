@@ -1,0 +1,159 @@
+.filterMainContainer {
+  display: flex;
+  flex-direction: column;
+}
+
+.filtersWrapper {
+  display: flex;
+  gap: 20px;
+  color: var(--main_page_text);
+  //padding: 20px 0;
+  overflow: visible;
+  width: 100%;
+
+  .filterBlock {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1;
+    transition: all 0.3s ease;
+
+    .filterButton {
+      position: relative;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      height: 40px;
+      background-color: var(--gray-900);
+      color: var(--main_page_text);
+      font-size: 1.2rem;
+      font-weight: 400;
+      padding: 9px 0 5px 16px;
+      font-family: "Fixel Display", sans-serif;
+      border: 2px solid transparent;
+      cursor: pointer;
+      width: 100%;
+      border-bottom: 1px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .filterButton:hover {
+      border-bottom: 1px solid var(--hover-color);
+    }
+
+    .active {
+      background-color: var(--gray-800);
+    }
+
+    .filterButton::before {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 6px;
+      height: 1.2rem;
+      border-radius: 3px;
+      background-color: gray; // default
+    }
+
+    // Кольори по категорії
+    .filterButton[data-category="genres"]::before {
+      background-color: #ff8c42;
+    }
+
+    .filterButton[data-category="mechanics"]::before {
+      background-color: #b28dff;
+    }
+
+    .filterButton[data-category="tags"]::before {
+      background-color: #47d7ac;
+    }
+
+    .filterButton[data-category="matureContents"]::before {
+      background-color: #ff6666;
+    }
+
+    .filterButton[data-category="other"]::before {
+      background-color: var(--approval-color);
+    }
+  }
+}
+
+.filterContent {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  max-height: 50vh;
+  overflow-y: auto;
+  top: 100%;
+  left: 0;
+  margin-top: 8px;
+  background-color: var(--gray-900);
+  color: var(--main_page_text);
+  padding: 10px;
+  width: 100%;
+  border-radius: 2px;
+  border: 1px solid var(--gray-500);
+  z-index: 999;
+  transform: scaleY(0);
+  transform-origin: top;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.open {
+  transform: scaleY(1);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.selectedFilters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  padding-top: 28px;
+
+  &:empty {
+    padding: 0;
+  }
+}
+
+.filterChip {
+  background-color: var(--gray-900);
+  color: var(--main_page_text);
+  padding: 5px 1px 3px 18px;
+  font-size: 1rem;
+  font-family: "Fixel Display", sans-serif;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 6px;
+    height: 1.2rem;
+    border-radius: 3px;
+    background-color: gray;
+  }
+
+  &[data-category="genres"]::before           {background-color: #ff8c42;}
+  &[data-category="mechanics"]::before        {background-color: #b28dff;}
+  &[data-category="tags"]::before             {background-color: #47d7ac;}
+  &[data-category="matureContents"]::before   {background-color: #ff6666;}
+  &[data-category="other"]::before            {background-color: var(--approval-color);}
+}
+
+
+
+
+

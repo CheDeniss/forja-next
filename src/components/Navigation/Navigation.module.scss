@@ -1,0 +1,108 @@
+.navbar {
+    background-color: var(--gray-900);
+    min-height: 55px;
+    padding: 0 var(--spacing-perimeter-nav-w);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    transition: all 0.3s ease-in-out;
+    box-sizing: border-box;
+
+    .activeLink {
+        position: relative;
+
+        a {
+            color: var(--active-element);
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--active-element);
+            border-radius: 1px;
+        }
+    }
+
+    .navLeftMenu {
+
+        .navLinks {
+            list-style: none;
+            display: flex;
+            gap: 3vw;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .navLinks li a {
+            display: flex;
+            text-decoration: none;
+            color: var(--main_page_text);
+            font-size: clamp(1rem, 1.5vw, 2rem);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s;
+            align-items: center;
+
+            &:hover {
+                color: var(--hover-color);
+            }
+        }
+    }
+
+    .navRightMenu {
+
+        .navLinks {
+            list-style: none;
+            display: flex;
+            gap: 3vw;
+            margin: 0;
+            padding: 0;
+            align-items: center;
+        }
+
+        .navLinks li {
+            position: relative;
+        }
+
+        .navLinks li a {
+            display: flex;
+            text-decoration: none;
+            color: var(--main_page_text);
+            font-size: clamp(1rem, 1.5vw, 2rem);
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            font-weight: 400;
+            transition: color 0.3s;
+            align-items: center;
+
+            .navLinks li a:hover {
+                color: var(--hover-color);
+            }
+        }
+    }
+}
+
+.navbarFixed {
+    position: sticky;
+    width: 100%;
+    top: 0;
+    left: 0;
+
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+}
+
+.dot{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
+

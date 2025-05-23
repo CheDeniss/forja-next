@@ -1,0 +1,52 @@
+.container {
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+}
+
+.customDataGrid {
+  background-color: #1a1a1a;
+  color: #f0f0f0;
+
+  // Звичайні клітинки таблиці
+  .MuiDataGrid-cell {
+    color: var(--main_page_text);
+    border-bottom: 1px solid #333;
+  }
+
+  // При наведенні на рядок
+  .MuiDataGrid-row:hover {
+    background-color: #222;
+  }
+
+  // Футер з пагінацією
+  .MuiDataGrid-footerContainer {
+    background-color: #111;
+    color: #ccc;
+    border-top: 1px solid #333;
+  }
+
+  // Лічильник вибраних рядків (зліва внизу)
+  .MuiDataGrid-selectedRowCount {
+    color: #ccc;
+  }
+
+  // Toolbar (якщо є)
+  .MuiDataGrid-toolbarContainer {
+    background-color: #111;
+    color: #ccc;
+  }
+
+  // Пагінація (внизу праворуч)
+  .MuiTablePagination-root {
+    color: #ccc;
+  }
+
+  // Вертикальні роздільники колонок
+  .MuiDataGrid-columnSeparator {
+    display: none;
+  }
+
+  // Смуга прокрутки (опціонально стилізувати)
+  .MuiDataGrid-virtualScroller {
+    background-color: #1a1a1a;
+  }
+}

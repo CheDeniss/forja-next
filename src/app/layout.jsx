@@ -1,22 +1,20 @@
 
-import "./styles/globals.css";
-import FooterWrapper from "./components/Footer/FooterWrapper";
-import { AuthProvider } from "../context/authContext";
-import NavbarWrapper from "./components/Navigation/NavbarWrapper";
+import '@/styles/globals.scss';
+import ClientProviders from './ClientProviders';
+import {getUserDataFromServer} from "@/lib/server/authMeServer.js";
 
+export default async function RootLayout({ children }) {
+    const user = await getUserDataFromServer();
 
-export default function RootLayout({ children }) {
-  return (
-      <html lang="en">
-          <body className="app-container">
-            <AuthProvider>
-              <NavbarWrapper />
-                  <main className="main">
+    return (
+        <html lang="en">
+            <body>
+                <ClientProviders initialUserData={user}>
                     {children}
-                  </main>
-              <FooterWrapper />
-            </AuthProvider>
-          </body>
-      </html>
-  );
+                </ClientProviders>
+            </body>
+        </html>
+    );
 }
+
+

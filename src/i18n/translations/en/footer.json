@@ -3,8 +3,8 @@
   "links": {
     "privacy": "Privacy",
     "legal": "Legal",
-    "cookie_settings": "Cookie Settings",
-    "cookie_policy": "Cookie Policy",
+    "cookie": "Cookie",
+    "rules": "Rules",
     "terms": "Terms"
   },
   "roles": {
@@ -15,8 +15,7 @@
   "team": {
     "kirilchenko_grigory": "Kyrylchenko Gryhorii",
     "cherneta_denys": "Cherneta Denys",
-    "daniil_korsunsky": "Daniil Korsunsky",
     "rudenko_artem": "Rudenko Artem",
-    "damn_evgenia": "Damn Evgenia"
+    "damn_evgenia": "Bed` Evgenia"
   }
 }

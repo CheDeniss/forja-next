@@ -3,27 +3,36 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "node server.js",
     "build": "next build",
     "start": "next start",
+    "dev": "cross-env NODE_TLS_REJECT_UNAUTHORIZED=0 NODE_ENV=development NODE_EXTRA_CA_CERTS=C:\\Users\\User\\AppData\\Local\\mkcert\\rootCA.pem node server.js",
     "lint": "next lint"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
     "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.0.0",
     "@mui/material": "^6.4.8",
+    "@mui/x-data-grid": "^7.28.3",
+    "date-fns": "^4.1.0",
+    "dayjs": "^1.11.13",
+    "embla-carousel-autoplay": "^8.6.0",
     "embla-carousel-react": "^8.5.2",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.4",
-    "next": "15.1.7",
+    "js-cookie": "^3.0.5",
+    "next": "15.3.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-i18next": "^15.4.1",
+    "react-markdown": "^10.1.0",
+    "recharts": "^2.15.3",
     "sass": "^1.85.1"
   },
   "devDependencies": {
     "@types/node": "22.13.4",
     "@types/react": "19.0.10",
+    "cross-env": "^7.0.3",
     "typescript": "5.7.3"
   },
   "type": "module"

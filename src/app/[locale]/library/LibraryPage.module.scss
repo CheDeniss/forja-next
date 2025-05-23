@@ -1,0 +1,7 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+  box-sizing: border-box;
+}

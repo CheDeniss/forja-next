@@ -1,0 +1,11 @@
+.analitWrapper {
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+  color: var(--main_page_text);
+}
+
+.titleContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}

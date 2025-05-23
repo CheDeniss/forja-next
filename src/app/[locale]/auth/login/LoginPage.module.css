@@ -1,0 +1,33 @@
+
+.loginPageContainer {
+    display: flex;
+    justify-content: center;
+    flex: 1;
+    width: 100%;
+    background: var(--gray-900);
+    background-image: url("../../../../../public/assets/images/login/Log_image_bkg.svg");
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    .loginContainer {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 50%;
+        height: 67%;
+        padding-top: 3vh;
+        margin-top: 3vh;
+        /*border: 5px solid #12f3a4;*/
+        box-sizing: border-box;
+
+        @media screen and (min-height: 1080px) {
+            .loginFormContainerMain {
+                padding-top: 8vh;
+                width: 45%;
+                height: 58%;
+            }
+        }
+    }
+}
+

@@ -1,0 +1,32 @@
+.header {
+    display: flex;
+    min-height: 95px;
+    padding: 0 var(--spacing-perimeter-nav-w);
+    background-color: #454545;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 24px;
+    transition: transform 0.3s ease-in-out;
+}
+
+.header.hidden {
+    transform: translateY(0);
+}
+
+.headerLogo {
+    margin-left: 40px;
+}
+
+.headerFlame {
+    margin-right: clamp(0.7vw, 1vw, 1.5vw);
+}
+
+.logoSliconsContainer {
+    display: flex;
+    align-items: flex-end;
+}
+
+.slIcon {
+    margin: 0 clamp(0.7vw, 1vw, 1.5vw);
+}

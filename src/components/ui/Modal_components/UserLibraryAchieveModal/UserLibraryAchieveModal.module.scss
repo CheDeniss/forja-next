@@ -1,0 +1,61 @@
+.modalWrapper {
+  max-height: 80vh;
+  padding: 20px 40px 20px 20px;
+  overflow-y: auto;
+  background-color: var(--gray-700);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-column-gap: 5vw;
+  grid-row-gap: 25px;
+}
+
+.achievementCard {
+  display: flex;
+  font-family: "Fixel Display", sans-serif;
+  width: 35vw;
+  height: 125px;
+  gap: 16px;
+
+  .imageWrapper {
+    height: 100%;
+    width: 125px;
+    flex-shrink: 0;
+
+    .image {
+      border-radius: 2px;
+      object-fit: cover;
+    }
+  }
+
+  .text {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    background-color: var(--gray-800);
+    color: var(--main_page_text);
+    justify-content: space-around;
+    height: 100%;
+    overflow: hidden;
+    padding: 17px 20px 17px 20px;
+    box-sizing: border-box;
+    border-radius: 2px;
+
+    .title {
+      font-weight: 900;
+      font-size: 1.5rem;
+      color: var(--main_page_text);
+    }
+
+    .description {
+      font-size: 1.25rem;
+      font-weight: 400;
+      text-overflow: ellipsis;
+    }
+  }
+}
+
+
+

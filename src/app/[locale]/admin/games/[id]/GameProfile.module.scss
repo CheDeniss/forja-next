@@ -1,0 +1,28 @@
+.profileWrapper {
+  color: var(--main_page_text);
+  background-color: var(--main_page_bckg);
+  padding: var(--spacing-perimeter-h) var(--spacing-perimeter-w);
+
+  .titleContainer {
+    display: flex;
+    align-items: center;
+    margin-bottom: 50px;
+    gap: 5vw;
+
+    .title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      font-family: 'Oswald', sans-serif;
+    }
+  }
+}
+
+.profileTabs {
+  // Нижня лінія під табами (розділювач)
+  border-bottom: 1px solid #6894b2;
+  margin-bottom: 1rem;
+
+}
+
+
+
